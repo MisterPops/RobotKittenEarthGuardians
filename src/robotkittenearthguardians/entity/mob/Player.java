@@ -25,6 +25,7 @@ public class Player extends Mob {
 	public Player(Keyboard input) {
 		this.input = input;
 		shootSpeed = MainBullet.FIRE_RATE;
+		mobs.add(this);
 	}
 	
 	/**

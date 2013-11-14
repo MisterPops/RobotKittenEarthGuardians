@@ -6,6 +6,9 @@ import robotkittenearthguardians.graphics.SpriteSheets;
 
 public class Level {
 	
+	//The level to be loaded
+	private int levelNum = 0;
+	
 	public Level() {
 	}
 
@@ -13,6 +16,13 @@ public class Level {
 	 * Updates all entities on the level stage.
 	 */
 	public void update() {
+		
+		//When all mobs are killed, proceeds to the next level
+		//then loads the mobs for the next level
+		if(Entity.getMobSize() == 1) {
+			GameMaster.loadLevel(levelNum);
+			levelNum++;
+		}
 		
 		for(int i = 0; i < Entity.getMobSize(); i++) {
 			Entity.getIndexedMob(i).update();
@@ -25,6 +35,8 @@ public class Level {
 		for(int i = 0; i < Entity.getParticleSize(); i++) {
 			Entity.getIndexedParticle(i).update();
 		}
+		
+		//Clears all entities flagged to be removed
 		Entity.clearEntities();
 	}
 	

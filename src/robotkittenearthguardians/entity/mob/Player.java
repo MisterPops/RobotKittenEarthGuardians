@@ -75,14 +75,13 @@ public class Player extends Mob {
 			move(xa, ya);
 		}
 		
-		updateShooting();
-		
 		System.out.println(health);
 		if(!(Level.isOnStage(x, y))) {
 			falling();
 		} else {
 			onStage = true;
 			falseFall = 0;
+			updateShooting();
 		}
 		
 		if(health < 0f) {

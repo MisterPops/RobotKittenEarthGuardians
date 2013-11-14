@@ -76,7 +76,7 @@ public class Player extends Mob {
 			move(xa, ya);
 		}
 		
-		System.out.println(health);
+		//System.out.println(health);
 		if(!(Level.isOnStage(x, y))) {
 			falling();
 		} else {
@@ -89,7 +89,8 @@ public class Player extends Mob {
 			remove();
 		}
 		
-		//clearEntities();
+		Level.setPlayerX(this.x);
+		Level.setPlayerY(this.y);
 	}
 	
 	private void updateShooting() {

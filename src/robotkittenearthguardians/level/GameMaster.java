@@ -6,7 +6,7 @@ public class GameMaster {
 	
 	//Holds the mobs to be spawned each level
 	private static int[][] levels = {
-			{1},
+			{3},
 			{2}
 	};
 	
@@ -15,7 +15,7 @@ public class GameMaster {
 			for(int monsterCount = 0; monsterCount < levels[levelNum][index]; monsterCount++) {
 				switch (index) {
 				case 0: @SuppressWarnings("unused")
-				WaterBalloon waterballoon = new WaterBalloon(800, 400);
+				WaterBalloon waterballoon = new WaterBalloon(500, 400);
 				}
 			}
 		}

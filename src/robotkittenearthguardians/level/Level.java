@@ -8,6 +8,8 @@ public class Level {
 	
 	//The level to be loaded
 	private int levelNum = 0;
+	private static int playerX;
+	private static int playerY;
 	
 	public Level() {
 	}
@@ -88,5 +90,21 @@ public class Level {
 		float distY = (y - centerY) * stageRadiusX / stageRadiusY;
 		
 		return ((distX * distX) + (distY * distY)) <= stageRadiusX * stageRadiusX;
+	}
+	
+	public static void setPlayerX(int xPos) {
+		playerX = xPos;
+	}
+	
+	public static void setPlayerY(int yPos) {
+		playerY = yPos;
+	}
+	
+	public static int getPlayerX() {
+		return playerX;
+	}
+	
+	public static int getPlayerY() {
+		return playerY;
 	}
 }

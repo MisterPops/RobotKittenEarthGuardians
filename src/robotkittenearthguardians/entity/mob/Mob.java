@@ -12,7 +12,12 @@ public abstract class Mob extends Entity {
 	protected float falseFall;
 	//Mobs's front, right, left, and back velocity.
 	protected float fVel = 0f, bVel = 0f, rVel = 0f, lVel = 0f;
+	//If the mob is moving
 	protected boolean moving = false;
+	//If the mob sees the player.
+	protected boolean seePlayer = false;
+	//Player posistion for AI
+	protected int playerX, playerY;
 	
 	/**
 	 * Moves the coordinate of the mob on the X/Y plane

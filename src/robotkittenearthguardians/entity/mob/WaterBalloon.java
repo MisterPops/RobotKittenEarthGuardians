@@ -5,14 +5,11 @@ import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.Level;
 
 public class WaterBalloon extends Mob{
-	
-	//For testing
-	private int frame = 0;
-	private int frameLife = 0;
+
 	private double speed = 2.5;
 	private double dx, dy;
 	private double distance;
-	private boolean seePlayer = false;
+	private double multiplier;
 
 	public WaterBalloon(int x, int y) {
 		health = 100.0f;
@@ -24,11 +21,11 @@ public class WaterBalloon extends Mob{
 	public void update() {
 		seePlayer();
 		
-		int playerX = Level.getPlayerX();
-		int playerY = Level.getPlayerY();
+		playerX = Level.getPlayerX();
+		playerY = Level.getPlayerY();
 		dx = playerX - x; dy = playerY - y;
 		distance = Math.sqrt(dx * dx + dy * dy);
-		double multiplier = speed / distance;
+		multiplier = speed / distance;
 		
 		double xa = dx * multiplier, ya = dy * multiplier;
 		System.out.println(+ distance);
@@ -46,7 +43,14 @@ public class WaterBalloon extends Mob{
 	}
 	
 	public void seePlayer() {
-		if(distance < 300) seePlayer = true;
-		else seePlayer = false;
+		if(distance < 300) {
+			seePlayer = true;
+		} else {
+			seePlayer = false;
+		}
+	}
+	
+	//Figure out how to implement wandering
+	public void wander() {
 	}
 }

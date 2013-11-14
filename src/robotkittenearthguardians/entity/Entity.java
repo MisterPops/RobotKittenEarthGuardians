@@ -8,16 +8,20 @@ import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.Screen;
-import robotkittenearthguardians.level.Level;
 
 public abstract class Entity {
 
 	protected int x;	//Location of an entity
 	protected int y;
+	//If the entity is set to be removed
 	private boolean removed = false;
-	protected Level level;
 	protected final Random random = new Random();
+	//If the move is on the stage or not
 	protected boolean onStage = true;
+	//Which sprite in the Sprite array to render
+	protected int frame = 0;
+	//Counter to count up till next frame is rendered
+	protected int frameLife = 0;
 	
 	protected static List<Mob> mobs = new ArrayList<Mob>();
 	protected static List<Projectiles> projectiles = new ArrayList<Projectiles>();

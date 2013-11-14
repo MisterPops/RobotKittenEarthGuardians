@@ -4,9 +4,6 @@ import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 
 public class MainBulletParticle extends Particle{
-
-	private int animFrame = 0;
-	private int frameLife = 0;
 	
 	public MainBulletParticle(double x, double y) {
 		super(x, y);
@@ -23,12 +20,12 @@ public class MainBulletParticle extends Particle{
 	}
 	
 	private void animate() {
-		sprite = Sprite.bulletImpact[animFrame];
+		sprite = Sprite.bulletImpact[frame];
 		frameLife++;
 		if(frameLife == 4) {
-			animFrame++;
+			frame++;
 			frameLife = 0;
 		}
-		if(animFrame == Sprite.bulletImpact.length) remove();
+		if(frame == Sprite.bulletImpact.length) remove();
 	}
 }

@@ -16,11 +16,11 @@ public class Sprite {
 	
 	//Enemies
 	//Basic Enemy WaterBalloon enemy.
-	public static Sprite[] waterBalloon = {new Sprite(16, 0, 0, SpriteSheets.waterBalloon),
-		new Sprite(16, 1, 0, SpriteSheets.waterBalloon), new Sprite(16, 2, 0, SpriteSheets.waterBalloon),
-		new Sprite(16, 3, 0, SpriteSheets.waterBalloon), new Sprite(16, 4, 0, SpriteSheets.waterBalloon),
-		new Sprite(16, 5, 0, SpriteSheets.waterBalloon), new Sprite(16, 6, 0, SpriteSheets.waterBalloon),
-		new Sprite(16, 7, 0, SpriteSheets.waterBalloon)};
+	public static Sprite[] waterBalloon = {new Sprite(32, 0, 0, SpriteSheets.waterBalloon),
+		new Sprite(32, 1, 0, SpriteSheets.waterBalloon), new Sprite(32, 2, 0, SpriteSheets.waterBalloon),
+		new Sprite(32, 3, 0, SpriteSheets.waterBalloon), new Sprite(32, 4, 0, SpriteSheets.waterBalloon),
+		new Sprite(32, 5, 0, SpriteSheets.waterBalloon), new Sprite(32, 6, 0, SpriteSheets.waterBalloon),
+		new Sprite(32, 7, 0, SpriteSheets.waterBalloon)};
 	
 	//Projectiles
 	//mainBullet

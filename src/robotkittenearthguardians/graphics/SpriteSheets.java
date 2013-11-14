@@ -16,6 +16,7 @@ public class SpriteSheets {
 	public static SpriteSheets mainStage = new SpriteSheets("/bg/stage_test.png", 1600, 913);
 	public static SpriteSheets mainBullet = new SpriteSheets("/projectiles/bullet.png", 16, 16);
 	public static SpriteSheets bulletImpact = new SpriteSheets("/projectiles/bullet_impact.png", 128, 16);
+	public static SpriteSheets waterBalloon = new SpriteSheets("/actors/waterballoon_enemy.png", 256, 32);
 	
 	public SpriteSheets(String path, int xSize, int ySize) {
 		this.path = path;

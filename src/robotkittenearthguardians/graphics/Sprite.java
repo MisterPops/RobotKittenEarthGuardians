@@ -14,7 +14,16 @@ public class Sprite {
 	public static Sprite playerAngleDownLeft = new Sprite(32, 0, 3, SpriteSheets.player);
 	public static Sprite playerDown = new Sprite(32, 0, 4, SpriteSheets.player);
 	
+	//Enemies
+	//Basic Enemy WaterBalloon enemy.
+	public static Sprite[] waterBalloon = {new Sprite(16, 0, 0, SpriteSheets.waterBalloon),
+		new Sprite(16, 1, 0, SpriteSheets.waterBalloon), new Sprite(16, 2, 0, SpriteSheets.waterBalloon),
+		new Sprite(16, 3, 0, SpriteSheets.waterBalloon), new Sprite(16, 4, 0, SpriteSheets.waterBalloon),
+		new Sprite(16, 5, 0, SpriteSheets.waterBalloon), new Sprite(16, 6, 0, SpriteSheets.waterBalloon),
+		new Sprite(16, 7, 0, SpriteSheets.waterBalloon)};
+	
 	//Projectiles
+	//mainBullet
 	public static Sprite mainBullet = new Sprite(16, 0 , 0, SpriteSheets.mainBullet);
 	//mainBullet impact
 	public static Sprite[] bulletImpact = {new Sprite(16, 0 , 0, SpriteSheets.bulletImpact),

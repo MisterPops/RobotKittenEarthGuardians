@@ -1,5 +1,7 @@
 package robotkittenearthguardians.entity.mob;
 
+import robotkittenearthguardians.entity.AABB;
+import robotkittenearthguardians.entity.CollisionLibrary;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
@@ -18,18 +20,6 @@ public class Player extends Mob {
 	private Keyboard input;
 	
 	/**
-	 * Constructor used when there is no specific place coord for
-	 * the player.
-	 * @param input Input object used for keyboard input.
-	 */
-	public Player(Keyboard input) {
-		this.input = input;
-		shootSpeed = MainBullet.FIRE_RATE;
-		mobs.add(this);
-		//AABB boundBox = new AABB(32, 32);
-	}
-	
-	/**
 	 * Constructor used to set the player at a specific coordinate.
 	 * @param x Coord on x-plane
 	 * @param y Coord on y-plane
@@ -39,16 +29,27 @@ public class Player extends Mob {
 		health = 100.0f;
 		this.x = x;
 		this.y = y;
+		somePosition.x = this.x;
+		somePosition.y = this.y;
+		size.x = 16;
+		size.y = 16;
 		this.input = input;
 		shootSpeed = MainBullet.FIRE_RATE;
 		mobs.add(this);
-		//AABB boundBox = new AABB(32, 32);
+		boundBox = new AABB(somePosition, size);
 	}
 	
 	public void update() {
 		
 		somePosition.x = this.x;
 		somePosition.y = this.y;
+		boundBox.update(somePosition);
+		
+		for(int index = 0; index < mobs.size(); index++) {
+			if(!mobs.get(index).equals(this)) {
+				System.out.println(" " + CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB()));
+			}
+		}
 		
 		//Moving
 		int xa = 0, ya = 0;
@@ -81,11 +82,6 @@ public class Player extends Mob {
 			move(xa, ya);
 		}
 		
-		//somePosition.x = this.x;
-		//somePosition.y = this.y;
-		//boundBox.update(somePosition);
-		
-		//System.out.println(health);
 		if(!(Level.isOnStage(somePosition))) {
 			falling();
 		} else {

@@ -18,6 +18,8 @@ public abstract class Entity {
 	protected final Random random = new Random();
 	//If the move is on the stage or not
 	protected boolean onStage = true;
+	//Vector for entity's size
+	protected Vector2Float size = new Vector2Float();
 	//Entity's bounding box
 	protected AABB boundBox;
 	//Vector to hold entity's position
@@ -106,6 +108,15 @@ public abstract class Entity {
 	 */
 	public int getYCoord() {
 		return y;
+	}
+	
+	/**
+	 * Returns the AABB bounding box to the
+	 * caller.
+	 * @return
+	 */
+	public AABB getAABB() {
+		return boundBox;
 	}
 
 	/*

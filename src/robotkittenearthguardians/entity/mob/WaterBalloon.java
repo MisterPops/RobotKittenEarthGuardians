@@ -16,9 +16,12 @@ public class WaterBalloon extends Mob{
 		sprite = Sprite.waterBalloon;
 		this.x = x;
 		this.y = y;
+		somePosition.x = this.x;
+		somePosition.y = this.y;
+		size.x = 16;
+		size.y = 16;
 		mobs.add(this);
-		//Mobs bounding box
-		boundBox = new AABB(32, 32);
+		boundBox = new AABB(somePosition, size);
 		//Initialize mob's Ai
 		ai = new Ai();
 	}

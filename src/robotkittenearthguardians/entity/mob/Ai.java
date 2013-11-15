@@ -21,7 +21,7 @@ public class Ai extends Mob{
 	 * @param speed mobs speed
 	 * @return double[] of x and y movement for mob
 	 */
-	public static double[] simpleAi(int x, int y, double speed) {
+	public double[] simpleAi(int x, int y, double speed) {
 		double dx = playerX - x, dy = playerY - y;
 		double distance = getDistance(x, y);
 		double multiplier = speed / distance;
@@ -31,7 +31,7 @@ public class Ai extends Mob{
 	}
 	
 	//**Need to work on wander method**
-	public static double[] wander(int x, int y, double speed) {
+	public double[] wander(int x, int y, double speed) {
 		double dx = (playerX - random.nextInt(20)) - x, dy = (playerY - random.nextInt(20)) - y;
 		double distance = getDistance(x, y);
 		double multiplier = speed / distance;
@@ -41,7 +41,7 @@ public class Ai extends Mob{
 	}
 	
 	//**Un-stacking method does not work either need to fix this also**
-	public static double[] stacked(int x, int y, double speed) {
+	public double[] stacked(int x, int y, double speed) {
 		double playerDistance = getDistance(x, y);
 		double multiplier = speed / playerDistance;
 		double[] absPos = {0, 0};
@@ -73,7 +73,7 @@ public class Ai extends Mob{
 	 * @param y mobs y pos
 	 * @return double of distance from mob to player
 	 */
-	public static double getDistance(int x, int y) {
+	public double getDistance(int x, int y) {
 		double dx = playerX - x, dy = playerY - y;
 		double distance = Math.sqrt(dx * dx + dy * dy);
 		return distance;
@@ -87,7 +87,7 @@ public class Ai extends Mob{
 	 * @param sightRange Mob's eyesight range
 	 * @return boolean: true, if mob can see player else false
 	 */
-	public static boolean seePlayer(int x, int y, int sightRange) {
+	public boolean seePlayer(int x, int y, int sightRange) {
 		if(getDistance(x, y) < sightRange) {
 			return true;
 		} else {

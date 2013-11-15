@@ -8,6 +8,7 @@ public class WaterBalloon extends Mob{
 
 	private double speed = 2.5;
 	private int sightRange = 300;
+	Ai ai;
 
 	public WaterBalloon(int x, int y) {
 		health = 50.0f;
@@ -16,17 +17,17 @@ public class WaterBalloon extends Mob{
 		this.x = x;
 		this.y = y;
 		mobs.add(this);
+		ai = new Ai();
 	}
 	
 	public void update() {
 		double[] absPos;
-		seePlayer = Ai.seePlayer(x, y, sightRange);
+		seePlayer = ai.seePlayer(x, y, sightRange);
 		
-		absPos = Ai.simpleAi(x, y, speed);
+		absPos = ai.simpleAi(x, y, speed);
 		if(seePlayer) move((int) absPos[0], (int) absPos[1]);
 		
 		//If off stage mob will fall and lose health
-		System.out.println(+ health);
 		if(!(Level.isOnStage(x, y))) {
 			falling();
 		} else {

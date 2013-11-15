@@ -89,8 +89,8 @@ public class Player extends Mob {
 			remove();
 		}
 		
-		Level.setPlayerX(this.x);
-		Level.setPlayerY(this.y);
+		Ai.setPlayerX(this.x);
+		Ai.setPlayerY(this.y);
 	}
 	
 	private void updateShooting() {

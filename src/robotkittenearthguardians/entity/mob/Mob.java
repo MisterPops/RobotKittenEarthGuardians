@@ -16,8 +16,6 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	//If the mob sees the player.
 	protected boolean seePlayer = false;
-	//Player posistion for AI
-	protected int playerX, playerY;
 	
 	/**
 	 * Moves the coordinate of the mob on the X/Y plane

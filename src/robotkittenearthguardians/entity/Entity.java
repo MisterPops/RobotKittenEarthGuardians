@@ -18,11 +18,16 @@ public abstract class Entity {
 	protected final Random random = new Random();
 	//If the move is on the stage or not
 	protected boolean onStage = true;
+	//Entity's bounding box
+	protected AABB boundBox;
+	//Vector to hold entity's position
+	protected Vector2Float somePosition = new Vector2Float();
 	//Which sprite in the Sprite array to render
 	protected int frame = 0;
 	//Counter to count up till next frame is rendered
 	protected int frameLife = 0;
 	
+	//<<------------ ENTITY LISTS ------------>>
 	protected static List<Mob> mobs = new ArrayList<Mob>();
 	protected static List<Projectiles> projectiles = new ArrayList<Projectiles>();
 	protected static List<Particle> particles = new ArrayList<Particle>();

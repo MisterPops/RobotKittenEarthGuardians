@@ -28,8 +28,9 @@ public class MainBullet extends Projectiles{
 	 * and moving the live MainBullets along their path.
 	 */
 	public void update() {
+		somePosition.x = (float) this.x;
+		somePosition.y = (float) this.y;
 		move();
-		//clearEntities();
 	}
 	
 	/**
@@ -49,11 +50,11 @@ public class MainBullet extends Projectiles{
 		x += vectorX;
 		y += vectorY;
 		
-		if(Distance() > range && Level.isOnStage((float) x, (float) y)) {
+		if(Distance() > range && Level.isOnStage(somePosition)) {
 			Particle mainShotParticle = new MainBulletParticle(x, y);
 			particles.add(mainShotParticle);
 			remove();
-		} else if(!(Level.isOnStage((float) x, (float) y))) {
+		} else if(!(Level.isOnStage(somePosition))) {
 			if(Distance() > range + 300) {
 				remove();
 			}

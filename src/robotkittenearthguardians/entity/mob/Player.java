@@ -26,6 +26,7 @@ public class Player extends Mob {
 		this.input = input;
 		shootSpeed = MainBullet.FIRE_RATE;
 		mobs.add(this);
+		//AABB boundBox = new AABB(32, 32);
 	}
 	
 	/**
@@ -41,9 +42,13 @@ public class Player extends Mob {
 		this.input = input;
 		shootSpeed = MainBullet.FIRE_RATE;
 		mobs.add(this);
+		//AABB boundBox = new AABB(32, 32);
 	}
 	
 	public void update() {
+		
+		somePosition.x = this.x;
+		somePosition.y = this.y;
 		
 		//Moving
 		int xa = 0, ya = 0;
@@ -76,8 +81,12 @@ public class Player extends Mob {
 			move(xa, ya);
 		}
 		
+		//somePosition.x = this.x;
+		//somePosition.y = this.y;
+		//boundBox.update(somePosition);
+		
 		//System.out.println(health);
-		if(!(Level.isOnStage(x, y))) {
+		if(!(Level.isOnStage(somePosition))) {
 			falling();
 		} else {
 			onStage = true;

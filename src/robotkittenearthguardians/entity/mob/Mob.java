@@ -1,6 +1,7 @@
 package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.Entity;
+import robotkittenearthguardians.entity.Vector2Float;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.Sprite;
@@ -18,8 +19,8 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	//If the mob sees the player.
 	protected boolean seePlayer = false;
-	//Mobs attention span
-	protected int attSpan;
+	//Vector to hold mobs movement speed
+	protected Vector2Float movement = new Vector2Float();
 	
 	/**
 	 * Moves the coordinate of the mob on the X/Y plane

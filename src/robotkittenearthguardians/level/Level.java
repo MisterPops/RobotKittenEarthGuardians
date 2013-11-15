@@ -1,6 +1,7 @@
 package robotkittenearthguardians.level;
 
 import robotkittenearthguardians.entity.Entity;
+import robotkittenearthguardians.entity.Vector2Float;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.SpriteSheets;
 
@@ -78,14 +79,14 @@ public class Level {
 	 * @param y Y position of the entity
 	 * @return true if on the stage, false if not on the stage
 	 */
-	public static boolean isOnStage(float x, float y) {
+	public static boolean isOnStage(Vector2Float position) {
 		float centerX = SpriteSheets.mainStage.getXSheetSize() / 2;
 		float centerY = SpriteSheets.mainStage.getYSheetSize() / 2 - 27;
 		float stageRadiusX = 1560 / 2;
 		float stageRadiusY = 841 / 2;
 		
-		float distX = (x - centerX);
-		float distY = (y - centerY) * stageRadiusX / stageRadiusY;
+		float distX = (position.x - centerX);
+		float distY = (position.y - centerY) * stageRadiusX / stageRadiusY;
 		
 		return ((distX * distX) + (distY * distY)) <= stageRadiusX * stageRadiusX;
 	}

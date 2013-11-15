@@ -9,12 +9,12 @@ import robotkittenearthguardians.entity.mob.Mob;
  * @author Brandon
  *
  */
-public class Ai extends Mob{
+public abstract class Ai extends Mob{
 	//Player's x and y position
-	private static int playerX;
-	private static int playerY;
-	private Vector2Float movement = new Vector2Float();
-	private Vector2Float mobPos = new Vector2Float();
+	protected static int playerX;
+	protected static int playerY;
+	protected Vector2Float movement = new Vector2Float();
+	protected Vector2Float mobPos = new Vector2Float();
 	
 	/**
 	 * Updates mob's position to the mobPos vector in the Ai class

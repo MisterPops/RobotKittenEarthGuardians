@@ -55,4 +55,8 @@ public abstract class Mob extends Entity {
 		onStage = false;
 		falseFall += 3.5f;
 	}
+	
+	public boolean getSeePlayer() {
+		return seePlayer;
+	}
 }

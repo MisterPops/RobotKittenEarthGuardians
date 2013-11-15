@@ -7,7 +7,9 @@ import robotkittenearthguardians.graphics.Sprite;
 
 public abstract class Mob extends Entity {
 	
-	protected Sprite sprite;
+	//Mobs sprite array
+	Sprite[] sprite;
+	//Mobs health
 	protected float health;
 	protected float falseFall;
 	//Mobs's front, right, left, and back velocity.
@@ -16,6 +18,8 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	//If the mob sees the player.
 	protected boolean seePlayer = false;
+	//Mobs attention span
+	protected int attSpan;
 	
 	/**
 	 * Moves the coordinate of the mob on the X/Y plane

@@ -1,9 +1,18 @@
 
 package robotkittenearthguardians.entity.mob;
 
+import java.util.Random;
+
+/**
+ * A utility class to guide NPC's and implement their AI.
+ * @author Brandon
+ *
+ */
 public class Ai {
+	//Player's x and y position
 	private static int playerX;
 	private static int playerY;
+	private static Random random = new Random();
 	
 	/**
 	 * Really basic ai that moves the mob simply from point A to B
@@ -14,6 +23,16 @@ public class Ai {
 	 */
 	public static double[] simpleAi(int x, int y, double speed) {
 		double dx = playerX - x, dy = playerY - y;
+		double distance = getDistance(x, y);
+		double multiplier = speed / distance;
+		double xa = dx * multiplier, ya = dy * multiplier;
+		double[] absPos = {xa, ya};
+		return absPos;
+	}
+	
+	//**Need to work on wander method**
+	public static double[] wander(int x, int y, double speed) {
+		double dx = (playerX - random.nextInt(20)) - x, dy = (playerY - random.nextInt(20)) - y;
 		double distance = getDistance(x, y);
 		double multiplier = speed / distance;
 		double xa = dx * multiplier, ya = dy * multiplier;

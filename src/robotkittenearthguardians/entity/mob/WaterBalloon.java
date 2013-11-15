@@ -10,21 +10,24 @@ public class WaterBalloon extends Mob{
 
 	public WaterBalloon(int x, int y) {
 		health = 100.0f;
+		attSpan = 100;
+		sprite = Sprite.waterBalloon;
 		this.x = x;
 		this.y = y;
 		mobs.add(this);
 	}
 	
 	public void update() {
+		double[] absPos;
 		seePlayer = Ai.seePlayer(x, y, sightRange);
 		
-		double[] absPos = Ai.simpleAi(x, y, speed);
+		absPos = Ai.simpleAi(x, y, speed);
 		if(seePlayer) move((int) absPos[0], (int) absPos[1]);
 	}
 	
 	public void render(Screen screen) {
 		if(frame == 8) frame = 0;
-		screen.renderPlayer(x, y, falseFall, Sprite.waterBalloon[frame], false);
+		screen.renderPlayer(x, y, falseFall, sprite[frame], false);
 		if(frameLife == 15) {
 			frame++;
 			frameLife = 0;

@@ -1,6 +1,8 @@
 package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.AABB;
+import robotkittenearthguardians.entity.CollisionLibrary;
+import robotkittenearthguardians.entity.mob.ai.Ai;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.Level;
@@ -30,8 +32,8 @@ public class WaterBalloon extends Mob{
 		//Updates mob's x/y to somePostion vector
 		somePosition.x = this.x;
 		somePosition.y = this.y;
-		//Updates bounding box with mob's x/y vector
 		boundBox.update(somePosition);
+		
 		//Updates ai with mob's x/y vector
 		ai.update(somePosition);
 		
@@ -39,6 +41,13 @@ public class WaterBalloon extends Mob{
 		seePlayer = ai.seePlayer(sightRange);
 		//Basic movement ai
 		movement = ai.simpleAi(speed);
+		
+		//Checks for collision with other enemy mobs, ignores self
+		for(int index = 0; index < mobs.size(); index++) {
+			if(!(mobs.get(index).equals(this))) {
+				System.out.println(" " + CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB()));
+			}
+		}
 		
 		if(seePlayer) move((int) movement.x, (int) movement.y);
 		

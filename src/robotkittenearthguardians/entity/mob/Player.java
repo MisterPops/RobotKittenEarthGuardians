@@ -2,6 +2,7 @@ package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.CollisionLibrary;
+import robotkittenearthguardians.entity.mob.ai.Ai;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
@@ -35,20 +36,23 @@ public class Player extends Mob {
 		size.y = 16;
 		this.input = input;
 		shootSpeed = MainBullet.FIRE_RATE;
-		mobs.add(this);
+		player.add(this);
 		boundBox = new AABB(somePosition, size);
 	}
 	
 	public void update() {
 		
+		//Upates bounding box with x/y pos
 		somePosition.x = this.x;
 		somePosition.y = this.y;
 		boundBox.update(somePosition);
 		
+		//Checks for collision with other mobs
 		for(int index = 0; index < mobs.size(); index++) {
-			if(!mobs.get(index).equals(this)) {
-				System.out.println(" " + CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB()));
+			if(CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB())) {
+				health -= 0.1;
 			}
+			System.out.println("Player Collision: " + CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB()));
 		}
 		
 		//Moving

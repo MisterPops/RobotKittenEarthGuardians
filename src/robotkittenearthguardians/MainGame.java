@@ -209,6 +209,7 @@ public class MainGame extends Canvas implements Runnable{
 		graphics.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
 		graphics.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
 		graphics.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
+		graphics.drawString("Player ArrayList: " + Entity.getPlayerSize(), 30, 205);
 		graphics.dispose();
 		bs.show();
 	}

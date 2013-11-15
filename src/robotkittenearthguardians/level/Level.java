@@ -20,9 +20,13 @@ public class Level {
 		
 		//When all mobs are killed, proceeds to the next level
 		//then loads the mobs for the next level
-		if(Entity.getMobSize() == 1) {
+		if(Entity.getMobSize() == 0) {
 			GameMaster.loadLevel(levelNum);
 			levelNum++;
+		}
+		
+		for(int i = 0; i < Entity.getPlayerSize(); i++) {
+			Entity.getIndexedPlayer(i).update();
 		}
 		
 		for(int i = 0; i < Entity.getMobSize(); i++) {
@@ -50,6 +54,12 @@ public class Level {
 	//public void render(int xPos, int yPos, Screen screen) {
 	public void render(Screen screen) {
 		
+		for(int i = 0; i < Entity.getPlayerSize(); i++) {
+			if(!(Entity.getIndexedPlayer(i).getIsOnStage())) {
+				Entity.getIndexedPlayer(i).render(screen);
+			}
+		}
+		
 		for(int i = 0; i < Entity.getMobSize(); i++) {
 			if(!(Entity.getIndexedMob(i).getIsOnStage())) {
 				Entity.getIndexedMob(i).render(screen);
@@ -57,6 +67,12 @@ public class Level {
 		}
 
 		screen.renderLevel();
+		
+		for(int i = 0; i < Entity.getPlayerSize(); i++) {
+			if(Entity.getIndexedPlayer(i).getIsOnStage()) {
+				Entity.getIndexedPlayer(i).render(screen);
+			}
+		}
 		
 		for(int i = 0; i < Entity.getMobSize(); i++) {
 			if(Entity.getIndexedMob(i).getIsOnStage()) {

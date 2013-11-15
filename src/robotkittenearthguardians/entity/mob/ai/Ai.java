@@ -1,7 +1,8 @@
 
-package robotkittenearthguardians.entity.mob;
+package robotkittenearthguardians.entity.mob.ai;
 
 import robotkittenearthguardians.entity.Vector2Float;
+import robotkittenearthguardians.entity.mob.Mob;
 
 /**
  * A utility class to guide NPC's and implement their AI.
@@ -29,7 +30,7 @@ public class Ai extends Mob{
 	 * @param x mobs x pos
 	 * @param y mobs y pos
 	 * @param speed mobs speed
-	 * @return double[] of x and y movement for mob
+	 * @return movement Vector2Float
 	 */
 	public Vector2Float simpleAi(double speed) {
 		double dx = playerX - mobPos.x, dy = playerY - mobPos.y;
@@ -69,6 +70,7 @@ public class Ai extends Mob{
 		}
 	}
 
+	
 	/**
 	 * Sets the players current x position
 	 * @param xPos players X position

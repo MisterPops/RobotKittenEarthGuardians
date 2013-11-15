@@ -30,6 +30,7 @@ public abstract class Entity {
 	protected int frameLife = 0;
 	
 	//<<------------ ENTITY LISTS ------------>>
+	protected static List<Mob> player = new ArrayList<Mob>();
 	protected static List<Mob> mobs = new ArrayList<Mob>();
 	protected static List<Projectiles> projectiles = new ArrayList<Projectiles>();
 	protected static List<Particle> particles = new ArrayList<Particle>();
@@ -61,6 +62,11 @@ public abstract class Entity {
 		return removed;
 	}
 	
+	/**
+	 * Returns boolean value, true if mob is on stage.
+	 * False otherwise.
+	 * @return
+	 */
 	public boolean getIsOnStage() {
 		return onStage;
 	}
@@ -71,6 +77,13 @@ public abstract class Entity {
 	 */
 	//protected void clearEntities() {
 	public static void clearEntities() {
+		
+		for(int i = 0; i < player.size(); i++) {
+			Mob p = player.get(i);
+			if(p.isRemoved()) {
+				player.remove(i);
+			}
+		}
 		
 		for(int i = 0; i < mobs.size(); i++) {
 			Mob p = mobs.get(i);
@@ -118,6 +131,10 @@ public abstract class Entity {
 	public AABB getAABB() {
 		return boundBox;
 	}
+	
+	public Vector2Float getSomePosition() {
+		return somePosition;
+	}
 
 	/*
 	 * <<<======== Entity Lists: MUTATORS & SETTERS ===========>>>
@@ -144,5 +161,13 @@ public abstract class Entity {
 	
 	public static int getMobSize() {
 		return mobs.size();
+	}
+	
+	public static Mob getIndexedPlayer(int i) {
+		return player.get(i);
+	}
+	
+	public static int getPlayerSize() {
+		return player.size();
 	}
 }

@@ -8,7 +8,7 @@ import java.util.Random;
  * @author Brandon
  *
  */
-public class Ai {
+public class Ai extends Mob{
 	//Player's x and y position
 	private static int playerX;
 	private static int playerY;
@@ -37,6 +37,33 @@ public class Ai {
 		double multiplier = speed / distance;
 		double xa = dx * multiplier, ya = dy * multiplier;
 		double[] absPos = {xa, ya};
+		return absPos;
+	}
+	
+	//**Un-stacking method does not work either need to fix this also**
+	public static double[] stacked(int x, int y, double speed) {
+		double playerDistance = getDistance(x, y);
+		double multiplier = speed / playerDistance;
+		double[] absPos = {0, 0};
+		
+		for(int index = 0; index < mobs.size(); index++) {
+			
+			int mobX = mobs.get(index).getXCoord(), mobY = mobs.get(index).getYCoord();
+			double mobDistance = getDistance(mobX, 
+					mobY);
+			
+			if(mobDistance < 10 || mobX == x || mobY == y
+					&& playerDistance > 10) {
+				double xa = (mobX * multiplier),
+						ya = (mobY * multiplier);
+				
+				absPos[0] = xa;
+				absPos[1] = ya;
+			} else {
+				absPos[0] = 0;
+				absPos[1] = 0;
+			}
+		}
 		return absPos;
 	}
 	

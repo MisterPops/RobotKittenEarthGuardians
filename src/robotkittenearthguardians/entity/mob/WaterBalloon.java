@@ -34,8 +34,4 @@ public class WaterBalloon extends Mob{
 		}
 		frameLife++;
 	}
-	
-	//Figure out how to implement wandering
-	public void wander() {
-	}
 }

@@ -85,6 +85,7 @@ public class Player extends Mob {
 			updateShooting();
 		}
 		
+		//If health is 0 remove player
 		if(health < 0f) {
 			remove();
 		}

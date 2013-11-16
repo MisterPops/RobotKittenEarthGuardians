@@ -32,8 +32,8 @@ public class Player extends Mob {
 		this.y = y;
 		somePosition.x = this.x;
 		somePosition.y = this.y;
-		size.x = 16;
-		size.y = 16;
+		size.x = 14;
+		size.y = 14;
 		this.input = input;
 		shootSpeed = MainBullet.FIRE_RATE;
 		player.add(this);
@@ -50,6 +50,7 @@ public class Player extends Mob {
 		//Checks for collision with other mobs
 		for(int index = 0; index < mobs.size(); index++) {
 			if(CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB())) {
+				System.out.println("Ow");
 				health -= 0.1;
 			}
 		}

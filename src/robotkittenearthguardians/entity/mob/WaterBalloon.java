@@ -21,12 +21,12 @@ public class WaterBalloon extends Mob{
 		this.y = y;
 		somePosition.x = this.x;
 		somePosition.y = this.y;
-		size.x = 16;
-		size.y = 16;
+		size.x = 28;
+		size.y = 28;
 		mobs.add(this);
 		boundBox = new AABB(somePosition, size);
 		//Initialize mob's Ai
-		ai = new WaterBalloonAi();
+		ai = new WaterBalloonAi();;
 	}
 	
 	public void update() {
@@ -48,7 +48,6 @@ public class WaterBalloon extends Mob{
 		
 		for(int index = 0; index < projectiles.size(); index++) {
 			if(hit(projectiles.get(index))) {
-				projectiles.get(index).isCollided();
 				health -= 5;
 			}
 		}
@@ -62,7 +61,7 @@ public class WaterBalloon extends Mob{
 		}
 		
 		//If health is 0 remove mob.
-		if(health <= 0f) {
+		if(health <= 0) {
 			remove();
 		}
 	}

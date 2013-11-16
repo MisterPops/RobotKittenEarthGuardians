@@ -21,8 +21,8 @@ public class MainBullet extends Projectiles{
 		sprite = Sprite.mainBullet;
 		vectorX = speed * Math.cos(angle);
 		vectorY = speed * Math.sin(angle);
-		size.x = 8;
-		size.y = 8;
+		size.x = 12;
+		size.y = 12;
 		boundBox = new AABB(somePosition, size);
 	}
 	

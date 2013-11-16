@@ -34,11 +34,19 @@ public abstract class Ai extends Mob{
 	 */
 	public Vector2Float simpleAi(double speed) {
 		double dx = playerX - mobPos.x, dy = playerY - mobPos.y;
-		double distance = getDistance(mobPos);
+		double distance = Math.sqrt(dx * dx + dy * dy);
 		double multiplier = speed / distance;
-		double xa = dx * multiplier, ya = dy * multiplier;
-		movement.x = (float) xa;
-		movement.y = (float) ya;
+		movement.x = (float) (dx * multiplier);
+		movement.y = (float) (dy * multiplier);
+		return movement;
+	}
+	
+	public Vector2Float unstack(double speed, Mob mob) {
+		double dx = mob.getXCoord() - mobPos.x + 0.1f, dy = mob.getYCoord() - mobPos.y + 0.1f;
+		double distance = Math.sqrt(dx * dx + dy * dy);
+		double multiplier = speed / distance;
+		movement.x = (float) (dx * multiplier) * -1;
+		movement.y = (float) (dy * multiplier) * -1;
 		return movement;
 	}
 	

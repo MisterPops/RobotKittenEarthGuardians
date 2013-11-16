@@ -42,7 +42,7 @@ public class WaterBalloon extends Mob{
 		
 		movement = ai.ai(speed, this);
 		
-		if(seePlayer) move((int) movement.x, (int) movement.y);
+		move((int) movement.x, (int) movement.y);
 		
 		//If off stage mob will fall and lose health
 		if(!(Level.isOnStage(somePosition))) {

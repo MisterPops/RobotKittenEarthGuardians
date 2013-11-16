@@ -52,7 +52,6 @@ public class Player extends Mob {
 			if(CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB())) {
 				health -= 0.1;
 			}
-			System.out.println("Player Collision: " + CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB()));
 		}
 		
 		//Moving

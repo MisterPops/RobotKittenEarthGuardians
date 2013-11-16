@@ -6,7 +6,7 @@ public class GameMaster {
 	
 	//Holds the mobs to be spawned each level
 	private static int[][] levels = {
-			{3},
+			{20},
 			{2}
 	};
 	

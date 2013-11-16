@@ -1,6 +1,5 @@
 package robotkittenearthguardians.entity.mob.ai;
 
-import robotkittenearthguardians.entity.CollisionLibrary;
 import robotkittenearthguardians.entity.Vector2Float;
 import robotkittenearthguardians.entity.mob.Mob;
 
@@ -15,12 +14,12 @@ public class WaterBalloonAi extends Ai{
 				movement.y = 0;
 			}
 			
-			if(CollisionLibrary.testAABBAABB(mob.getAABB(), mobs.get(index).getAABB())){
+			/*if(CollisionLibrary.testAABBAABB(mob.getAABB(), mobs.get(index).getAABB())){
 				System.out.println(" " + !mobs.get(index).equals(mob));
 				if(!(mobs.get(index).equals(mob))) {
 					movement = unstack(speed, mobs.get(index));
 				}
-			}
+			}*/
 		}
 		return movement;
 	}

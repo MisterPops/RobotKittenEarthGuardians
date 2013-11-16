@@ -1,5 +1,6 @@
 package robotkittenearthguardians.entity.projectiles;
 
+import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.particles.MainBulletParticle;
 import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.graphics.Screen;
@@ -18,9 +19,11 @@ public class MainBullet extends Projectiles{
 		//range = random.nextInt(50) + 250;
 		speed = 15;
 		sprite = Sprite.mainBullet;
-		
 		vectorX = speed * Math.cos(angle);
 		vectorY = speed * Math.sin(angle);
+		size.x = 8;
+		size.y = 8;
+		boundBox = new AABB(somePosition, size);
 	}
 	
 	/**
@@ -30,6 +33,7 @@ public class MainBullet extends Projectiles{
 	public void update() {
 		somePosition.x = (float) this.x;
 		somePosition.y = (float) this.y;
+		boundBox.update(somePosition);
 		move();
 	}
 	
@@ -50,7 +54,7 @@ public class MainBullet extends Projectiles{
 		x += vectorX;
 		y += vectorY;
 		
-		if(Distance() > range && Level.isOnStage(somePosition)) {
+		if(Distance() > range && Level.isOnStage(somePosition) || collided) {
 			Particle mainShotParticle = new MainBulletParticle(x, y);
 			particles.add(mainShotParticle);
 			remove();

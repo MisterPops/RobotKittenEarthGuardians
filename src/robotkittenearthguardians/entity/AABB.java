@@ -15,7 +15,7 @@ public class AABB extends Entity{
 	}
 	
 	public void update(final Vector2Float position) {
-		center.x = position.x;
-		center.y = position.y;
+		center.x = position.x + size.x;
+		center.y = position.y + size.y;
 	}
 }

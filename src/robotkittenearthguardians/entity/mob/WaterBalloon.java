@@ -1,7 +1,9 @@
 package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.AABB;
+import robotkittenearthguardians.entity.CollisionLibrary;
 import robotkittenearthguardians.entity.mob.ai.WaterBalloonAi;
+import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.Level;
@@ -44,6 +46,13 @@ public class WaterBalloon extends Mob{
 		
 		move((int) movement.x, (int) movement.y);
 		
+		for(int index = 0; index < projectiles.size(); index++) {
+			if(hit(projectiles.get(index))) {
+				projectiles.get(index).isCollided();
+				health -= 5;
+			}
+		}
+		
 		//If off stage mob will fall and lose health
 		if(!(Level.isOnStage(somePosition))) {
 			falling();
@@ -53,7 +62,7 @@ public class WaterBalloon extends Mob{
 		}
 		
 		//If health is 0 remove mob.
-		if(health < 0f) {
+		if(health <= 0f) {
 			remove();
 		}
 	}
@@ -70,5 +79,13 @@ public class WaterBalloon extends Mob{
 			frameLife = 0;
 		}
 		frameLife++;
+	}
+	
+	public boolean hit(Projectiles projectile) {
+		if(CollisionLibrary.testAABBAABB(boundBox, projectile.getAABB())) {
+			projectile.isCollided();
+			return true;
+		}
+		else return false;
 	}
 }

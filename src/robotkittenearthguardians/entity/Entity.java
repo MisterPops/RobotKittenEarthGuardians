@@ -28,6 +28,7 @@ public abstract class Entity {
 	protected int frame = 0;
 	//Counter to count up till next frame is rendered
 	protected int frameLife = 0;
+	protected boolean collided = false;
 	
 	//<<------------ ENTITY LISTS ------------>>
 	protected static List<Mob> player = new ArrayList<Mob>();
@@ -134,6 +135,10 @@ public abstract class Entity {
 	
 	public Vector2Float getSomePosition() {
 		return somePosition;
+	}
+	
+	public void isCollided() {
+		collided = true;
 	}
 
 	/*

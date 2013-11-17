@@ -12,7 +12,6 @@ public abstract class Projectiles extends Entity{
 	protected double vectorX, vectorY;
 	protected int range;
 	protected int speed;
-	protected float damage;
 	
 	
 	public Projectiles(int x, int y, double dir) {

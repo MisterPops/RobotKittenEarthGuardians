@@ -28,11 +28,9 @@ public abstract class Mob extends Entity {
 	 * @param ya Up and down on plane
 	 */
 	public void move(int xa, int ya) {
-		if(!collision()) {
 		//-1, 0, or 1
-			x += xa;
-			y += ya;
-		}
+		x += xa;
+		y += ya;
 	}
 	
 	/**
@@ -82,9 +80,17 @@ public abstract class Mob extends Entity {
 	
 	/**
 	 * Bounces back the mob in the direction the projectile came from
-	 * @param index index of the projectile entity
+	 * @param projectile the projectile that will be transfering it's force
 	 */
-	public void bounceBack(int index) {
-		move((int) projectiles.get(index).getVectorX(), (int) projectiles.get(index).getVectorY());
+	public void bounceBack(Projectiles projectile) {
+		move((int) projectile.getVectorX(), (int) projectile.getVectorY());
+	}
+	
+	/**
+	 * Takes damage amount from the health of the mob.
+	 * @param damage the amount of health you want to remove from the mob
+	 */
+	public void hurt(float damage) {
+		health -= damage / 2;
 	}
 }

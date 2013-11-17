@@ -34,6 +34,13 @@ public class MainBullet extends Projectiles{
 		somePosition.setXVector((float) this.x);
 		somePosition.setYVector((float) this.y);
 		boundBox.update(somePosition);
+		
+		for(int index = 0; index < mobs.size(); index++) {
+			if(hit(mobs.get(index))) {
+				mobs.get(index).hurt(damage);
+				mobs.get(index).bounceBack(this);
+			}
+		}
 	}
 	
 	/**

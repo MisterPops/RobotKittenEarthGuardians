@@ -1,9 +1,7 @@
 package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.AABB;
-import robotkittenearthguardians.entity.CollisionLibrary;
 import robotkittenearthguardians.entity.mob.ai.WaterBalloonAi;
-import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.Level;
@@ -16,6 +14,7 @@ public class WaterBalloon extends Mob{
 
 	public WaterBalloon(int x, int y) {
 		health = 50.0f;
+		damage = 0.1f;
 		sprite = Sprite.waterBalloon;
 		this.x = x;
 		this.y = y;
@@ -45,20 +44,19 @@ public class WaterBalloon extends Mob{
 		movement = ai.ai(speed, this);
 		move((int) movement.getXVector(), (int) movement.getYVector());
 		
+		//If collides with player, will damage it.
+		for(int index = 0; index < player.size(); index++) {
+			if(hit(player.get(index))) {
+				player.get(index).hurt(damage);
+			}
+		}
+		
 		//If off stage mob will fall and lose health
 		if(!(Level.isOnStage(somePosition))) {
 			falling();
 		} else {
 			onStage = true;
 			falseFall = 0;
-			
-			//Checks if mob is hit with projectile
-			for(int index = 0; index < projectiles.size(); index++) {
-				if(hit(projectiles.get(index))) {
-					bounceBack(index);
-					health -= projectiles.get(index).getDamage();
-				}
-			}
 		}
 		
 		//If health is 0 remove mob.
@@ -79,19 +77,5 @@ public class WaterBalloon extends Mob{
 			frameLife = 0;
 		}
 		frameLife++;
-	}
-	
-	/**
-	 * Checks if a projectile's bounding box collides with the mob's
-	 * bounding box
-	 * @param projectile the projectile to be compared
-	 * @return true if collides, false otherwise
-	 */
-	public boolean hit(Projectiles projectile) {
-		if(CollisionLibrary.testAABBAABB(boundBox, projectile.getAABB())) {
-			projectile.isCollided();
-			return true;
-		}
-		else return false;
 	}
 }

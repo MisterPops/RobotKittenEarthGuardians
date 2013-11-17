@@ -28,7 +28,10 @@ public abstract class Entity {
 	protected int frame = 0;
 	//Counter to count up till next frame is rendered
 	protected int frameLife = 0;
+	//If entity collides
 	protected boolean collided = false;
+	//Damage the entity does
+	protected float damage;
 	
 	//<<------------ ENTITY LISTS ------------>>
 	//Holds the main player, possible other players if multiplayer later on
@@ -146,10 +149,34 @@ public abstract class Entity {
 	}
 	
 	/**
+	 * Checks if a projectile's bounding box collides with the mob's
+	 * bounding box
+	 * @param projectile the projectile to be compared
+	 * @return true if collides, false otherwise
+	 */
+	public boolean hit(Mob mob) {
+		if(CollisionLibrary.testAABBAABB(boundBox, mob.getAABB())) {
+			isCollided();
+			return true;
+		}
+		else {
+			isNotCollided();
+			return false;
+		}
+	}
+	
+	/**
 	 * Sets collided to true...not even sure if I need this
 	 */
 	public void isCollided() {
 		collided = true;
+	}
+	
+	/**
+	 * Sets collided to false...not even sure if I need this
+	 */
+	public void isNotCollided() {
+		collided = false;
 	}
 
 	/*

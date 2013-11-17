@@ -1,7 +1,6 @@
 package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.AABB;
-import robotkittenearthguardians.entity.CollisionLibrary;
 import robotkittenearthguardians.entity.mob.ai.Ai;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.graphics.Screen;
@@ -47,14 +46,6 @@ public class Player extends Mob {
 		somePosition.setYVector(this.y);
 		boundBox.update(somePosition);
 		
-		//Checks for collision with other mobs
-		for(int index = 0; index < mobs.size(); index++) {
-			if(CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB())) {
-				System.out.println("Ow");
-				//health -= 0.1;
-			}
-		}
-		
 		//Moving
 		int xa = 0, ya = 0;
 		if(input.up) {
@@ -86,6 +77,7 @@ public class Player extends Mob {
 			move(xa, ya);
 		}
 		
+		//Whether the player is on the stage or not
 		if(!(Level.isOnStage(somePosition))) {
 			falling();
 		} else {
@@ -99,6 +91,7 @@ public class Player extends Mob {
 			remove();
 		}
 		
+		//Sends player coords for AI to use
 		Ai.setPlayerX(this.x);
 		Ai.setPlayerY(this.y);
 	}

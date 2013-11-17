@@ -31,9 +31,13 @@ public abstract class Entity {
 	protected boolean collided = false;
 	
 	//<<------------ ENTITY LISTS ------------>>
+	//Holds the main player, possible other players if multiplayer later on
 	protected static List<Mob> player = new ArrayList<Mob>();
+	//Holds all enemy mobs
 	protected static List<Mob> mobs = new ArrayList<Mob>();
+	//Holds all projectiles
 	protected static List<Projectiles> projectiles = new ArrayList<Projectiles>();
+	//Holds all particle effects
 	protected static List<Particle> particles = new ArrayList<Particle>();
 	
 	public Entity() {
@@ -133,10 +137,17 @@ public abstract class Entity {
 		return boundBox;
 	}
 	
+	/**
+	 * returns the vector somePosition to the caller.
+	 * @return vector somePosition. Holds the x/y position of the object
+	 */
 	public Vector2F getSomePosition() {
 		return somePosition;
 	}
 	
+	/**
+	 * Sets collided to true...not even sure if I need this
+	 */
 	public void isCollided() {
 		collided = true;
 	}

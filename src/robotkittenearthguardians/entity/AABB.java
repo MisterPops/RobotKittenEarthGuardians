@@ -2,7 +2,7 @@ package robotkittenearthguardians.entity;
 
 public class AABB extends Entity{
 
-	protected Vector2F bbPosistion, size;
+	protected Vector2F bbPosition, size;
 	
 	/**
 	 * AABB constructor that creates a bounding box.
@@ -10,12 +10,16 @@ public class AABB extends Entity{
 	 * @param height height of mob
 	 */
 	public AABB(Vector2F position, Vector2F size) {
-		this.bbPosistion = position;
-		this.size = size;
+		bbPosition = new Vector2F(position);
+		this.size = new Vector2F(size);
 	}
 	
+	/**
+	 * Updates the AABB with the position of the object is is bounding.
+	 * @param position objects positon Vector
+	 */
 	public void update(final Vector2F position) {
-		bbPosistion.setXVector(position.getXVector() + size.getXVector() / 2);
-		bbPosistion.setYVector(position.getYVector() + size.getYVector() / 2);
+		bbPosition.setXVector(position.getXVector());
+		bbPosition.setYVector(position.getYVector());
 	}
 }

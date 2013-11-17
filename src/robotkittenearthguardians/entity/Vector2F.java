@@ -1,13 +1,34 @@
 package robotkittenearthguardians.entity;
 
 public class Vector2F {
+	
 	private float x, y;
 	
+	/**
+	 * When constructing a new vector, sets the x/y
+	 * perams to the perams from the given vector
+	 * @param vector the vector used to set this vector's perams
+	 */
+	public Vector2F(Vector2F vector) {
+		this.x = vector.getXVector();
+		this.y = vector.getYVector();
+	}
+	
+	/**
+	 * Sets x and y to the variables given when constructing
+	 * a new vector.
+	 * @param x x variable to be set
+	 * @param y y variable to be set
+	 */
 	public Vector2F(float x, float y) {
 		this.x = x;
 		this.y = y;
 	}
 	
+	/**
+	 * Sets x and y to zero if no variables given when constructing
+	 * a new vector.
+	 */
 	public Vector2F() {
 		this.x = 0.0f;
 		this.y = 0.0f;

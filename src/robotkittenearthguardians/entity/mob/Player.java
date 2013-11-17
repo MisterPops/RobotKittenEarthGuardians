@@ -119,6 +119,7 @@ public class Player extends Mob {
 	/**
 	 * Sends sprite, x-coord, and y-coord to Screen.renderPlayer method
 	 * to be rendered.
+	 * ** Probably make a seperate class for animations...maybe **
 	 */
 	public void render(Screen screen) {
 		if(Mouse.mouseRadToDeg() < -70 && Mouse.mouseRadToDeg() >  -130) {

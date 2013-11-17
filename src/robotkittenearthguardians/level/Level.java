@@ -97,9 +97,9 @@ public class Level {
 	 */
 	public static boolean isOnStage(Vector2F position) {
 		float centerX = SpriteSheets.mainStage.getXSheetSize() / 2;
-		float centerY = SpriteSheets.mainStage.getYSheetSize() / 2 - 27;
+		float centerY = SpriteSheets.mainStage.getYSheetSize() / 2 - 22;
 		float stageRadiusX = 1560 / 2;
-		float stageRadiusY = 841 / 2;
+		float stageRadiusY = 842 / 2;
 		
 		float distX = (position.getXVector() - centerX);
 		float distY = (position.getYVector() - centerY) * stageRadiusX / stageRadiusY;

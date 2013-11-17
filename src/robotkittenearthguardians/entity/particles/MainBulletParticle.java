@@ -25,8 +25,7 @@ public class MainBulletParticle extends Particle{
 		if(frameLife > 4) {
 			frame++;
 			frameLife = 0;
-			if(frame >= Sprite.bulletImpact.length) remove();
 		}
-		
+		if(frame > Sprite.bulletImpact.length - 1) remove();
 	}
 }

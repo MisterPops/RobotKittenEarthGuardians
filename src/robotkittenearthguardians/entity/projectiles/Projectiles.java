@@ -55,4 +55,20 @@ public abstract class Projectiles extends Entity{
 	public int getSpeed() {
 		return speed;
 	}
+	
+	/**
+	 * Returns the y vector direction of the projectile
+	 * @return x vector direction
+	 */
+	public double getVectorX() {
+		return this.vectorX;
+	}
+	
+	/**
+	 * Returns the x vector direction of the projectile
+	 * @return x vector direction
+	 */
+	public double getVectorY() {
+		return this.vectorY;
+	}
 }

@@ -11,7 +11,7 @@ import robotkittenearthguardians.level.Level;
 public class WaterBalloon extends Mob{
 
 	private double speed = 3.2;
-	private int sightRange = 1;
+	private int sightRange = 300;
 	WaterBalloonAi ai;
 
 	public WaterBalloon(int x, int y) {
@@ -45,19 +45,20 @@ public class WaterBalloon extends Mob{
 		movement = ai.ai(speed, this);
 		move((int) movement.getXVector(), (int) movement.getYVector());
 		
-		//Checks if mob is hit with projectile
-		for(int index = 0; index < projectiles.size(); index++) {
-			if(hit(projectiles.get(index))) {
-				//health -= projectiles.get(index).getDamage();
-			}
-		}
-		
 		//If off stage mob will fall and lose health
 		if(!(Level.isOnStage(somePosition))) {
 			falling();
 		} else {
 			onStage = true;
 			falseFall = 0;
+			
+			//Checks if mob is hit with projectile
+			for(int index = 0; index < projectiles.size(); index++) {
+				if(hit(projectiles.get(index))) {
+					bounceBack(index);
+					health -= projectiles.get(index).getDamage();
+				}
+			}
 		}
 		
 		//If health is 0 remove mob.

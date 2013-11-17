@@ -35,6 +35,15 @@ public abstract class Mob extends Entity {
 		}
 	}
 	
+	/**
+	 * Creates a new projectile object with the x/y, dir, and mouse x/y and adds it to
+	 * the projectile arrayList
+	 * @param x x pos projectile starts from
+	 * @param y y pos projectile starts from
+	 * @param dir dir in radians
+	 * @param mouseX x pos where mouse is pointed
+	 * @param mouseY y pos where mouse is pointed
+	 */
 	public void shoot(int x, int y, double dir, double mouseX, double mouseY) {
 		Projectiles mainShot = new MainBullet(x, y, dir, mouseX, mouseY);
 		projectiles.add(mainShot);
@@ -46,17 +55,36 @@ public abstract class Mob extends Entity {
 	public void render() {
 	}
 	
+	/**
+	 * Returns if a mob is colliding with something.
+	 * @return true if mob is colliding with something, false otherwise;
+	 */
 	private boolean collision() {
-		return false;
+		return collided;
 	}
 	
+	/**
+	 * Decereases mob's health and sets the mob in a fall like visual.
+	 */
 	protected void falling() {
 		health -= 0.5f;
 		onStage = false;
 		falseFall += 3.5f;
 	}
 	
+	/**
+	 * Returns if the mob sees the palyer
+	 * @return true of the mob sees the player, false otherwise.
+	 */
 	public boolean getSeePlayer() {
 		return seePlayer;
+	}
+	
+	/**
+	 * Bounces back the mob in the direction the projectile came from
+	 * @param index index of the projectile entity
+	 */
+	public void bounceBack(int index) {
+		move((int) projectiles.get(index).getVectorX(), (int) projectiles.get(index).getVectorY());
 	}
 }

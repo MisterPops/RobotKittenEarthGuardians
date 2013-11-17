@@ -30,10 +30,10 @@ public class Player extends Mob {
 		health = 100.0f;
 		this.x = x;
 		this.y = y;
-		somePosition.x = this.x;
-		somePosition.y = this.y;
-		size.x = 14;
-		size.y = 14;
+		somePosition.setXVector(this.x);
+		somePosition.setYVector(this.y);
+		size.setXVector(14);
+		size.setYVector(14);
 		this.input = input;
 		shootSpeed = MainBullet.FIRE_RATE;
 		player.add(this);
@@ -43,8 +43,8 @@ public class Player extends Mob {
 	public void update() {
 		
 		//Upates bounding box with x/y pos
-		somePosition.x = this.x;
-		somePosition.y = this.y;
+		somePosition.setXVector(this.x);
+		somePosition.setYVector(this.y);
 		boundBox.update(somePosition);
 		
 		//Checks for collision with other mobs

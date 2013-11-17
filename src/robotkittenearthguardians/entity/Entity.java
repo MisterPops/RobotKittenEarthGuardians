@@ -19,11 +19,11 @@ public abstract class Entity {
 	//If the move is on the stage or not
 	protected boolean onStage = true;
 	//Vector for entity's size
-	protected Vector2Float size = new Vector2Float();
+	protected Vector2F size = new Vector2F();
 	//Entity's bounding box
 	protected AABB boundBox;
 	//Vector to hold entity's position
-	protected Vector2Float somePosition = new Vector2Float();
+	protected Vector2F somePosition = new Vector2F();
 	//Which sprite in the Sprite array to render
 	protected int frame = 0;
 	//Counter to count up till next frame is rendered
@@ -133,7 +133,7 @@ public abstract class Entity {
 		return boundBox;
 	}
 	
-	public Vector2Float getSomePosition() {
+	public Vector2F getSomePosition() {
 		return somePosition;
 	}
 	

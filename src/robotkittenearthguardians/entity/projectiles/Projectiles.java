@@ -11,8 +11,9 @@ public abstract class Projectiles extends Entity{
 	protected double x, y;
 	protected double vectorX, vectorY;
 	protected int range;
-	protected int damage;
 	protected int speed;
+	protected float damage;
+	
 	
 	public Projectiles(int x, int y, double dir) {
 		xOrgin = x + 20;
@@ -28,10 +29,6 @@ public abstract class Projectiles extends Entity{
 	public void render() {
 	}
 	
-	public int getSpeed() {
-		return speed;
-	}
-	
 	protected void move() {
 	}
 	
@@ -41,5 +38,21 @@ public abstract class Projectiles extends Entity{
 	 */
 	public Sprite getSprite() {
 		return sprite;
+	}
+	
+	/**
+	 * Returns the projectile's damage output
+	 * @return float of projectile's damage
+	 */
+	public float getDamage() {
+		return damage;
+	}
+	
+	/**
+	 * Returns the speed of the projectile's
+	 * @return int projectile's speed
+	 */
+	public int getSpeed() {
+		return speed;
 	}
 }

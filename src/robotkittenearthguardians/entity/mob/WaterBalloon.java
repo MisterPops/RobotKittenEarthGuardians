@@ -19,20 +19,20 @@ public class WaterBalloon extends Mob{
 		sprite = Sprite.waterBalloon;
 		this.x = x;
 		this.y = y;
-		somePosition.x = this.x;
-		somePosition.y = this.y;
-		size.x = 28;
-		size.y = 28;
+		somePosition.setXVector(this.x);
+		somePosition.setYVector(this.y);
+		size.setXVector(28);
+		size.setXVector(28);
 		mobs.add(this);
 		boundBox = new AABB(somePosition, size);
 		//Initialize mob's Ai
-		ai = new WaterBalloonAi();;
+		ai = new WaterBalloonAi();
 	}
 	
 	public void update() {
 		//Updates mob's x/y to somePostion vector
-		somePosition.x = this.x;
-		somePosition.y = this.y;
+		somePosition.setXVector(this.x);
+		somePosition.setYVector(this.y);
 		boundBox.update(somePosition);
 		
 		//Updates ai with mob's x/y vector
@@ -40,15 +40,15 @@ public class WaterBalloon extends Mob{
 		
 		//Checks if mob can see the player
 		seePlayer = ai.seePlayer(sightRange);
+		
 		//Mobs movement patterns
-		
 		movement = ai.ai(speed, this);
+		move((int) movement.getXVector(), (int) movement.getYVector());
 		
-		move((int) movement.x, (int) movement.y);
-		
+		//Checks if mob is hit with projectile
 		for(int index = 0; index < projectiles.size(); index++) {
 			if(hit(projectiles.get(index))) {
-				health -= 5;
+				health -= projectiles.get(index).getDamage();
 			}
 		}
 		
@@ -80,6 +80,12 @@ public class WaterBalloon extends Mob{
 		frameLife++;
 	}
 	
+	/**
+	 * Checks if a projectile's bounding box collides with the mob's
+	 * bounding box
+	 * @param projectile the projectile to be compared
+	 * @return true if collides, false otherwise
+	 */
 	public boolean hit(Projectiles projectile) {
 		if(CollisionLibrary.testAABBAABB(boundBox, projectile.getAABB())) {
 			projectile.isCollided();

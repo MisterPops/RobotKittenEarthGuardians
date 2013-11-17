@@ -14,15 +14,14 @@ public class MainBullet extends Projectiles{
 	
 	public MainBullet(int x, int y, double dir, double mouseX, double mouseY) {
 		super(x, y, dir);
-		damage = 25;
+		damage = 5;
 		range = (int) Mouse.mouseDistance() + random.nextInt(50);
-		//range = random.nextInt(50) + 250;
 		speed = 15;
 		sprite = Sprite.mainBullet;
 		vectorX = speed * Math.cos(angle);
 		vectorY = speed * Math.sin(angle);
-		size.x = 12;
-		size.y = 12;
+		size.setXVector(12);
+		size.setYVector(12);
 		boundBox = new AABB(somePosition, size);
 	}
 	
@@ -31,8 +30,8 @@ public class MainBullet extends Projectiles{
 	 * and moving the live MainBullets along their path.
 	 */
 	public void update() {
-		somePosition.x = (float) this.x;
-		somePosition.y = (float) this.y;
+		somePosition.setXVector((float) this.x);
+		somePosition.setYVector((float) this.y);
 		boundBox.update(somePosition);
 		move();
 	}

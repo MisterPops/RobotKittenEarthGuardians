@@ -20,8 +20,8 @@ public class MainBullet extends Projectiles{
 		sprite = Sprite.mainBullet;
 		vectorX = speed * Math.cos(angle);
 		vectorY = speed * Math.sin(angle);
-		size.setXVector(12);
-		size.setYVector(12);
+		size.setXVector(5);
+		size.setYVector(5);
 		boundBox = new AABB(somePosition, size);
 	}
 	
@@ -30,10 +30,10 @@ public class MainBullet extends Projectiles{
 	 * and moving the live MainBullets along their path.
 	 */
 	public void update() {
+		move();
 		somePosition.setXVector((float) this.x);
 		somePosition.setYVector((float) this.y);
 		boundBox.update(somePosition);
-		move();
 	}
 	
 	/**

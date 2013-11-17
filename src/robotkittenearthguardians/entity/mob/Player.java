@@ -30,8 +30,8 @@ public class Player extends Mob {
 		health = 100.0f;
 		this.x = x;
 		this.y = y;
-		somePosition.setXVector(this.x);
-		somePosition.setYVector(this.y);
+		somePosition.setXVector(x);
+		somePosition.setYVector(y);
 		size.setXVector(14);
 		size.setYVector(14);
 		this.input = input;
@@ -51,7 +51,7 @@ public class Player extends Mob {
 		for(int index = 0; index < mobs.size(); index++) {
 			if(CollisionLibrary.testAABBAABB(boundBox, mobs.get(index).getAABB())) {
 				System.out.println("Ow");
-				health -= 0.1;
+				//health -= 0.1;
 			}
 		}
 		

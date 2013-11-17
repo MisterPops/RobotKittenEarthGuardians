@@ -1,5 +1,7 @@
 package robotkittenearthguardians.entity;
 
+
+
 public class AABB extends Entity{
 
 	protected Vector2F bbPosition, size;
@@ -10,8 +12,11 @@ public class AABB extends Entity{
 	 * @param height height of mob
 	 */
 	public AABB(Vector2F position, Vector2F size) {
-		bbPosition = new Vector2F(position);
 		this.size = new Vector2F(size);
+		bbPosition = new Vector2F();
+		
+		bbPosition.setXVector(position.getXVector() + size.getXVector());
+		bbPosition.setYVector(position.getYVector() + size.getYVector());
 	}
 	
 	/**
@@ -19,7 +24,7 @@ public class AABB extends Entity{
 	 * @param position objects positon Vector
 	 */
 	public void update(final Vector2F position) {
-		bbPosition.setXVector(position.getXVector());
-		bbPosition.setYVector(position.getYVector());
+		bbPosition.setXVector(position.getXVector() + size.getXVector());
+		bbPosition.setYVector(position.getYVector() + size.getYVector());
 	}
 }

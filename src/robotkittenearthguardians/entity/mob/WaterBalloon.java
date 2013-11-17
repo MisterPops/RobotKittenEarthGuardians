@@ -11,7 +11,7 @@ import robotkittenearthguardians.level.Level;
 public class WaterBalloon extends Mob{
 
 	private double speed = 3.2;
-	private int sightRange = 300;
+	private int sightRange = 1;
 	WaterBalloonAi ai;
 
 	public WaterBalloon(int x, int y) {
@@ -19,10 +19,10 @@ public class WaterBalloon extends Mob{
 		sprite = Sprite.waterBalloon;
 		this.x = x;
 		this.y = y;
-		somePosition.setXVector(this.x);
-		somePosition.setYVector(this.y);
-		size.setXVector(28);
-		size.setXVector(28);
+		somePosition.setXVector(x);
+		somePosition.setYVector(y);
+		size.setXVector(14);
+		size.setYVector(14);
 		mobs.add(this);
 		boundBox = new AABB(somePosition, size);
 		//Initialize mob's Ai
@@ -48,7 +48,7 @@ public class WaterBalloon extends Mob{
 		//Checks if mob is hit with projectile
 		for(int index = 0; index < projectiles.size(); index++) {
 			if(hit(projectiles.get(index))) {
-				health -= projectiles.get(index).getDamage();
+				//health -= projectiles.get(index).getDamage();
 			}
 		}
 		

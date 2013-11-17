@@ -22,10 +22,11 @@ public class MainBulletParticle extends Particle{
 	private void animate() {
 		sprite = Sprite.bulletImpact[frame];
 		frameLife++;
-		if(frameLife == 4) {
+		if(frameLife > 4) {
 			frame++;
 			frameLife = 0;
+			if(frame >= Sprite.bulletImpact.length) remove();
 		}
-		if(frame == Sprite.bulletImpact.length) remove();
+		
 	}
 }

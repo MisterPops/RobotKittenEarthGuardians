@@ -53,6 +53,14 @@ public class Vector2F {
 		this.y += vector.getYVector();
 	}
 	
+	public void addToXVector(float x) {
+		this.x += x;
+	}
+	
+	public void addToYVector(float y) {
+		this.y += y;
+	}
+	
 	/**
 	 * Sets the x param of this vector.
 	 * @param x the param to set x with

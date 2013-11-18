@@ -20,10 +20,7 @@ public class Level {
 		
 		//When all mobs are killed, proceeds to the next level
 		//then loads the mobs for the next level
-		if(Entity.getMobSize() == 0) {
-			GameMaster.loadLevel(levelNum);
-			levelNum++;
-		}
+		GameMaster.update();
 		
 		for(int i = 0; i < Entity.getPlayerSize(); i++) {
 			Entity.getIndexedPlayer(i).update();

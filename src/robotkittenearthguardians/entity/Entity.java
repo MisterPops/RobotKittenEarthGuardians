@@ -32,6 +32,8 @@ public abstract class Entity {
 	protected boolean collided = false;
 	//Damage the entity does
 	protected float damage;
+	//Vector to hold mobs movement speed
+	protected Vector2F movement = new Vector2F();
 	
 	//<<------------ ENTITY LISTS ------------>>
 	//Holds the main player, possible other players if multiplayer later on
@@ -58,7 +60,6 @@ public abstract class Entity {
 	public void remove() {
 		//Remove entity from level
 		removed = true;
-		
 	}
 	
 	/**
@@ -68,6 +69,17 @@ public abstract class Entity {
 	 */
 	public boolean isRemoved() {
 		return removed;
+	}
+	
+	/**
+	 * Moves the coordinate of the mob on the X/Y plane
+	 * @param xa Left and right on plane
+	 * @param ya Up and down on plane
+	 */
+	public void move(int xa, int ya) {
+		//-1, 0, or 1
+		x += xa;
+		y += ya;
 	}
 	
 	/**
@@ -177,6 +189,14 @@ public abstract class Entity {
 	 */
 	public void isNotCollided() {
 		collided = false;
+	}
+	
+	public Vector2F getSizeVector() {
+		return size;
+	}
+	
+	public Vector2F getMovementVector() {
+		return movement;
 	}
 
 	/*

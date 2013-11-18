@@ -1,13 +1,17 @@
 package robotkittenearthguardians.level;
 
+import java.util.Random;
+
 import robotkittenearthguardians.entity.mob.WaterBalloon;
 
 public class GameMaster {
 	
+	private static Random random = new Random();
+	
 	//Holds the mobs to be spawned each level
 	private static int[][] levels = {
-			{20},
-			{2}
+			{50},
+			{100}
 	};
 	
 	public static void loadLevel(int levelNum) {
@@ -15,7 +19,7 @@ public class GameMaster {
 			for(int monsterCount = 0; monsterCount < levels[levelNum][index]; monsterCount++) {
 				switch (index) {
 				case 0: @SuppressWarnings("unused")
-				WaterBalloon waterballoon = new WaterBalloon(500, 400);
+				WaterBalloon waterballoon = new WaterBalloon(500 + random.nextInt(10), 400 + random.nextInt(10));
 				}
 			}
 		}

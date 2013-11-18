@@ -1,7 +1,6 @@
 package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.Entity;
-import robotkittenearthguardians.entity.Vector2F;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.Sprite;
@@ -19,8 +18,6 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	//If the mob sees the player.
 	protected boolean seePlayer = false;
-	//Vector to hold mobs movement speed
-	protected Vector2F movement = new Vector2F();
 	
 	/**
 	 * Moves the coordinate of the mob on the X/Y plane
@@ -57,7 +54,7 @@ public abstract class Mob extends Entity {
 	 * Returns if a mob is colliding with something.
 	 * @return true if mob is colliding with something, false otherwise;
 	 */
-	private boolean collision() {
+	public boolean collision() {
 		return collided;
 	}
 	

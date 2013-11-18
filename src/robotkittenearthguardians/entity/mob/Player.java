@@ -23,7 +23,7 @@ public class Player extends Mob {
 	 * Constructor used to set the player at a specific coordinate.
 	 * @param x Coord on x-plane
 	 * @param y Coord on y-plane
-	 * @param input Input object used for keyboard input.
+	 * @param input Input object used for keyboard input.w
 	 */
 	public Player(int x, int y, Keyboard input) {
 		health = 100.0f;

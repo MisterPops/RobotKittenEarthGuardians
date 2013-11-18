@@ -1,6 +1,7 @@
 
 package robotkittenearthguardians.entity.mob.ai;
 
+import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.Vector2F;
 import robotkittenearthguardians.entity.mob.Mob;
 
@@ -41,15 +42,6 @@ public abstract class Ai extends Mob{
 		return movement;
 	}
 	
-	public Vector2F unstack(double speed, Mob mob) {
-		double dx = mob.getXCoord() - mobPos.getXVector() + 0.1f, dy = mob.getYCoord() - mobPos.getYVector() + 0.1f;
-		double distance = Math.sqrt(dx * dx + dy * dy);
-		double multiplier = speed / distance;
-		movement.setXVector((float) (dx * multiplier) * -1);
-		movement.setYVector((float) (dy * multiplier) * -1);
-		return movement;
-	}
-	
 	/**
 	 * Returns the distance from the mob to the player
 	 * @param x mobs x pos
@@ -77,8 +69,15 @@ public abstract class Ai extends Mob{
 			return false;
 		}
 	}
-
 	
+	public void onCollide(Entity entity) {
+	}
+	
+	public Vector2F getMovementVector() {
+		return movement;
+	}
+
+	//***<<=== Player Position setting and getting ===>>***
 	/**
 	 * Sets the players current x position
 	 * @param xPos players X position

@@ -41,13 +41,19 @@ public class WaterBalloon extends Mob{
 		seePlayer = ai.seePlayer(sightRange);
 		
 		//Mobs movement patterns
-		movement = ai.ai(speed, this);
-		move((int) movement.getXVector(), (int) movement.getYVector());
+		ai.ai(speed, this);
 		
 		//If collides with player, will damage it.
 		for(int index = 0; index < player.size(); index++) {
 			if(hit(player.get(index))) {
 				player.get(index).hurt(damage);
+				ai.onCollide(player.get(index));
+			}
+		}
+		
+		for(int index = 0; index < mobs.size(); index++) {
+			if(hit(mobs.get(index)) && !mobs.get(index).equals(this)) {
+				ai.onCollide(this, mobs.get(index));
 			}
 		}
 		

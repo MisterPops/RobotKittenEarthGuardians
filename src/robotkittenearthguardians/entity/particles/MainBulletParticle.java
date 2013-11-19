@@ -12,7 +12,6 @@ public class MainBulletParticle extends Particle{
 
 	public void update() {
 		animate();
-		//clearEntities();
 	}
 	
 	public void render(Screen screen) {

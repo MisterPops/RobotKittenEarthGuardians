@@ -7,6 +7,8 @@ import robotkittenearthguardians.entity.mob.WaterBalloon;
 
 public class GameMaster {
 	
+	private static long score = 0;
+	
 	private static Random random = new Random();
 	private static int index = 0;
 	private static int monsterIndex = 0;
@@ -36,6 +38,14 @@ public class GameMaster {
 			monsterCount = 0;
 			monsterIndex = 0;
 		}
+	}
+	
+	public static void addScore(int points) {
+		score += points;
+	}
+	
+	public static long getScore() {
+		return score;
 	}
 
 }

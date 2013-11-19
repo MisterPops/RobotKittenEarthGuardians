@@ -24,6 +24,7 @@ import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.graphics.Camera;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.input.Keyboard;
+import robotkittenearthguardians.level.GameMaster;
 import robotkittenearthguardians.level.Level;
 
 public class MainGame extends Canvas implements Runnable{
@@ -203,6 +204,7 @@ public class MainGame extends Canvas implements Runnable{
 		graphics.setColor(Color.WHITE);
 		graphics.setFont(new Font("Verdana", 0, 20));
 		graphics.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 30);
+		graphics.drawString("Score: " + GameMaster.getScore(), 800, 30);
 		graphics.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
 		graphics.drawString("Mouse Angle: " + Mouse.mouseRadToDeg(), 30, 80);
 		graphics.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);

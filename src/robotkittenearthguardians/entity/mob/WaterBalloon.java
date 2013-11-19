@@ -4,6 +4,7 @@ import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.mob.ai.WaterBalloonAi;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
+import robotkittenearthguardians.level.GameMaster;
 import robotkittenearthguardians.level.Level;
 
 public class WaterBalloon extends Mob{
@@ -14,6 +15,7 @@ public class WaterBalloon extends Mob{
 
 	public WaterBalloon(int x, int y) {
 		health = 50.0f;
+		points = 5;
 		damage = 0.1f;
 		sprite = Sprite.waterBalloon;
 		this.x = x;
@@ -23,6 +25,7 @@ public class WaterBalloon extends Mob{
 		size.setXVector(14);
 		size.setYVector(14);
 		mobs.add(this);
+		//Creates bound box for WaterBalloon
 		boundBox = new AABB(somePosition, size);
 		//Initialize mob's Ai
 		ai = new WaterBalloonAi();
@@ -67,6 +70,7 @@ public class WaterBalloon extends Mob{
 		
 		//If health is 0 remove mob.
 		if(health <= 0) {
+			GameMaster.addScore(points);
 			remove();
 		}
 	}

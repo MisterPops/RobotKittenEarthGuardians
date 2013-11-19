@@ -13,9 +13,10 @@ public abstract class Entity {
 
 	protected int x;	//Location of an entity
 	protected int y;
+	//Entities score when destroyed/picked up
+	protected int points;
 	//If the entity is set to be removed
 	private boolean removed = false;
-	protected final Random random = new Random();
 	//If the move is on the stage or not
 	protected boolean onStage = true;
 	//Vector for entity's size
@@ -34,6 +35,8 @@ public abstract class Entity {
 	protected float damage;
 	//Vector to hold mobs movement speed
 	protected Vector2F movement = new Vector2F();
+	
+	protected final Random random = new Random();
 	
 	//<<------------ ENTITY LISTS ------------>>
 	//Holds the main player, possible other players if multiplayer later on

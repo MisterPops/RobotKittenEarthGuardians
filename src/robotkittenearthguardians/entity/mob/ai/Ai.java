@@ -43,6 +43,23 @@ public abstract class Ai extends Mob{
 	}
 	
 	/**
+	 * Pushes two entities away from each other
+	 * @param mainEntity the main entity calling this method
+	 * @param entity the entity to unstack from
+	 */
+	public void unStack(Entity mainEntity, Entity entity) {
+		float radius = size.getXVector() + entity.getSizeVector().getXVector();
+		
+		double dx = (entity.getXCoord() - mainEntity.getXCoord());
+		double dy = (entity.getYCoord() - mainEntity.getYCoord());
+		double angle = Math.atan2(dy, dx);
+		double scale = 1.0f - Math.sqrt(dx * dx + dy * dy) / radius + 1.2;
+		mainEntity.move(-(int) (Math.cos(angle) * scale * 2), -(int) (Math.sin(angle) * scale * 2));
+		
+		entity.move((int) (Math.cos(angle) * scale * 2), (int) (Math.sin(angle) * scale * 2));
+	}
+	
+	/**
 	 * Returns the distance from the mob to the player
 	 * @param x mobs x pos
 	 * @param y mobs y pos

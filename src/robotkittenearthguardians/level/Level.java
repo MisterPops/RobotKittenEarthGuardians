@@ -7,9 +7,6 @@ import robotkittenearthguardians.graphics.SpriteSheets;
 
 public class Level {
 	
-	//The level to be loaded
-	private int levelNum = 0;
-	
 	public Level() {
 	}
 

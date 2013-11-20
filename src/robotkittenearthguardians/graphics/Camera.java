@@ -5,7 +5,7 @@ import robotkittenearthguardians.entity.mob.Player;
 public class Camera {
 	
 	private int width, height;
-	private static double xScroll, yScroll;
+	private static double cameraXCoord, cameraYCoord;
 	private static int playerXCoord, playerYCoord;
 	
 	public Camera(int width, int height) {
@@ -15,23 +15,23 @@ public class Camera {
 
 	public void render(Screen screen, Player player) {
 		if(player.getXCoord() >= (width / 2) && player.getXCoord() <= SpriteSheets.mainStage.getXSheetSize() - (width / 2)) {
-			xScroll = player.getXCoord() - width / 2;
+			cameraXCoord = player.getXCoord() - width / 2;
 		}
 		if(player.getYCoord() >= (height / 2) && player.getYCoord() <= SpriteSheets.mainStage.getYSheetSize() - (height / 2)) {
-			yScroll = player.getYCoord() - height / 2;
+			cameraYCoord = player.getYCoord() - height / 2;
 		}
-		screen.setOffset((int) xScroll, (int) yScroll);
+		screen.setCameraCoords((int) cameraXCoord, (int) cameraYCoord);
 		
 		playerXCoord = player.getXCoord();
 		playerYCoord = player.getYCoord();
 	}
 	
-	public static double getXScroll() {
-		return xScroll;
+	public static double getCameraXCoord() {
+		return cameraXCoord;
 	}
 	
-	public static double getYScroll() {
-		return yScroll;
+	public static double getCameraYCoord() {
+		return cameraYCoord;
 	}
 	
 	public static int getPlayerXCoord() {

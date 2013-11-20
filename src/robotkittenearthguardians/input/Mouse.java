@@ -28,10 +28,10 @@ public class Mouse implements MouseListener, MouseMotionListener{
 	}
 	
 	public static double mouseDistance() {
-		mouseDistance = Math.abs(Math.sqrt((((mouseX / MainGame.getScreenScale()) - (Camera.getPlayerXCoord() - Camera.getXScroll())) * 
-				((mouseX / MainGame.getScreenScale()) - (Camera.getPlayerXCoord() - Camera.getXScroll()))) + 
-				(((mouseY / MainGame.getScreenScale()) - (Camera.getPlayerYCoord() - Camera.getYScroll())) * 
-				((mouseY / MainGame.getScreenScale()) - (Camera.getPlayerYCoord() - Camera.getYScroll())))));
+		mouseDistance = Math.abs(Math.sqrt((((mouseX / MainGame.getScreenScale()) - (Camera.getPlayerXCoord() - Camera.getCameraXCoord())) * 
+				((mouseX / MainGame.getScreenScale()) - (Camera.getPlayerXCoord() - Camera.getCameraXCoord()))) + 
+				(((mouseY / MainGame.getScreenScale()) - (Camera.getPlayerYCoord() - Camera.getCameraYCoord())) * 
+				((mouseY / MainGame.getScreenScale()) - (Camera.getPlayerYCoord() - Camera.getCameraYCoord())))));
 		return mouseDistance;
 	}
 	
@@ -45,8 +45,8 @@ public class Mouse implements MouseListener, MouseMotionListener{
 				(mouseX - ((MainGame.getScreenWidth() * MainGame.getScreenScale()) / 2) - 32));*/
 		/*mouseRadAngle = Math.atan2((mouseY - (Camera.getPlayerYCoord() - Camera.getYScroll()) * (MainGame.getScreenScale()) - 16 * (MainGame.getScreenScale())),
 				(mouseX - (Camera.getPlayerXCoord() - Camera.getXScroll()) * (MainGame.getScreenScale()) - 16 * (MainGame.getScreenScale())));*/
-		mouseRadAngle = Math.atan2(((mouseY / MainGame.getScreenScale()) - (Camera.getPlayerYCoord() - Camera.getYScroll()) - 16),
-				((mouseX / MainGame.getScreenScale()) - (Camera.getPlayerXCoord() - Camera.getXScroll()) - 16));
+		mouseRadAngle = Math.atan2(((mouseY / MainGame.getScreenScale()) - (Camera.getPlayerYCoord() - Camera.getCameraYCoord()) - 16),
+				((mouseX / MainGame.getScreenScale()) - (Camera.getPlayerXCoord() - Camera.getCameraXCoord()) - 16));
 		return mouseRadAngle;
 	}
 	

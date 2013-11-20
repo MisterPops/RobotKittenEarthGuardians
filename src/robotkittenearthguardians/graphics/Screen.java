@@ -7,7 +7,7 @@ public class Screen {
 	
 	private int width, height;
 	private int[] pixels;
-	private int xOffset, yOffset;
+	private int cameraXCoord, cameraYCoord;
 	
 	public Screen(int screenWidth, int screenHeight) {
 		this.width = screenWidth;
@@ -54,9 +54,9 @@ public class Screen {
 		int pixelIndex;
 		for(int y = 0; y < height; y++) {
 			for(int x = 0; x < width; x++) {
-				int xAbs = x + xOffset;
-				int yAbs = y + yOffset;
-				pixelIndex = (x + xOffset) + (y + yOffset) * SpriteSheets.mainStage.getXSheetSize();
+				int xAbs = x + cameraXCoord;
+				int yAbs = y + cameraYCoord;
+				pixelIndex = (x + cameraXCoord) + (y + cameraYCoord) * SpriteSheets.mainStage.getXSheetSize();
 				//tileIndex = ((x + xOffset >> 5) & MASK_SIZE) + ((y + yOffset >> 5) & MASK_SIZE) * SIZE;
 				if(xAbs > 0 && yAbs > 0 && xAbs < SpriteSheets.mainStage.getXSheetSize() && yAbs < SpriteSheets.mainStage.getYSheetSize()) {
 					if(SpriteSheets.mainStage.getSpriteSheetsPixels(pixelIndex) != 0xffff00ff) {
@@ -77,8 +77,8 @@ public class Screen {
 	 * @param flip is true; will render the player flipped on x-axis
 	 */
 	public void renderPlayer(double xPos, double yPos, float falseFall, Sprite sprite, boolean flip) {
-		xPos -= xOffset;
-		yPos -= yOffset;
+		xPos -= cameraXCoord;
+		yPos -= cameraYCoord;
 		yPos += falseFall;
 		for(int y = 0; y < Sprite.player.getSize(); y++) {
 			double yAbs = y + yPos;
@@ -97,14 +97,14 @@ public class Screen {
 		
 	}
 	
-	public void setOffset(int xOffset, int yOffset) {
-		this.xOffset = xOffset;
-		this.yOffset = yOffset;
+	public void setCameraCoords(int xOffset, int yOffset) {
+		this.cameraXCoord = xOffset;
+		this.cameraYCoord = yOffset;
 	}
 
 	public void renderProjectile(double xPos, double yPos, Projectiles p) {
-		xPos -= xOffset;
-		yPos -= yOffset;
+		xPos -= cameraXCoord;
+		yPos -= cameraYCoord;
 		for(int y = 0; y < p.getSprite().getSize(); y++) {
 			double yAbs = y + yPos;
 			for(int x = 0; x < p.getSprite().getSize(); x++) {
@@ -119,8 +119,8 @@ public class Screen {
 	}
 
 	public void renderParticles(double xPos, double yPos, Particle p) {
-		xPos -= xOffset;
-		yPos -= yOffset;
+		xPos -= cameraXCoord;
+		yPos -= cameraYCoord;
 		for(int y = 0; y < p.getSprite().getSize(); y++) {
 			double yAbs = y + yPos;
 			for(int x = 0; x < p.getSprite().getSize(); x++) {

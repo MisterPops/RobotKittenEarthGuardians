@@ -7,11 +7,13 @@ package robotkittenearthguardians;
  * face the hoards of (insert evil character).
  */
 
+import java.awt.AlphaComposite;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -48,7 +50,7 @@ public class MainGame extends Canvas implements Runnable{
 	
 	//Each pixel of the screen is put into the int[] pixels. They are transfered to BufferedImage image
 	//To be drawn to the screen.
-	private BufferedImage image = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
+	private BufferedImage image = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 	
 	/**
@@ -196,9 +198,27 @@ public class MainGame extends Canvas implements Runnable{
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.getPixels(i);
 		}
-		
-		Graphics graphics = bs.getDrawGraphics();
-		graphics.setColor(Color.BLACK);
+		Graphics2D g2 = (Graphics2D) bs.getDrawGraphics();
+		g2.setColor(Color.BLACK);
+		g2.fillRect(0, 0, screenWidth, screenHeight);
+		//g2.setComposite(AlphaComposite.Clear);
+		//g2.setComposite(AlphaComposite.Src);
+		//g2.setComposite(AlphaComposite.SrcOver.derive(1f));
+		g2.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+		g2.setColor(Color.WHITE);
+		g2.setFont(new Font("Verdana", 0, 20));
+		g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 30);
+		g2.drawString("Score: " + GameMaster.getScore(), 800, 30);
+		g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
+		g2.drawString("Mouse Angle: " + Mouse.mouseRadToDeg(), 30, 80);
+		g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
+		g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
+		g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
+		g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
+		g2.drawString("Player ArrayList: " + Entity.getPlayerSize(), 30, 205);
+		g2.dispose();
+		/*Graphics graphics = bs.getDrawGraphics();
+		/*graphics.setColor(Color.BLACK);
 		graphics.fillRect(0, 0, screenWidth, screenHeight);
 		graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		graphics.setColor(Color.WHITE);
@@ -212,7 +232,7 @@ public class MainGame extends Canvas implements Runnable{
 		graphics.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
 		graphics.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
 		graphics.drawString("Player ArrayList: " + Entity.getPlayerSize(), 30, 205);
-		graphics.dispose();
+		graphics.dispose();*/
 		bs.show();
 	}
 	

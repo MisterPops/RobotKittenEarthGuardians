@@ -184,6 +184,7 @@ public class MainGame extends Canvas implements Runnable{
 			return;
 		}
 		
+		Graphics2D g2 = (Graphics2D) bs.getDrawGraphics();
 		screen.clear();
 		
 		//(- screenWidth/Height / 2; sets player in center of screen)
@@ -198,7 +199,6 @@ public class MainGame extends Canvas implements Runnable{
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.getPixels(i);
 		}
-		Graphics2D g2 = (Graphics2D) bs.getDrawGraphics();
 		g2.setColor(Color.BLACK);
 		g2.fillRect(0, 0, screenWidth, screenHeight);
 		//g2.setComposite(AlphaComposite.Clear);

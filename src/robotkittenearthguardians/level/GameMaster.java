@@ -33,7 +33,7 @@ public class GameMaster {
 			monsterCount++;
 		} else if(monsterIndex > levels[index].length) {
 			monsterIndex++;
-		} else if(Entity.getMobSize() < 1) {
+		} else if(Entity.getMobSize() < 2) {
 			index++;
 			monsterCount = 0;
 			monsterIndex = 0;

@@ -1,6 +1,7 @@
 package robotkittenearthguardians.entity.projectiles;
 
 import robotkittenearthguardians.entity.AABB;
+import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.particles.MainBulletParticle;
 import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.graphics.Screen;
@@ -36,7 +37,7 @@ public class MainBullet extends Projectiles{
 		boundBox.update(somePosition);
 		
 		for(int index = 0; index < mobs.size(); index++) {
-			if(hit(mobs.get(index))) {
+			if(hit(mobs.get(index)) && !(mobs.get(index) instanceof Player)) {
 				mobs.get(index).hurt(damage);
 				mobs.get(index).bounceBack(this);
 			}

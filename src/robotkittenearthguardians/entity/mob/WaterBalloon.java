@@ -46,17 +46,14 @@ public class WaterBalloon extends Mob{
 		//Mobs movement patterns
 		ai.ai(speed, this);
 		
-		//If collides with player, will damage it.
-		for(int index = 0; index < player.size(); index++) {
-			if(hit(player.get(index))) {
-				player.get(index).hurt(damage);
-				ai.onCollide(player.get(index));
-			}
-		}
-		
+		//If collides with other mobs
 		for(int index = 0; index < mobs.size(); index++) {
 			if(hit(mobs.get(index)) && !mobs.get(index).equals(this)) {
 				ai.onCollide(this, mobs.get(index));
+				
+				if(mobs.get(index) instanceof Player) {
+					mobs.get(index).hurt(damage);
+				}
 			}
 		}
 		

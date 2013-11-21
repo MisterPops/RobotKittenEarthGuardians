@@ -35,7 +35,7 @@ public class Player extends Mob {
 		size.setYVector(14);
 		this.input = input;
 		shootSpeed = MainBullet.FIRE_RATE;
-		player.add(this);
+		mobs.add(this);
 		boundBox = new AABB(somePosition, size);
 	}
 	

@@ -28,6 +28,10 @@ public class Screen {
 		this.pixels = pixels;
 	}
 	
+	/**
+	 * Updates the screens graphics2d object with buffer strategy.
+	 * @param bs
+	 */
 	public void update(BufferStrategy bs) {
 		this.g2 = (Graphics2D) bs.getDrawGraphics();
 		
@@ -144,6 +148,9 @@ public class Screen {
 		}
 	}
 	
+	/**
+	 * Draws the rendered image to screen
+	 */
 	public void drawImage() {
 		g2.drawImage(image, 0, 0, width, height, null);
 	}
@@ -159,14 +166,16 @@ public class Screen {
 		g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
 		g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
 		g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
-		g2.drawString("Player ArrayList: " + Entity.getPlayerSize(), 30, 205);
 	}
 	
 	public void background() {
-		g2.setColor(Color.BLACK);
+		g2.setColor(Color.CYAN);
 		g2.fillRect(0, 0, width, height);
 	}
 
+	/**
+	 * Disposes the g2 object freeing up system memory.
+	 */
 	public void g2Dispose() {
 		g2.dispose();
 	}

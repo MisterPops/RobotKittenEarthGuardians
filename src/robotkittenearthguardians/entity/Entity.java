@@ -39,8 +39,6 @@ public abstract class Entity {
 	protected final Random random = new Random();
 	
 	//<<------------ ENTITY LISTS ------------>>
-	//Holds the main player, possible other players if multiplayer later on
-	protected static List<Mob> player = new ArrayList<Mob>();
 	//Holds all enemy mobs
 	protected static List<Mob> mobs = new ArrayList<Mob>();
 	//Holds all projectiles
@@ -100,13 +98,6 @@ public abstract class Entity {
 	 */
 	//protected void clearEntities() {
 	public static void clearEntities() {
-		
-		for(int i = 0; i < player.size(); i++) {
-			Mob p = player.get(i);
-			if(p.isRemoved()) {
-				player.remove(i);
-			}
-		}
 		
 		for(int i = 0; i < mobs.size(); i++) {
 			Mob p = mobs.get(i);
@@ -227,13 +218,5 @@ public abstract class Entity {
 	
 	public static int getMobSize() {
 		return mobs.size();
-	}
-	
-	public static Mob getIndexedPlayer(int i) {
-		return player.get(i);
-	}
-	
-	public static int getPlayerSize() {
-		return player.size();
 	}
 }

@@ -44,6 +44,8 @@ public class Level {
 	//public void render(int xPos, int yPos, Screen screen) {
 	public void render(Screen screen) {
 		
+		Entity.sortMobsList();
+		
 		for(int i = 0; i < Entity.getMobSize(); i++) {
 			if(!(Entity.getIndexedMob(i).getIsOnStage())) {
 				Entity.getIndexedMob(i).render(screen);

@@ -1,6 +1,7 @@
 package robotkittenearthguardians.entity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -55,6 +56,17 @@ public abstract class Entity {
 	public void render(Screen screen) {
 	}
 	
+	public static void sortMobsList( ) {
+		for(int indexOne = mobs.size() - 1; indexOne > 1; indexOne--) {
+			for(int indexTwo = 0; indexTwo < indexOne; indexTwo++) {
+				if(mobs.get(indexOne).getYCoord() < mobs.get(indexTwo + 1).getYCoord()) {
+					System.out.println("Swap");
+					Collections.swap(mobs, indexOne, indexTwo + 1);
+				}
+			}
+		}
+	}
+	
 	/**
 	 * Sets the remove boolean of the entity to true 
 	 */
@@ -96,7 +108,6 @@ public abstract class Entity {
 	/**
 	 * Clears all Entities set as removed from the list in which they reside.
 	 */
-	//protected void clearEntities() {
 	public static void clearEntities() {
 		
 		for(int i = 0; i < mobs.size(); i++) {

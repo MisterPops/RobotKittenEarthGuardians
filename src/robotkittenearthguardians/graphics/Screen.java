@@ -9,36 +9,10 @@ public class Screen {
 	private int[] pixels;
 	private int cameraXCoord, cameraYCoord;
 	
-	public Screen(int screenWidth, int screenHeight) {
+	public Screen(int screenWidth, int screenHeight, int[] pixels) {
 		this.width = screenWidth;
 		this.height = screenHeight;
-		pixels = new int[screenWidth * screenHeight];
-	}
-	
-	/**
-	 * Returns the entire Screen pixels array.
-	 * @return int[] pixels
-	 */
-	public int[] getPixelsArray() {
-		return pixels;
-	}
-	
-	/**
-	 * Returns a specific item in the Screens pixels array
-	 * @param i Position in the int[] pixels
-	 * @return Item in i position in int[] pixels
-	 */
-	public int getPixels(int i) {
-		return pixels[i];
-	}
-	
-	/**
-	 * Sets i in Screen's pixel array to the given int.
-	 * @param i Position in int[] pixels
-	 * @param result The int that pixel[i] will be set to.
-	 */
-	public void setPixels(int i, int result) {
-		pixels[i] = result;
+		this.pixels = pixels;
 	}
 	
 	/**
@@ -50,6 +24,20 @@ public class Screen {
 		}
 	}
 	
+	/**
+	 * Set's camera's coordinates in screen class to globally affect what renders
+	 * according to the camera's position
+	 * @param xOffset camera's x position
+	 * @param yOffset camera's y position
+	 */
+	public void setCameraCoords(int xOffset, int yOffset) {
+		this.cameraXCoord = xOffset;
+		this.cameraYCoord = yOffset;
+	}
+	
+	/**
+	 * Renders the level
+	 */
 	public void renderLevel() {
 		int pixelIndex;
 		for(int y = 0; y < height; y++) {
@@ -57,12 +45,9 @@ public class Screen {
 				int xAbs = x + cameraXCoord;
 				int yAbs = y + cameraYCoord;
 				pixelIndex = (x + cameraXCoord) + (y + cameraYCoord) * SpriteSheets.mainStage.getXSheetSize();
-				//tileIndex = ((x + xOffset >> 5) & MASK_SIZE) + ((y + yOffset >> 5) & MASK_SIZE) * SIZE;
 				if(xAbs > 0 && yAbs > 0 && xAbs < SpriteSheets.mainStage.getXSheetSize() && yAbs < SpriteSheets.mainStage.getYSheetSize()) {
 					if(SpriteSheets.mainStage.getSpriteSheetsPixels(pixelIndex) != 0xffff00ff) {
 						pixels[x + y * width] = SpriteSheets.mainStage.getSpriteSheetsPixels(pixelIndex);
-						//screen.setPixels(x + y * screenWidth, levelPixels[pixelIndex]);
-						//screen.setPixels(x + y * screenWidth, tiles[tileIndex]);
 					}
 				}
 			}
@@ -96,12 +81,13 @@ public class Screen {
 		}
 		
 	}
-	
-	public void setCameraCoords(int xOffset, int yOffset) {
-		this.cameraXCoord = xOffset;
-		this.cameraYCoord = yOffset;
-	}
 
+	/**
+	 * Renders the projectiles
+	 * @param xPos Projectile x-coord
+	 * @param yPos Projectile y-coord
+	 * @param p the projectile to be rendered
+	 */
 	public void renderProjectile(double xPos, double yPos, Projectiles p) {
 		xPos -= cameraXCoord;
 		yPos -= cameraYCoord;
@@ -118,6 +104,12 @@ public class Screen {
 		}
 	}
 
+	/**
+	 * Renders particles
+	 * @param xPos particles x-coord
+	 * @param yPos particle's y-coord
+	 * @param p the particle to be rendered
+	 */
 	public void renderParticles(double xPos, double yPos, Particle p) {
 		xPos -= cameraXCoord;
 		yPos -= cameraYCoord;

@@ -19,12 +19,15 @@ public class MainBulletParticle extends Particle{
 	}
 	
 	private void animate() {
-		sprite = Sprite.bulletImpact[frame];
-		frameLife++;
-		if(frameLife > 4) {
-			frame++;
-			frameLife = 0;
+		if(frame > Sprite.bulletImpact.length - 1) { 
+			remove();
+		} else {
+			sprite = Sprite.bulletImpact[frame];
+			frameLife++;
+			if(frameLife > 4) {
+				frame++;
+				frameLife = 0;
+			}
 		}
-		if(frame > Sprite.bulletImpact.length - 1) remove();
 	}
 }

@@ -52,9 +52,9 @@ public class Sprite {
 	 * Loads the sprite from the given SpriteSheet into a Sprite int[] pixels array.
 	 */
 	private void load() {
+		int[] SpriteSheetArray = sheet.getPixels();
 		for(int y = 0; y < SIZE; y++) {
 			for(int x = 0; x < SIZE; x++) {
-				int[] SpriteSheetArray = sheet.getPixels();
 				pixels[x + y * SIZE] = SpriteSheetArray[(x + this.x) + (y + this.y) * sheet.getXSheetSize()];
 			}
 		}

@@ -1,18 +1,36 @@
 package robotkittenearthguardians.graphics;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+
+import robotkittenearthguardians.entity.Entity;
+import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
+import robotkittenearthguardians.input.Mouse;
+import robotkittenearthguardians.level.GameMaster;
 
 public class Screen {
 	
 	private int width, height;
 	private int[] pixels;
+	private BufferedImage image;
+	private Graphics2D g2;
 	private int cameraXCoord, cameraYCoord;
 	
-	public Screen(int screenWidth, int screenHeight, int[] pixels) {
+	public Screen(int screenWidth, int screenHeight, int[] pixels, BufferedImage image) {
 		this.width = screenWidth;
 		this.height = screenHeight;
+		this.image = image;
 		this.pixels = pixels;
+	}
+	
+	public void update(BufferStrategy bs) {
+		this.g2 = (Graphics2D) bs.getDrawGraphics();
+		
 	}
 	
 	/**
@@ -124,5 +142,32 @@ public class Screen {
 				}
 			}
 		}
+	}
+	
+	public void drawImage() {
+		g2.drawImage(image, 0, 0, width, height, null);
+	}
+	
+	public void gui(Player player) {
+		g2.setColor(Color.WHITE);
+		g2.setFont(new Font("Verdana", 0, 20));
+		g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 30);
+		g2.drawString("Score: " + GameMaster.getScore(), 800, 30);
+		g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
+		g2.drawString("Mouse Angle: " + Mouse.mouseRadToDeg(), 30, 80);
+		g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
+		g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
+		g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
+		g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
+		g2.drawString("Player ArrayList: " + Entity.getPlayerSize(), 30, 205);
+	}
+	
+	public void background() {
+		g2.setColor(Color.BLACK);
+		g2.fillRect(0, 0, width, height);
+	}
+
+	public void g2Dispose() {
+		g2.dispose();
 	}
 }

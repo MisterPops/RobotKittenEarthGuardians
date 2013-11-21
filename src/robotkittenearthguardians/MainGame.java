@@ -8,10 +8,7 @@ package robotkittenearthguardians;
  */
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -19,12 +16,10 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import robotkittenearthguardians.input.Mouse;
-import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.graphics.Camera;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.input.Keyboard;
-import robotkittenearthguardians.level.GameMaster;
 import robotkittenearthguardians.level.Level;
 
 public class MainGame extends Canvas implements Runnable{
@@ -58,7 +53,7 @@ public class MainGame extends Canvas implements Runnable{
 	public MainGame() {
 		Dimension screenSize = new Dimension(screenWidth * screenScale, screenHeight * screenScale);
 		setPreferredSize(screenSize);
-		screen = new Screen(screenWidth, screenHeight, pixels);
+		screen = new Screen(screenWidth, screenHeight, pixels, image);
 		frame = new JFrame();
 		key = new Keyboard();
 		//Revieve data from the mouse, movement and buttons
@@ -182,27 +177,16 @@ public class MainGame extends Canvas implements Runnable{
 			return;
 		}
 		
-		Graphics2D g2 = (Graphics2D) bs.getDrawGraphics();
-		
+		screen.update(bs);
 		screen.clear();
+		
+		screen.background();
+		
 		camera.render(screen, player);
 		level.render(screen);
-		
-		g2.setColor(Color.CYAN);
-		g2.fillRect(0, 0, screenWidth, screenHeight);
-		g2.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-		g2.setColor(Color.WHITE);
-		g2.setFont(new Font("Verdana", 0, 20));
-		g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 30);
-		g2.drawString("Score: " + GameMaster.getScore(), 800, 30);
-		g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
-		g2.drawString("Mouse Angle: " + Mouse.mouseRadToDeg(), 30, 80);
-		g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
-		g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
-		g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
-		g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
-		g2.drawString("Player ArrayList: " + Entity.getPlayerSize(), 30, 205);
-		g2.dispose();
+		screen.drawImage();
+		screen.gui(player);
+		screen.g2Dispose();
 		bs.show();
 	}
 	

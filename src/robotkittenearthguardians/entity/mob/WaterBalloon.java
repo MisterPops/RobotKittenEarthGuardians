@@ -10,7 +10,7 @@ import robotkittenearthguardians.level.Level;
 public class WaterBalloon extends Mob{
 
 	private double speed = 3.2;
-	private int sightRange = 300;
+	private int sightRange = 1;
 	WaterBalloonAi ai;
 
 	public WaterBalloon(int x, int y) {

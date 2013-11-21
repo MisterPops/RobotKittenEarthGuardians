@@ -40,6 +40,7 @@ public class MainBullet extends Projectiles{
 			if(hit(mobs.get(index)) && !(mobs.get(index) instanceof Player)) {
 				mobs.get(index).hurt(damage);
 				mobs.get(index).bounceBack(this);
+				die();
 			}
 		}
 	}
@@ -61,10 +62,8 @@ public class MainBullet extends Projectiles{
 		x += vectorX;
 		y += vectorY;
 		
-		if(Distance() > range && Level.isOnStage(somePosition) || collided) {
-			Particle mainShotParticle = new MainBulletParticle(x, y);
-			particles.add(mainShotParticle);
-			remove();
+		if(Distance() > range && Level.isOnStage(somePosition)) {
+			die();
 		} else if(!(Level.isOnStage(somePosition))) {
 			if(Distance() > range + 300) {
 				remove();
@@ -80,6 +79,12 @@ public class MainBullet extends Projectiles{
 		double distance;
 		distance = Math.abs(Math.sqrt((xOrgin - x) * (xOrgin - x) + (yOrgin - y) * (yOrgin - y))); 
 		return distance;
+	}
+	
+	private void die() {
+		Particle mainShotParticle = new MainBulletParticle(x, y);
+		particles.add(mainShotParticle);
+		remove();
 	}
 
 	/**

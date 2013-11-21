@@ -30,8 +30,6 @@ public abstract class Entity {
 	protected int frame = 0;
 	//Counter to count up till next frame is rendered
 	protected int frameLife = 0;
-	//If entity collides
-	protected boolean collided = false;
 	//Damage the entity does
 	protected float damage;
 	//Vector to hold mobs movement speed
@@ -57,7 +55,7 @@ public abstract class Entity {
 	}
 	
 	public static void sortMobsList( ) {
-		for(int indexOne = mobs.size() - 1; indexOne > 0; indexOne--) {
+		for(int indexOne = mobs.size() - 1; indexOne > 1; indexOne--) {
 			for(int indexTwo = 0; indexTwo < indexOne; indexTwo++) {
 				if(mobs.get(indexOne).getYCoord() < mobs.get(indexTwo).getYCoord()) {
 					Collections.swap(mobs, indexOne, indexTwo);
@@ -172,27 +170,11 @@ public abstract class Entity {
 	 */
 	public boolean hit(Mob mob) {
 		if(CollisionLibrary.testAABBAABB(boundBox, mob.getAABB())) {
-			isCollided();
 			return true;
 		}
 		else {
-			isNotCollided();
 			return false;
 		}
-	}
-	
-	/**
-	 * Sets collided to true...not even sure if I need this
-	 */
-	public void isCollided() {
-		collided = true;
-	}
-	
-	/**
-	 * Sets collided to false...not even sure if I need this
-	 */
-	public void isNotCollided() {
-		collided = false;
 	}
 	
 	public Vector2F getSizeVector() {

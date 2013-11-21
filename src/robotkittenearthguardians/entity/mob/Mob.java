@@ -51,14 +51,6 @@ public abstract class Mob extends Entity {
 	}
 	
 	/**
-	 * Returns if a mob is colliding with something.
-	 * @return true if mob is colliding with something, false otherwise;
-	 */
-	public boolean collision() {
-		return collided;
-	}
-	
-	/**
 	 * Decereases mob's health and sets the mob in a fall like visual.
 	 */
 	protected void falling() {

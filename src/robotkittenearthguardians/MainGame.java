@@ -86,14 +86,6 @@ public class MainGame extends Canvas implements Runnable{
 	}
 	
 	/**
-	 * Returns the String title of the game.
-	 * @return String title
-	 */
-	public String getTitle() {
-		return title;
-	}
-	
-	/**
 	 * Ran in main method after JFrame setup. Sets running boolean to true
 	 * starting the loop to update and render the game in the run method.
 	 * Creates a new MainGame thread and starts it thus executing run method.
@@ -180,7 +172,7 @@ public class MainGame extends Canvas implements Runnable{
 		
 		//JFrame boiler plate
 		game.frame.setResizable(false);
-		game.frame.setTitle(game.getTitle());
+		game.frame.setTitle(title);
 		game.frame.add(game);
 		game.frame.pack();
 		game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

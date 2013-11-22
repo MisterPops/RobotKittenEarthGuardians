@@ -34,7 +34,6 @@ public class Screen {
 	 */
 	public void update(BufferStrategy bs) {
 		this.g2 = (Graphics2D) bs.getDrawGraphics();
-		
 	}
 	
 	/**

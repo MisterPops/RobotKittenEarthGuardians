@@ -16,11 +16,10 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import robotkittenearthguardians.input.Mouse;
-import robotkittenearthguardians.entity.mob.Player;
-import robotkittenearthguardians.graphics.Camera;
+import robotkittenearthguardians.gameState.GameState;
+import robotkittenearthguardians.gameState.StartScreenState;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.input.Keyboard;
-import robotkittenearthguardians.level.Level;
 
 public class MainGame extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
@@ -37,9 +36,7 @@ public class MainGame extends Canvas implements Runnable{
 	private Screen screen;
 	private Keyboard key;
 	private Mouse mouse;
-	private Level level;
-	private Player player;
-	private Camera camera;
+	GameState currentState;
 	
 	//Each pixel of the screen is put into the int[] pixels. They are transfered to BufferedImage image
 	//To be drawn to the screen.
@@ -61,9 +58,7 @@ public class MainGame extends Canvas implements Runnable{
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
 		addKeyListener(key);
-		level = new Level();
-		player = new Player(850, 430, key);
-		camera = new Camera(screenWidth, screenHeight);
+		currentState = new StartScreenState(key);
 	}
 	
 	/**
@@ -164,7 +159,7 @@ public class MainGame extends Canvas implements Runnable{
 	 */
 	public void update() {
 		key.update();
-		level.update();
+		currentState.update();
 	}
 	
 	/**
@@ -177,17 +172,7 @@ public class MainGame extends Canvas implements Runnable{
 			return;
 		}
 		
-		screen.update(bs);
-		screen.clear();
-		
-		screen.background();
-		
-		camera.render(screen, player);
-		level.render(screen);
-		screen.drawImage();
-		screen.gui(player);
-		screen.g2Dispose();
-		bs.show();
+		currentState.render(screen, bs);
 	}
 	
 	public static void main(String[] args) {

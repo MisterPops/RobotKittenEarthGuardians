@@ -55,7 +55,7 @@ public abstract class Entity {
 	}
 	
 	public static void sortMobsList( ) {
-		for(int indexOne = mobs.size() - 1; indexOne > 1; indexOne--) {
+		for(int indexOne = mobs.size() - 1; indexOne > 0; indexOne--) {
 			for(int indexTwo = 0; indexTwo < indexOne; indexTwo++) {
 				if(mobs.get(indexOne).getYCoord() < mobs.get(indexTwo).getYCoord()) {
 					Collections.swap(mobs, indexOne, indexTwo);

@@ -15,7 +15,7 @@ public class MainBullet extends Projectiles{
 	
 	public MainBullet(int x, int y, double dir, double mouseX, double mouseY) {
 		super(x, y, dir);
-		damage = 5;
+		damage = 10;
 		range = (int) Mouse.mouseDistance() + random.nextInt(50);
 		speed = 15;
 		sprite = Sprite.mainBullet;
@@ -40,6 +40,8 @@ public class MainBullet extends Projectiles{
 			if(hit(mobs.get(index)) && !(mobs.get(index) instanceof Player)) {
 				mobs.get(index).hurt(damage);
 				mobs.get(index).bounceBack(this);
+				x += vectorX;
+				y += vectorY;
 				die();
 			}
 		}
@@ -82,7 +84,7 @@ public class MainBullet extends Projectiles{
 	}
 	
 	private void die() {
-		Particle mainShotParticle = new MainBulletParticle(x, y);
+		Particle mainShotParticle = new MainBulletParticle(x , y);
 		particles.add(mainShotParticle);
 		remove();
 	}

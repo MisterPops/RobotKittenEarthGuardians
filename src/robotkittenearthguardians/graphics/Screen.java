@@ -170,7 +170,7 @@ public class Screen {
 	}
 	
 	public void background() {
-		g2.setColor(Color.CYAN);
+		g2.setColor(Color.BLACK);
 		g2.fillRect(0, 0, MainGame.getScreenWidth() * MainGame.getScreenScale(),
 				MainGame.getScreenHeight() * MainGame.getScreenScale());
 	}

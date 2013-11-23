@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import robotkittenearthguardians.MainGame;
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.particles.Particle;
@@ -151,7 +152,8 @@ public class Screen {
 	 * Draws the rendered image to screen
 	 */
 	public void drawImage() {
-		g2.drawImage(image, 0, 0, width, height, null);
+		g2.drawImage(image, 0, 0, MainGame.getScreenWidth() * MainGame.getScreenScale(),
+				MainGame.getScreenHeight() * MainGame.getScreenScale(), null);
 	}
 	
 	public void gui(Player player) {
@@ -169,7 +171,8 @@ public class Screen {
 	
 	public void background() {
 		g2.setColor(Color.CYAN);
-		g2.fillRect(0, 0, width, height);
+		g2.fillRect(0, 0, MainGame.getScreenWidth() * MainGame.getScreenScale(),
+				MainGame.getScreenHeight() * MainGame.getScreenScale());
 	}
 
 	/**

@@ -14,7 +14,7 @@ public class WaterBalloon extends Mob{
 	WaterBalloonAi ai;
 
 	public WaterBalloon(int x, int y) {
-		health = 50.0f;
+		health = 30.0f;
 		points = 5;
 		damage = 0.1f;
 		sprite = Sprite.waterBalloon;
@@ -79,7 +79,7 @@ public class WaterBalloon extends Mob{
 	public void render(Screen screen) {
 		if(frame == 8) frame = 0;
 		screen.renderPlayer(x, y, falseFall, sprite[frame], false);
-		if(frameLife == 15) {
+		if(frameLife == 5) {
 			frame++;
 			frameLife = 0;
 		}

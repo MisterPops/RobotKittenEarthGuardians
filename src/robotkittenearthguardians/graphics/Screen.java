@@ -200,7 +200,7 @@ public class Screen {
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("Verdana", 0, 20));
 		g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 30);
-		g2.drawString("Score: " + GameMaster.getScore(), 800 * MainGame.getScreenScale(), 30);
+		g2.drawString("Score: " + GameMaster.getScore(), (MainGame.getScreenWidth() - 150) * MainGame.getScreenScale(), 30);
 		g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
 		g2.drawString("Mouse Angle: " + Mouse.mouseRadToDeg(), 30, 80);
 		g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);

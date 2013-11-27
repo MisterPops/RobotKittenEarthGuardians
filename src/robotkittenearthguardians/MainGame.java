@@ -25,8 +25,8 @@ public class MainGame extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
 	
 	//JFrame variables
-	private static int screenWidth = 960;
-	private static int screenHeight = 540;
+	private static int screenWidth = 1152;
+	private static int screenHeight = 648;
 	private static int screenScale = 1;
 	private static String title = "Robot Kitten Guardians";
 	private boolean running = false;	//True: Game loops is running; False: Game loop is not running

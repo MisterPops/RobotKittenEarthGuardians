@@ -57,6 +57,24 @@ public class Screen {
 		this.cameraYCoord = yOffset;
 	}
 	
+	public void renderBackground(SpriteSheets sprite, boolean clouds) {
+		if(clouds) {
+			renderClouds();
+		}
+		
+		int pixelIndex;
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int xAbs = x + cameraXCoord;
+				int yAbs = y + cameraYCoord;
+				pixelIndex = (xAbs) + (yAbs) * sprite.getXSheetSize();
+				if(xAbs > 0 && yAbs > 0 && xAbs < sprite.getXSheetSize() && yAbs < sprite.getYSheetSize()) {
+					pixels[x + y * width] = sprite.getSpriteSheetsPixels(pixelIndex);
+				}
+			}
+		}
+	}
+	
 	/**
 	 * Renders the level
 	 */
@@ -148,6 +166,10 @@ public class Screen {
 		}
 	}
 	
+	public void renderClouds(){
+		
+	}
+	
 	/**
 	 * Draws the rendered image to screen
 	 */
@@ -167,12 +189,6 @@ public class Screen {
 		g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
 		g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
 		g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
-	}
-	
-	public void background() {
-		g2.setColor(Color.BLACK);
-		g2.fillRect(0, 0, MainGame.getScreenWidth() * MainGame.getScreenScale(),
-				MainGame.getScreenHeight() * MainGame.getScreenScale());
 	}
 
 	/**

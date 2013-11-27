@@ -23,8 +23,6 @@ public class NewGameState extends GameState{
 	public void render(Screen screen, BufferStrategy bs) {
 		screen.update(bs);
 		screen.clear();
-
-		screen.background();
 		
 		camera.render(screen, player);
 		level.render(screen);

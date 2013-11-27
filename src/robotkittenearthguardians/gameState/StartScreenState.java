@@ -6,6 +6,7 @@ import robotkittenearthguardians.MainGame;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.graphics.Camera;
 import robotkittenearthguardians.graphics.Screen;
+import robotkittenearthguardians.graphics.SpriteSheets;
 import robotkittenearthguardians.input.Keyboard;
 import robotkittenearthguardians.level.Level;
 
@@ -16,6 +17,7 @@ public class StartScreenState extends GameState {
 		level = new Level();
 		player = new Player(850, 430, key);
 		camera = new Camera(MainGame.getScreenWidth(), MainGame.getScreenHeight());
+		bg = SpriteSheets.mainBg;
 	}
 
 	public void update() {
@@ -26,9 +28,8 @@ public class StartScreenState extends GameState {
 		screen.update(bs);
 		screen.clear();
 
-		screen.background();
-		
 		camera.render(screen, player);
+		screen.renderBackground(bg, true);
 		level.render(screen);
 		screen.drawImage();
 		screen.gui(player);

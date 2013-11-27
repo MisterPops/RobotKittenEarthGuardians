@@ -47,7 +47,8 @@ public class Level {
 		Entity.sortMobsList();
 		
 		for(int i = 0; i < Entity.getMobSize(); i++) {
-			if(!(Entity.getIndexedMob(i).getIsOnStage())) {
+			if(!(Entity.getIndexedMob(i).getIsOnStage()) && 
+					Entity.getIndexedMob(i).getYCoord() < SpriteSheets.mainStage.getYSheetSize() / 2) {
 				Entity.getIndexedMob(i).render(screen);
 			}
 		}
@@ -55,7 +56,8 @@ public class Level {
 		screen.renderLevel();
 		
 		for(int i = 0; i < Entity.getMobSize(); i++) {
-			if(Entity.getIndexedMob(i).getIsOnStage()) {
+			if(Entity.getIndexedMob(i).getIsOnStage() || !(Entity.getIndexedMob(i).getIsOnStage()) && 
+					Entity.getIndexedMob(i).getYCoord() > SpriteSheets.mainStage.getYSheetSize() / 2) {
 				Entity.getIndexedMob(i).render(screen);
 			}
 		}

@@ -21,6 +21,7 @@ public class Screen {
 	private BufferedImage image;
 	private Graphics2D g2;
 	private int cameraXCoord, cameraYCoord;
+	private float cloudFloat = 0;
 	
 	public Screen(int screenWidth, int screenHeight, int[] pixels, BufferedImage image) {
 		this.width = screenWidth;
@@ -58,10 +59,6 @@ public class Screen {
 	}
 	
 	public void renderBackground(SpriteSheets sprite, boolean clouds) {
-		if(clouds) {
-			renderClouds();
-		}
-		
 		int pixelIndex;
 		for(int y = 0; y < height; y++) {
 			for(int x = 0; x < width; x++) {
@@ -70,6 +67,31 @@ public class Screen {
 				pixelIndex = (xAbs) + (yAbs) * sprite.getXSheetSize();
 				if(xAbs > 0 && yAbs > 0 && xAbs < sprite.getXSheetSize() && yAbs < sprite.getYSheetSize()) {
 					pixels[x + y * width] = sprite.getSpriteSheetsPixels(pixelIndex);
+				}
+			}
+		}
+		
+		if(clouds) {
+			renderClouds();
+		}
+	}
+	
+	public void renderClouds(){
+		cloudFloat -= .3;
+		if(cloudFloat < -1 * SpriteSheets.clouds.getXSheetSize()) {
+			cloudFloat = 0;
+		}
+		
+		int pixelIndex;
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int xAbs = x + cameraXCoord + (int)cloudFloat;
+				int yAbs = y + cameraYCoord;
+				pixelIndex = (xAbs) + (yAbs) * SpriteSheets.clouds.getXSheetSize();
+				if(yAbs > 0 && yAbs < SpriteSheets.clouds.getYSheetSize()) {
+					if(SpriteSheets.clouds.getSpriteSheetsPixels(pixelIndex) != 0xffff00ff) {
+						pixels[x + y * width] = SpriteSheets.clouds.getSpriteSheetsPixels(pixelIndex);
+					}
 				}
 			}
 		}
@@ -166,10 +188,6 @@ public class Screen {
 		}
 	}
 	
-	public void renderClouds(){
-		
-	}
-	
 	/**
 	 * Draws the rendered image to screen
 	 */
@@ -182,7 +200,7 @@ public class Screen {
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("Verdana", 0, 20));
 		g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 30);
-		g2.drawString("Score: " + GameMaster.getScore(), 800, 30);
+		g2.drawString("Score: " + GameMaster.getScore(), 800 * MainGame.getScreenScale(), 30);
 		g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
 		g2.drawString("Mouse Angle: " + Mouse.mouseRadToDeg(), 30, 80);
 		g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);

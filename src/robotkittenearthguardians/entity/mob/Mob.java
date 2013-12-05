@@ -1,6 +1,7 @@
 package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.Entity;
+import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.Sprite;
@@ -18,6 +19,7 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	//If the mob sees the player.
 	protected boolean seePlayer = false;
+	protected HealthBar healthBar;
 	
 	/**
 	 * Moves the coordinate of the mob on the X/Y plane
@@ -81,5 +83,9 @@ public abstract class Mob extends Entity {
 	 */
 	public void hurt(float damage) {
 		health -= damage / 2;
+	}
+	
+	public HealthBar getHealthBar() {
+		return healthBar;
 	}
 }

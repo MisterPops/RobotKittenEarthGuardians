@@ -1,6 +1,7 @@
 package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.AABB;
+import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.WaterBalloonAi;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
@@ -27,6 +28,7 @@ public class WaterBalloon extends Mob{
 		mobs.add(this);
 		//Creates bound box for WaterBalloon
 		boundBox = new AABB(somePosition, size);
+		healthBar = new HealthBar(health);
 		//Initialize mob's Ai
 		ai = new WaterBalloonAi();
 	}
@@ -65,6 +67,8 @@ public class WaterBalloon extends Mob{
 			falseFall = 0;
 		}
 		
+		healthBar.update(health);
+		
 		//If health is 0 remove mob.
 		if(health <= 0) {
 			GameMaster.addScore(points);
@@ -76,7 +80,7 @@ public class WaterBalloon extends Mob{
 	 * Loops through all the frames in the sprite array and sends them
 	 * to the screen class accordingly.
 	 */
-	public void render(Screen screen) {
+	public void render(Screen screen) {		
 		if(frame == 8) frame = 0;
 		screen.renderPlayer(x, y, falseFall, sprite[frame], false);
 		if(frameLife == 5) {

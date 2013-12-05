@@ -1,6 +1,7 @@
 package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.AABB;
+import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.Ai;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.graphics.Screen;
@@ -37,6 +38,7 @@ public class Player extends Mob {
 		shootSpeed = MainBullet.FIRE_RATE;
 		mobs.add(this);
 		boundBox = new AABB(somePosition, size);
+		healthBar = new HealthBar(health);
 	}
 	
 	public void update() {
@@ -90,6 +92,8 @@ public class Player extends Mob {
 		if(health < 0f) {
 			remove();
 		}
+		
+		healthBar.update(health);
 		
 		//Sends player coords for AI to use
 		Ai.setPlayerX(this.x);

@@ -82,7 +82,7 @@ public abstract class Mob extends Entity {
 	 * @param damage the amount of health you want to remove from the mob
 	 */
 	public void hurt(float damage) {
-		health -= damage / 2;
+		health -= damage;
 	}
 	
 	public HealthBar getHealthBar() {

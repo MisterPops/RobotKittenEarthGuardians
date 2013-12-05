@@ -93,6 +93,7 @@ public class Player extends Mob {
 			remove();
 		}
 		
+		health += health < 100 ? 0.1 : 0;
 		healthBar.update(health);
 		
 		//Sends player coords for AI to use

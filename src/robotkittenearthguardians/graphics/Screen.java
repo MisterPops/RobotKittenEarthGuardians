@@ -209,6 +209,12 @@ public class Screen {
 		g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);*/
 		g2.drawString("Score: " + GameMaster.getScore(), (MainGame.getScreenWidth() - 150) * 
 				MainGame.getScreenScale(), 30);
+		
+		//Health Bar
+		drawHealthBars();
+	}
+	
+	private void drawHealthBars() {
 		for(int index = 0; index < Entity.getMobSize(); index++) {
 			Mob mob = Entity.getIndexedMob(index);
 			float maxHealth = mob.getHealthBar().getMaxHealth();

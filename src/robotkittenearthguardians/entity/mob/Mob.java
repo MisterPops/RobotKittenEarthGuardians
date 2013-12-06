@@ -91,4 +91,8 @@ public abstract class Mob extends Entity {
 	public HealthBar getHealthBar() {
 		return healthBar;
 	}
+	
+	public Sprite[] getSprite() {
+		return sprite;
+	}
 }

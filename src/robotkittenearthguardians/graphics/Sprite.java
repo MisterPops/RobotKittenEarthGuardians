@@ -8,11 +8,11 @@ public class Sprite {
 	private SpriteSheets sheet;
 	
 	//Player (!moving) sprites.
-	public static Sprite player = new Sprite(32, 0, 0, SpriteSheets.player);
-	public static Sprite playerAngleUpLeft = new Sprite(32, 0, 1, SpriteSheets.player);
-	public static Sprite playerLeft = new Sprite(32, 0, 2, SpriteSheets.player);
-	public static Sprite playerAngleDownLeft = new Sprite(32, 0, 3, SpriteSheets.player);
-	public static Sprite playerDown = new Sprite(32, 0, 4, SpriteSheets.player);
+	public static Sprite[] player = {new Sprite(32, 0, 0, SpriteSheets.player)};
+	public static Sprite[] playerAngleUpLeft = {new Sprite(32, 0, 1, SpriteSheets.player)};
+	public static Sprite[] playerLeft = {new Sprite(32, 0, 2, SpriteSheets.player)};
+	public static Sprite[] playerAngleDownLeft = {new Sprite(32, 0, 3, SpriteSheets.player)};
+	public static Sprite[] playerDown = {new Sprite(32, 0, 4, SpriteSheets.player)};
 	
 	//Enemies
 	//Basic Enemy WaterBalloon enemy.

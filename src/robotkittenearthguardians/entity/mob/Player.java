@@ -30,6 +30,7 @@ public class Player extends Mob {
 		health = 100.0f;
 		this.x = x;
 		this.y = y;
+		sprite = Sprite.player;
 		somePosition.setXVector(x);
 		somePosition.setYVector(y);
 		size.setXVector(14);
@@ -122,21 +123,21 @@ public class Player extends Mob {
 	 */
 	public void render(Screen screen) {
 		if(Mouse.mouseRadToDeg() < -70 && Mouse.mouseRadToDeg() >  -130) {
-			screen.renderPlayer(x, y, falseFall, Sprite.player, false);
+			screen.renderPlayer(x, y, falseFall, Sprite.player[0], false);
 		} else if(Mouse.mouseRadToDeg() <= -130 && Mouse.mouseRadToDeg() >=  -160) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleUpLeft, false);
+			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleUpLeft[0], false);
 		} else if(Mouse.mouseRadToDeg() < -160 || Mouse.mouseRadToDeg() >  160) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerLeft, false);
+			screen.renderPlayer(x, y, falseFall, Sprite.playerLeft[0], false);
 		} else if(Mouse.mouseRadToDeg() <= 160 && Mouse.mouseRadToDeg() >= 110 ) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleDownLeft, false);
+			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleDownLeft[0], false);
 		} else if(Mouse.mouseRadToDeg() < 110 && Mouse.mouseRadToDeg() >  50) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerDown, false);
+			screen.renderPlayer(x, y, falseFall, Sprite.playerDown[0], false);
 		} else if(Mouse.mouseRadToDeg() < 20 && Mouse.mouseRadToDeg() >  -20) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerLeft, true);
+			screen.renderPlayer(x, y, falseFall, Sprite.playerLeft[0], true);
 		} else if(Mouse.mouseRadToDeg() <= -20 && Mouse.mouseRadToDeg() >= -70) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleUpLeft, true);
+			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleUpLeft[0], true);
 		} else if(Mouse.mouseRadToDeg() <= 70 && Mouse.mouseRadToDeg() >= 20) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleDownLeft, true);
+			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleDownLeft[0], true);
 		}
 	}
 }

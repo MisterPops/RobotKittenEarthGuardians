@@ -128,15 +128,15 @@ public class Screen {
 		xPos -= cameraXCoord;
 		yPos -= cameraYCoord;
 		yPos += falseFall;
-		for(int y = 0; y < Sprite.player.getSize(); y++) {
+		for(int y = 0; y < sprite.getSize(); y++) {
 			double yAbs = y + yPos;
-			for(int x = 0; x < Sprite.player.getSize(); x++) {
+			for(int x = 0; x < sprite.getSize(); x++) {
 				double xAbs = x + xPos;
 				int xs = x;
 				if(flip) xs = 31 - x;
-				if(xAbs < -Sprite.player.getSize() || xAbs >= width || yAbs < 0 || yAbs >= height) break;
+				if(xAbs < -sprite.getSize() || xAbs >= width || yAbs < 0 || yAbs >= height) break;
 				if(xAbs < 0) xAbs = 0;
-				int col = sprite.getSpritePixel(xs + y * Sprite.player.getSize());
+				int col = sprite.getSpritePixel(xs + y * sprite.getSize());
 				if(!(col == 0xffff00ff)) {
 					pixels[(int)xAbs + (int)yAbs * width] = col;
 				}
@@ -213,22 +213,37 @@ public class Screen {
 		drawHealthBars();
 	}
 	
+	/**
+	 * Draws the health bar for all mobs in the game 8 pixels below the mob.
+	 * Draws the bar depending on the mobs current health.
+	 */
 	private void drawHealthBars() {
+		int count = 0;
 		for(int index = 0; index < Entity.getMobSize(); index++) {
 			Mob mob = Entity.getIndexedMob(index);
-			float maxHealth = mob.getHealthBar().getMaxHealth();
-			float realHealth = mob.getHealthBar().getRealHealth();
-			
-			if(realHealth < maxHealth) {
-				//Red underlying health bar
-				g2.setColor(Color.RED);
-				g2.fillRect(mob.getXCoord() - (int) Camera.getCameraXCoord(), mob.getYCoord() - (int) Camera.getCameraYCoord() + 40, 32, 3);
-				//Health Left
-				g2.setColor(Color.GREEN);
-				g2.fillRect(mob.getXCoord() - (int) Camera.getCameraXCoord(), mob.getYCoord() - (int) Camera.getCameraYCoord() + 40,
-						(int) (32 * (realHealth / maxHealth)), 3);
+			int mobSize = mob.getSprite()[0].getSize();
+			int xAbs = (int) (mob.getXCoord() - Camera.getCameraXCoord());
+			int yAbs = (int) (mob.getYCoord() - Camera.getCameraYCoord());
+			//Checks if mob is on screen before wasting resources rendering
+			if(xAbs < width && yAbs < height && (xAbs + mobSize + 5) > 0 && (yAbs + mobSize + 10) > 0) {
+				count++;
+				float maxHealth = mob.getHealthBar().getMaxHealth();
+				float realHealth = mob.getHealthBar().getRealHealth();
+
+				if(realHealth < maxHealth) {
+					//Red underlying health bar
+					g2.setColor(Color.RED);
+					g2.fillRect(mob.getXCoord() - (int) Camera.getCameraXCoord(),
+							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobSize + 8), 32, 3);
+					//Health Left
+					g2.setColor(Color.GREEN);
+					g2.fillRect(mob.getXCoord() - (int) Camera.getCameraXCoord(),
+							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobSize + 8),
+							(int) (32 * (realHealth / maxHealth)), 3);
+				}
 			}
 		}
+		System.out.println(count);
 	}
 
 	/**

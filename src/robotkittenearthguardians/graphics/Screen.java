@@ -218,7 +218,6 @@ public class Screen {
 	 * Draws the bar depending on the mobs current health.
 	 */
 	private void drawHealthBars() {
-		int count = 0;
 		for(int index = 0; index < Entity.getMobSize(); index++) {
 			Mob mob = Entity.getIndexedMob(index);
 			int mobSize = mob.getSprite()[0].getSize();
@@ -226,7 +225,6 @@ public class Screen {
 			int yAbs = (int) (mob.getYCoord() - Camera.getCameraYCoord());
 			//Checks if mob is on screen before wasting resources rendering
 			if(xAbs < width && yAbs < height && (xAbs + mobSize + 5) > 0 && (yAbs + mobSize + 10) > 0) {
-				count++;
 				float maxHealth = mob.getHealthBar().getMaxHealth();
 				float realHealth = mob.getHealthBar().getRealHealth();
 
@@ -243,7 +241,6 @@ public class Screen {
 				}
 			}
 		}
-		System.out.println(count);
 	}
 
 	/**

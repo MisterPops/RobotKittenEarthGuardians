@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 
 import robotkittenearthguardians.MainGame;
 import robotkittenearthguardians.entity.Entity;
-import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.particles.Particle;
@@ -200,13 +199,13 @@ public class Screen {
 	public void gui(Player player) {
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("Verdana", 0, 20));
-		/*g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 30);
+		g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 30);
 		g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
 		g2.drawString("Mouse Angle: " + Mouse.mouseRadToDeg(), 30, 80);
 		g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
 		g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
 		g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
-		g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);*/
+		g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
 		g2.drawString("Score: " + GameMaster.getScore(), (MainGame.getScreenWidth() - 150) * 
 				MainGame.getScreenScale(), 30);
 		

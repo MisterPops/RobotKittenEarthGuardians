@@ -19,6 +19,7 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	//If the mob sees the player.
 	protected boolean seePlayer = false;
+	protected boolean damaged = false;
 	protected HealthBar healthBar;
 	
 	/**
@@ -59,6 +60,7 @@ public abstract class Mob extends Entity {
 		health -= 0.5f;
 		onStage = false;
 		falseFall += 3.5f;
+		damaged = true;
 	}
 	
 	/**
@@ -82,6 +84,7 @@ public abstract class Mob extends Entity {
 	 * @param damage the amount of health you want to remove from the mob
 	 */
 	public void hurt(float damage) {
+		damaged = true;
 		health -= damage;
 	}
 	

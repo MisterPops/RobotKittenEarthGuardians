@@ -93,8 +93,9 @@ public class Player extends Mob {
 			remove();
 		}
 		
-		health += health < 100 ? 0.1 : 0;
+		health += health < 100 && !damaged ? 0.1 : 0;
 		healthBar.update(health);
+		damaged = false;
 		
 		//Sends player coords for AI to use
 		Ai.setPlayerX(this.x);

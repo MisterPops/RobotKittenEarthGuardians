@@ -199,9 +199,9 @@ public class Screen {
 	public void gui(Player player) {
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("Verdana", 0, 20));
-		g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 30);
+		g2.drawString(""+ GameMaster.getLevelName(), 30, 30);
 		g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
-		g2.drawString("Mouse Angle: " + Mouse.mouseRadToDeg(), 30, 80);
+		g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 80);
 		g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
 		g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
 		g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
@@ -218,13 +218,19 @@ public class Screen {
 	 * Draws the bar depending on the mobs current health.
 	 */
 	private void drawHealthBars() {
+		//offsets healthbar # pixels below the mob
+		int healthBarOffset = 5;
+		//healthbar size
+		int healthBarSize = 32;
 		for(int index = 0; index < Entity.getMobSize(); index++) {
 			Mob mob = Entity.getIndexedMob(index);
 			int mobSize = mob.getSprite()[0].getSize();
 			int xAbs = (int) (mob.getXCoord() - Camera.getCameraXCoord());
 			int yAbs = (int) (mob.getYCoord() - Camera.getCameraYCoord());
 			//Checks if mob is on screen before wasting resources rendering
-			if(xAbs < width && yAbs < height && (xAbs + mobSize + 5) > 0 && (yAbs + mobSize + 10) > 0) {
+			if(xAbs < width && yAbs < height && (xAbs + mobSize + healthBarOffset) > 0 
+					&& (yAbs + mobSize + (healthBarOffset * 2)) > 0) {
+				
 				float maxHealth = mob.getHealthBar().getMaxHealth();
 				float realHealth = mob.getHealthBar().getRealHealth();
 
@@ -232,12 +238,12 @@ public class Screen {
 					//Red underlying health bar
 					g2.setColor(Color.RED);
 					g2.fillRect(mob.getXCoord() - (int) Camera.getCameraXCoord(),
-							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobSize + 8), 32, 3);
+							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobSize + healthBarOffset), healthBarSize, 3);
 					//Health Left
 					g2.setColor(Color.GREEN);
 					g2.fillRect(mob.getXCoord() - (int) Camera.getCameraXCoord(),
-							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobSize + 8),
-							(int) (32 * (realHealth / maxHealth)), 3);
+							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobSize + healthBarOffset),
+							(int) (healthBarSize * (realHealth / maxHealth)), 3);
 				}
 			}
 		}

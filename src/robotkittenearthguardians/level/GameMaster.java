@@ -90,6 +90,9 @@ public class GameMaster {
 			GameMaster.levelName = "Level 2";
 			currentLevel.add(new LevelBuilder(0, 200, -2));
 			break;
+		case 3:
+			GameMaster.levelName = "Level 3";
+			currentLevel.add(new LevelBuilder(0, 5, -2));
 		}
 	}
 }

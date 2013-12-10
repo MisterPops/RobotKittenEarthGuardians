@@ -15,10 +15,10 @@ public class Camera {
 
 	public void render(Screen screen, Player player) {
 		if(player.getXCoord() >= (width / 2) && player.getXCoord() <= SpriteSheets.mainStage.getXSheetSize() - (width / 2)) {
-			cameraXCoord = player.getXCoord() - width / 2;
+			cameraXCoord = player.getXCoord() - (float) width / 2;
 		}
 		if(player.getYCoord() >= (height / 2) && player.getYCoord() <= SpriteSheets.mainStage.getYSheetSize() - (height / 2)) {
-			cameraYCoord = player.getYCoord() - height / 2;
+			cameraYCoord = player.getYCoord() - (float) height / 2;
 		}
 		screen.setCameraCoords((int) cameraXCoord, (int) cameraYCoord);
 		

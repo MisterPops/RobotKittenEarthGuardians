@@ -80,11 +80,7 @@ public abstract class Ai extends Mob{
 	 * @return boolean: true, if mob can see player else false
 	 */
 	public boolean seePlayer(int sightRange) {
-		if(getDistance(mobPos) < sightRange) {
-			return true;
-		} else {
-			return false;
-		}
+		return getDistance(mobPos) < sightRange;
 	}
 	
 	public void onCollide(Entity entity) {

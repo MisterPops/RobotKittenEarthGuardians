@@ -169,12 +169,7 @@ public abstract class Entity {
 	 * @return true if collides, false otherwise
 	 */
 	public boolean hit(Mob mob) {
-		if(CollisionLibrary.testAABBAABB(boundBox, mob.getAABB())) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return CollisionLibrary.testAABBAABB(boundBox, mob.getAABB());
 	}
 	
 	public Vector2F getSizeVector() {

@@ -1,6 +1,6 @@
 package robotkittenearthguardians.level;
 
-public class LevelBuilder extends GameMaster{
+public class LevelBuilder{
 	protected int mob2Spawn;
 	protected int numOfMobs;
 	protected int timer;

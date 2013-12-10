@@ -33,6 +33,12 @@ public abstract class Mob extends Entity {
 		y += ya;
 	}
 	
+	public void update() {
+	}
+	
+	public void render() {
+	}
+	
 	/**
 	 * Creates a new projectile object with the x/y, dir, and mouse x/y and adds it to
 	 * the projectile arrayList
@@ -45,12 +51,6 @@ public abstract class Mob extends Entity {
 	public void shoot(int x, int y, double dir, double mouseX, double mouseY) {
 		Projectiles mainShot = new MainBullet(x, y, dir, mouseX, mouseY);
 		projectiles.add(mainShot);
-	}
-	
-	public void update() {
-	}
-	
-	public void render() {
 	}
 	
 	/**

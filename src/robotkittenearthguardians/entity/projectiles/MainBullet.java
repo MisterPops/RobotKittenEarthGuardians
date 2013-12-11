@@ -9,6 +9,7 @@ import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.input.Mouse;
 import robotkittenearthguardians.level.Level;
 
+
 public class MainBullet extends Projectiles{
 	
 	public static final int FIRE_RATE = 13;

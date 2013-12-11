@@ -1,6 +1,5 @@
 package robotkittenearthguardians.entity;
 
-
 public class CollisionLibrary {
 	
 	public static boolean testAABBAABB(final AABB box1, final AABB box2) {

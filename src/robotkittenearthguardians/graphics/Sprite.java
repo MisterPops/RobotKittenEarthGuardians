@@ -1,8 +1,10 @@
 package robotkittenearthguardians.graphics;
 
+import robotkittenearthguardians.util.Vector2I;
+
 public class Sprite {
 
-	private final int SIZE_X, SIZE_Y;
+	private final Vector2I spriteSize;
 	private int x, y;
 	private int[] pixels;
 	private SpriteSheets sheet;
@@ -40,11 +42,10 @@ public class Sprite {
 	 * @param sheet The sheet the sprite is stored in.
 	 */
 	public Sprite(int sizeX, int sizeY, int x, int y, SpriteSheets sheet) {
-		SIZE_X = sizeX;
-		SIZE_Y = sizeY;
-		pixels = new int[SIZE_X * SIZE_Y];
-		this.x = x * sizeX;
-		this.y = y * sizeY;
+		spriteSize = new Vector2I(sizeX, sizeY);
+		pixels = new int[spriteSize.getXVector() * spriteSize.getYVector()];
+		this.x = x * spriteSize.getXVector();
+		this.y = y * spriteSize.getYVector();
 		this.sheet = sheet;
 		load();
 	}
@@ -54,9 +55,9 @@ public class Sprite {
 	 */
 	private void load() {
 		int[] SpriteSheetArray = sheet.getPixels();
-		for(int y = 0; y < SIZE_Y; y++) {
-			for(int x = 0; x < SIZE_X; x++) {
-				pixels[x + y * SIZE_X] = SpriteSheetArray[(x + this.x) + (y + this.y) * sheet.getXSheetSize()];
+		for(int y = 0; y < spriteSize.getYVector(); y++) {
+			for(int x = 0; x < spriteSize.getXVector(); x++) {
+				pixels[x + y * spriteSize.getXVector()] = SpriteSheetArray[(x + this.x) + (y + this.y) * sheet.getXSheetSize()];
 			}
 		}
 	}
@@ -75,7 +76,7 @@ public class Sprite {
 	 * @return returns the size of the Sprite.
 	 */
 	public int getSizeX() {
-		return SIZE_X;
+		return spriteSize.getXVector();
 	}
 	
 	/**
@@ -83,6 +84,6 @@ public class Sprite {
 	 * @return returns the size of the Sprite.
 	 */
 	public int getSizeY() {
-		return SIZE_Y;
+		return spriteSize.getYVector();
 	}
 }

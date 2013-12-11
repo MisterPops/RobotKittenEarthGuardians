@@ -1,4 +1,4 @@
-package robotkittenearthguardians.entity;
+package robotkittenearthguardians.util;
 
 public class Vector2F {
 	

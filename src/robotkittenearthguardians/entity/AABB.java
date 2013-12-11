@@ -1,6 +1,6 @@
 package robotkittenearthguardians.entity;
 
-
+import robotkittenearthguardians.util.Vector2F;
 
 public class AABB extends Entity{
 

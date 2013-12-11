@@ -9,6 +9,7 @@ import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.Screen;
+import robotkittenearthguardians.util.Vector2F;
 
 public abstract class Entity {
 

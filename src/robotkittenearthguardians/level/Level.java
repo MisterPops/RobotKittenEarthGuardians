@@ -1,9 +1,9 @@
 package robotkittenearthguardians.level;
 
 import robotkittenearthguardians.entity.Entity;
-import robotkittenearthguardians.entity.Vector2F;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.SpriteSheets;
+import robotkittenearthguardians.util.Vector2F;
 
 public class Level {
 	

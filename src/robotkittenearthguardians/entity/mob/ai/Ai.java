@@ -2,8 +2,8 @@
 package robotkittenearthguardians.entity.mob.ai;
 
 import robotkittenearthguardians.entity.Entity;
-import robotkittenearthguardians.entity.Vector2F;
 import robotkittenearthguardians.entity.mob.Mob;
+import robotkittenearthguardians.util.Vector2F;
 
 /**
  * A utility class to guide NPC's and implement their AI.

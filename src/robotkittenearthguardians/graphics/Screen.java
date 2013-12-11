@@ -128,15 +128,15 @@ public class Screen {
 		xPos -= cameraXCoord;
 		yPos -= cameraYCoord;
 		yPos += falseFall;
-		for(int y = 0; y < sprite.getSize(); y++) {
+		for(int y = 0; y < sprite.getSizeY(); y++) {
 			double yAbs = y + yPos;
-			for(int x = 0; x < sprite.getSize(); x++) {
+			for(int x = 0; x < sprite.getSizeX(); x++) {
 				double xAbs = x + xPos;
 				int xs = x;
 				if(flip) xs = 31 - x;
-				if(xAbs < -sprite.getSize() || xAbs >= width || yAbs < 0 || yAbs >= height) break;
+				if(xAbs < -sprite.getSizeX() || xAbs >= width || yAbs < 0 || yAbs >= height) break;
 				if(xAbs < 0) xAbs = 0;
-				int col = sprite.getSpritePixel(xs + y * sprite.getSize());
+				int col = sprite.getSpritePixel(xs + y * sprite.getSizeX());
 				if(!(col == 0xffff00ff)) {
 					pixels[(int)xAbs + (int)yAbs * width] = col;
 				}
@@ -153,12 +153,12 @@ public class Screen {
 	public void renderProjectile(double xPos, double yPos, Projectiles p) {
 		xPos -= cameraXCoord;
 		yPos -= cameraYCoord;
-		for(int y = 0; y < p.getSprite().getSize(); y++) {
+		for(int y = 0; y < p.getSprite().getSizeY(); y++) {
 			double yAbs = y + yPos;
-			for(int x = 0; x < p.getSprite().getSize(); x++) {
+			for(int x = 0; x < p.getSprite().getSizeX(); x++) {
 				double xAbs = x + xPos;
 				if(xAbs < - 1 || xAbs > width || yAbs < 0 || yAbs > height - 1) break;
-				int col = p.getSprite().getSpritePixel(x + y * p.getSprite().getSize());
+				int col = p.getSprite().getSpritePixel(x + y * p.getSprite().getSizeX());
 				if(!(col == 0xffff00ff)) {
 					pixels[(int) xAbs + (int) yAbs * width] = col;
 				}
@@ -175,12 +175,12 @@ public class Screen {
 	public void renderParticles(double xPos, double yPos, Particle p) {
 		xPos -= cameraXCoord;
 		yPos -= cameraYCoord;
-		for(int y = 0; y < p.getSprite().getSize(); y++) {
+		for(int y = 0; y < p.getSprite().getSizeY(); y++) {
 			double yAbs = y + yPos;
-			for(int x = 0; x < p.getSprite().getSize(); x++) {
+			for(int x = 0; x < p.getSprite().getSizeX(); x++) {
 				double xAbs = x + xPos;
 				if(xAbs < -5 || xAbs > width || yAbs < 0 || yAbs > height) break;
-				int col = p.getSprite().getSpritePixel(x + y * p.getSprite().getSize());
+				int col = p.getSprite().getSpritePixel(x + y * p.getSprite().getSizeX());
 				if(!(col == 0xffff00ff)) {
 					pixels[(int) xAbs + (int) yAbs * width] = col;
 				}
@@ -224,12 +224,13 @@ public class Screen {
 		int healthBarSize = 32;
 		for(int index = 0; index < Entity.getMobSize(); index++) {
 			Mob mob = Entity.getIndexedMob(index);
-			int mobSize = mob.getSprite()[0].getSize();
+			int mobXSize = mob.getSprite()[0].getSizeX();
+			int mobYSize = mob.getSprite()[0].getSizeY();
 			int xAbs = (int) (mob.getXCoord() - Camera.getCameraXCoord());
 			int yAbs = (int) (mob.getYCoord() - Camera.getCameraYCoord());
 			//Checks if mob is on screen before wasting resources rendering
-			if(xAbs < width && yAbs < height && (xAbs + mobSize + healthBarOffset) > 0 
-					&& (yAbs + mobSize + (healthBarOffset * 2)) > 0) {
+			if(xAbs < width && yAbs < height && (xAbs + mobXSize + healthBarOffset) > 0 
+					&& (yAbs + mobYSize + (healthBarOffset * 2)) > 0) {
 				
 				float maxHealth = mob.getHealthBar().getMaxHealth();
 				float realHealth = mob.getHealthBar().getRealHealth();
@@ -238,11 +239,11 @@ public class Screen {
 					//Red underlying health bar
 					g2.setColor(Color.RED);
 					g2.fillRect(mob.getXCoord() - (int) Camera.getCameraXCoord(),
-							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobSize + healthBarOffset), healthBarSize, 3);
+							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobYSize + healthBarOffset), healthBarSize, 3);
 					//Health Left
 					g2.setColor(Color.GREEN);
 					g2.fillRect(mob.getXCoord() - (int) Camera.getCameraXCoord(),
-							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobSize + healthBarOffset),
+							mob.getYCoord() - (int) Camera.getCameraYCoord() + (mobYSize + healthBarOffset),
 							(int) (healthBarSize * (realHealth / maxHealth)), 3);
 				}
 			}

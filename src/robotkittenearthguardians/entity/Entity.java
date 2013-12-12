@@ -22,7 +22,7 @@ public abstract class Entity {
 	//Entities score when destroyed/picked up
 	protected int points;
 	//If the entity is set to be removed
-	private boolean removed = false;
+	protected boolean removed = false;
 	//If the move is on the stage or not
 	protected boolean onStage = true;
 	//Vector for entity's size

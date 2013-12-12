@@ -1,14 +1,12 @@
 package robotkittenearthguardians.entity.particles;
 
 import robotkittenearthguardians.entity.Entity;
-import robotkittenearthguardians.graphics.Sprite;
 
 public abstract class Particle extends Entity{
 	
-	protected double xOrigin, yOrigin;
-	protected Sprite sprite;
+	protected int xOrigin, yOrigin;
 	
-	public Particle(double x, double y) {
+	public Particle(int x, int y) {
 		xOrigin = x;
 		yOrigin = y;
 	}
@@ -17,9 +15,5 @@ public abstract class Particle extends Entity{
 	}
 	
 	public void render() {
-	}
-	
-	public Sprite getSprite() {
-		return sprite;
 	}
 }

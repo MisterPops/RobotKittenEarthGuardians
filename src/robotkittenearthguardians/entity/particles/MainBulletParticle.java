@@ -1,32 +1,26 @@
 package robotkittenearthguardians.entity.particles;
 
+import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 
 public class MainBulletParticle extends Particle{
 	
-	public MainBulletParticle(double x, double y) {
+	public MainBulletParticle(int x, int y) {
 		super(x, y);
-		sprite = Sprite.bulletImpact[0];
+		sprite = Sprite.bulletImpact;
+		animation = new AnimateMachine(sprite, x, y);
 	}
 
 	public void update() {
-		animate();
 	}
 	
 	public void render(Screen screen) {
-		screen.renderParticles(xOrigin, yOrigin, this);
-	}
-	
-	private void animate() {
-		if(frame > Sprite.bulletImpact.length - 1) { 
-			remove();
-		} else {
-			sprite = Sprite.bulletImpact[frame];
-			frameLife++;
-			if(frameLife > 4) {
-				frame++;
-				frameLife = 0;
+		//Checks if it's removed was re-looping the animation
+		//before it was fully removed
+		if(!removed) {
+			if(!animation.animateParticle(screen)) {
+				remove();
 			}
 		}
 	}

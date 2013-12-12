@@ -42,6 +42,15 @@ public class AnimateMachine extends Entity{
 		animateIndex();
 	}
 	
+	public boolean animateParticle(Screen screen) {
+		if(animateIndex()) {
+			screen.renderParticles(x, y, sprite[animateIndex]);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	/**
 	 * Progresses the animation index of the mob.
 	 * Returns false at the end of the animation loop.

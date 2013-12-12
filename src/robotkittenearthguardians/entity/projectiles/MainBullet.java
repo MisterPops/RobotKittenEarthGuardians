@@ -85,7 +85,7 @@ public class MainBullet extends Projectiles{
 	}
 	
 	private void die() {
-		Particle mainShotParticle = new MainBulletParticle(x , y);
+		Particle mainShotParticle = new MainBulletParticle((int)x , (int)y);
 		particles.add(mainShotParticle);
 		remove();
 	}

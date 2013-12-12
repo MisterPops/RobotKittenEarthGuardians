@@ -10,7 +10,6 @@ import robotkittenearthguardians.MainGame;
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
-import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.input.Mouse;
 import robotkittenearthguardians.level.GameMaster;
@@ -172,17 +171,17 @@ public class Screen {
 	 * @param yPos particle's y-coord
 	 * @param p the particle to be rendered
 	 */
-	public void renderParticles(double xPos, double yPos, Particle p) {
+	public void renderParticles(int xPos, int yPos, Sprite p) {
 		xPos -= cameraXCoord;
 		yPos -= cameraYCoord;
-		for(int y = 0; y < p.getSprite().getSizeY(); y++) {
-			double yAbs = y + yPos;
-			for(int x = 0; x < p.getSprite().getSizeX(); x++) {
-				double xAbs = x + xPos;
+		for(int y = 0; y < p.getSizeY(); y++) {
+			int yAbs = y + yPos;
+			for(int x = 0; x < p.getSizeX(); x++) {
+				int xAbs = x + xPos;
 				if(xAbs < -5 || xAbs > width || yAbs < 0 || yAbs > height) break;
-				int col = p.getSprite().getSpritePixel(x + y * p.getSprite().getSizeX());
+				int col = p.getSpritePixel(x + y * p.getSizeX());
 				if(!(col == 0xffff00ff)) {
-					pixels[(int) xAbs + (int) yAbs * width] = col;
+					pixels[xAbs + yAbs * width] = col;
 				}
 			}
 		}

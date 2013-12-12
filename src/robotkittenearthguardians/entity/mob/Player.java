@@ -4,11 +4,11 @@ import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.Ai;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
+import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.input.Keyboard;
 import robotkittenearthguardians.input.Mouse;
-import robotkittenearthguardians.level.Level;
 
 public class Player extends Mob {
 	
@@ -36,10 +36,12 @@ public class Player extends Mob {
 		size.setXVector(14);
 		size.setYVector(14);
 		this.input = input;
+		sprite = Sprite.player;
 		shootSpeed = MainBullet.FIRE_RATE;
 		mobs.add(this);
 		boundBox = new AABB(somePosition, size);
 		healthBar = new HealthBar(health);
+		animation = new AnimateMachine(sprite, x, y);
 	}
 	
 	public void update() {
@@ -48,6 +50,7 @@ public class Player extends Mob {
 		somePosition.setXVector(this.x);
 		somePosition.setYVector(this.y);
 		boundBox.update(somePosition);
+		updatePlayerDirection();
 		
 		//Moving
 		int xa = 0, ya = 0;
@@ -80,20 +83,15 @@ public class Player extends Mob {
 			move(xa, ya);
 		}
 		
-		//Whether the player is on the stage or not
-		if(!(Level.isOnStage(somePosition))) {
-			falling();
-		} else {
-			onStage = true;
-			falseFall = 0;
-			updateShooting();
-		}
+		animation.update(x, y, direction);
+		stageUpdates();
 		
 		//If health is 0 remove player
 		if(health < 0f) {
 			remove();
 		}
 		
+		//health bar tasks
 		health += health < 100 && !damaged ? 0.1 : 0;
 		healthBar.update(health);
 		damaged = false;
@@ -102,8 +100,20 @@ public class Player extends Mob {
 		Ai.setPlayerX(this.x);
 		Ai.setPlayerY(this.y);
 	}
+
+	/**
+	 * Sends sprite, x-coord, and y-coord to Screen.renderPlayer method
+	 * to be rendered.
+	 * ** Probably make a seperate class for animations...maybe **
+	 */
+	public void render(Screen screen) {
+		animation.animateMob(screen, falseFall);
+	}
 	
-	private void updateShooting() {
+	/**
+	 * Allows player to shoot weapon at specific intervals according to shootSpeed.
+	 */
+	protected void updateShooting() {
 		double dir = Mouse.mouseRadAngle();
 		double mouseX = Mouse.getMouseX();
 		double mouseY = Mouse.getMouseY();
@@ -115,29 +125,27 @@ public class Player extends Mob {
 			deltaShootTime = 0;
 		}
 	}
-
+	
 	/**
-	 * Sends sprite, x-coord, and y-coord to Screen.renderPlayer method
-	 * to be rendered.
-	 * ** Probably make a seperate class for animations...maybe **
+	 * Updates the direction that the player is currently facing using mouse coords.
 	 */
-	public void render(Screen screen) {
+	private void updatePlayerDirection() {
 		if(Mouse.mouseRadToDeg() < -70 && Mouse.mouseRadToDeg() >  -130) {
-			screen.renderPlayer(x, y, falseFall, Sprite.player[0], false);
+			direction = 0;
 		} else if(Mouse.mouseRadToDeg() <= -130 && Mouse.mouseRadToDeg() >=  -160) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleUpLeft[0], false);
+			direction = 1;
 		} else if(Mouse.mouseRadToDeg() < -160 || Mouse.mouseRadToDeg() >  160) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerLeft[0], false);
+			direction = 2;
 		} else if(Mouse.mouseRadToDeg() <= 160 && Mouse.mouseRadToDeg() >= 110 ) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleDownLeft[0], false);
+			direction = 3;
 		} else if(Mouse.mouseRadToDeg() < 110 && Mouse.mouseRadToDeg() >  50) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerDown[0], false);
+			direction = 4;
 		} else if(Mouse.mouseRadToDeg() < 20 && Mouse.mouseRadToDeg() >  -20) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerLeft[0], true);
+			direction = 6;
 		} else if(Mouse.mouseRadToDeg() <= -20 && Mouse.mouseRadToDeg() >= -70) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleUpLeft[0], true);
+			direction = 7;
 		} else if(Mouse.mouseRadToDeg() <= 70 && Mouse.mouseRadToDeg() >= 20) {
-			screen.renderPlayer(x, y, falseFall, Sprite.playerAngleDownLeft[0], true);
+			direction = 5;
 		}
 	}
 }

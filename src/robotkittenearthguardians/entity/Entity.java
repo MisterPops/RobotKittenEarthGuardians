@@ -8,13 +8,17 @@ import java.util.Random;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
+import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
+import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.util.Vector2F;
 
 public abstract class Entity {
 
 	protected int x;	//Location of an entity
 	protected int y;
+	//sprite array
+	protected Sprite[] sprite;
 	//Entities score when destroyed/picked up
 	protected int points;
 	//If the entity is set to be removed
@@ -35,6 +39,10 @@ public abstract class Entity {
 	protected float damage;
 	//Vector to hold mobs movement speed
 	protected Vector2F movement = new Vector2F();
+	//Direction: 0 up, 1 angleUpRight, 2 left, 3 angleDownLeft, 4 down, ect.
+	protected int direction = 0;
+	//object in charge of animation.
+	protected AnimateMachine animation;
 	
 	protected final Random random = new Random();
 	

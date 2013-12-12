@@ -10,11 +10,16 @@ public class Sprite {
 	private SpriteSheets sheet;
 	
 	//Player (!moving) sprites.
-	public static Sprite[] player = {new Sprite(32, 32, 0, 0, SpriteSheets.player)};
-	public static Sprite[] playerAngleUpLeft = {new Sprite(32, 32, 0, 1, SpriteSheets.player)};
-	public static Sprite[] playerLeft = {new Sprite(32, 32, 0, 2, SpriteSheets.player)};
-	public static Sprite[] playerAngleDownLeft = {new Sprite(32, 32, 0, 3, SpriteSheets.player)};
-	public static Sprite[] playerDown = {new Sprite(32, 32, 0, 4, SpriteSheets.player)};
+	public static Sprite[] player = {new Sprite(32, 32, 0, 0, SpriteSheets.player), new Sprite(32, 32, 1, 0, SpriteSheets.player),
+		new Sprite(32, 32, 2, 0, SpriteSheets.player), new Sprite(32, 32, 3, 0, SpriteSheets.player),
+		new Sprite(32, 32, 0, 1, SpriteSheets.player), new Sprite(32, 32, 1, 1, SpriteSheets.player),
+		new Sprite(32, 32, 2, 1, SpriteSheets.player), new Sprite(32, 32, 3, 1, SpriteSheets.player),
+		new Sprite(32, 32, 0, 2, SpriteSheets.player), new Sprite(32, 32, 1, 2, SpriteSheets.player),
+		new Sprite(32, 32, 2, 2, SpriteSheets.player), new Sprite(32, 32, 3, 2, SpriteSheets.player),
+		new Sprite(32, 32, 0, 3, SpriteSheets.player), new Sprite(32, 32, 1, 3, SpriteSheets.player),
+		new Sprite(32, 32, 2, 3, SpriteSheets.player), new Sprite(32, 32, 3, 3, SpriteSheets.player),
+		new Sprite(32, 32, 0, 4, SpriteSheets.player), new Sprite(32, 32, 1, 4, SpriteSheets.player),
+		new Sprite(32, 32, 2, 4, SpriteSheets.player), new Sprite(32, 32, 3, 4, SpriteSheets.player)};
 	
 	//Enemies
 	//Basic Enemy WaterBalloon enemy.
@@ -85,5 +90,16 @@ public class Sprite {
 	 */
 	public int getSizeY() {
 		return spriteSize.getYVector();
+	}
+	
+	public static int getAnimationLoopSize(Sprite[] sprite) {
+		int loopSize = 0;
+		
+		for(int index = 0; index < sprite.length; index++) {
+			if(sprite[index].y == 0) {
+				loopSize++;
+			}
+		}
+		return loopSize;
 	}
 }

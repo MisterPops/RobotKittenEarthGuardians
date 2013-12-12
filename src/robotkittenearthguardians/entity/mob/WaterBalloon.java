@@ -6,7 +6,6 @@ import robotkittenearthguardians.entity.mob.ai.WaterBalloonAi;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.GameMaster;
-import robotkittenearthguardians.level.Level;
 
 public class WaterBalloon extends Mob{
 
@@ -59,14 +58,7 @@ public class WaterBalloon extends Mob{
 			}
 		}
 		
-		//If off stage mob will fall and lose health
-		if(!(Level.isOnStage(somePosition))) {
-			falling();
-		} else {
-			onStage = true;
-			falseFall = 0;
-		}
-		
+		stageUpdates();
 		healthBar.update(health);
 		
 		//If health is 0 remove mob.

@@ -5,11 +5,10 @@ import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.Sprite;
+import robotkittenearthguardians.level.Level;
 
 public abstract class Mob extends Entity {
 	
-	//Mobs sprite array
-	Sprite[] sprite;
 	//Mobs health
 	protected float health;
 	protected float falseFall;
@@ -19,7 +18,9 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	//If the mob sees the player.
 	protected boolean seePlayer = false;
+	//If mob is taking damage
 	protected boolean damaged = false;
+	//Mob's healthbar object
 	protected HealthBar healthBar;
 	
 	/**
@@ -51,6 +52,20 @@ public abstract class Mob extends Entity {
 	public void shoot(int x, int y, double dir, double mouseX, double mouseY) {
 		Projectiles mainShot = new MainBullet(x, y, dir, mouseX, mouseY);
 		projectiles.add(mainShot);
+	}
+	
+	/**
+	 * Checks if mob is on stage.
+	 */
+	public void stageUpdates() {
+		//Whether the player is on the stage or not
+		if(!(Level.isOnStage(somePosition))) {
+			falling();
+		} else {
+			onStage = true;
+			falseFall = 0;
+			updateShooting();
+		}
 	}
 	
 	/**
@@ -88,11 +103,22 @@ public abstract class Mob extends Entity {
 		health -= damage;
 	}
 	
+	/**
+	 * Returns the mobs healthbar
+	 * @return HealthBar object
+	 */
 	public HealthBar getHealthBar() {
 		return healthBar;
 	}
 	
 	public Sprite[] getSprite() {
 		return sprite;
+	}
+	
+	/**
+	 * Controls mob's shooting and when the mob can shoot.
+	 */
+	protected void updateShooting() {
+		
 	}
 }

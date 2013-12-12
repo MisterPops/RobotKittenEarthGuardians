@@ -10,7 +10,6 @@ import robotkittenearthguardians.MainGame;
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
-import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.input.Mouse;
 import robotkittenearthguardians.level.GameMaster;
 
@@ -149,15 +148,15 @@ public class Screen {
 	 * @param yPos Projectile y-coord
 	 * @param p the projectile to be rendered
 	 */
-	public void renderProjectile(double xPos, double yPos, Projectiles p) {
+	public void renderProjectile(double xPos, double yPos, Sprite p) {
 		xPos -= cameraXCoord;
 		yPos -= cameraYCoord;
-		for(int y = 0; y < p.getSprite().getSizeY(); y++) {
+		for(int y = 0; y < p.getSizeY(); y++) {
 			double yAbs = y + yPos;
-			for(int x = 0; x < p.getSprite().getSizeX(); x++) {
+			for(int x = 0; x < p.getSizeX(); x++) {
 				double xAbs = x + xPos;
 				if(xAbs < - 1 || xAbs > width || yAbs < 0 || yAbs > height - 1) break;
-				int col = p.getSprite().getSpritePixel(x + y * p.getSprite().getSizeX());
+				int col = p.getSpritePixel(x + y * p.getSizeX());
 				if(!(col == 0xffff00ff)) {
 					pixels[(int) xAbs + (int) yAbs * width] = col;
 				}

@@ -31,7 +31,7 @@ public class Sprite {
 	
 	//Projectiles
 	//mainBullet
-	public static Sprite mainBullet = new Sprite(16, 16, 0 , 0, SpriteSheets.mainBullet);
+	public static Sprite[] mainBullet = {new Sprite(16, 16, 0 , 0, SpriteSheets.mainBullet)};
 	//mainBullet impact
 	public static Sprite[] bulletImpact = {new Sprite(16, 16, 0 , 0, SpriteSheets.bulletImpact),
 		new Sprite(16, 16, 1 , 0, SpriteSheets.bulletImpact), new Sprite(16, 16, 2 , 0, SpriteSheets.bulletImpact),

@@ -4,6 +4,7 @@ import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.particles.MainBulletParticle;
 import robotkittenearthguardians.entity.particles.Particle;
+import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.input.Mouse;
@@ -25,6 +26,7 @@ public class MainBullet extends Projectiles{
 		size.setXVector(5);
 		size.setYVector(5);
 		boundBox = new AABB(somePosition, size);
+		animation = new AnimateMachine(sprite, x, y);
 	}
 	
 	/**
@@ -46,6 +48,8 @@ public class MainBullet extends Projectiles{
 				die();
 			}
 		}
+		
+		animation.update((int) x, (int) y, direction);
 	}
 	
 	/**
@@ -53,7 +57,7 @@ public class MainBullet extends Projectiles{
 	 * and its sprite to the screen
 	 */
 	public void render(Screen screen) {
-		screen.renderProjectile(x, y, this);
+		animation.animateProjectile(screen);
 	}
 	
 	/**

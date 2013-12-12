@@ -1,12 +1,10 @@
 package robotkittenearthguardians.entity.projectiles;
 
 import robotkittenearthguardians.entity.Entity;
-import robotkittenearthguardians.graphics.Sprite;
 
 public abstract class Projectiles extends Entity{
 	
 	protected double angle;
-	protected Sprite sprite;
 	protected double xOrgin, yOrgin;
 	protected double x, y;
 	protected double vectorX, vectorY;
@@ -29,14 +27,6 @@ public abstract class Projectiles extends Entity{
 	}
 	
 	protected void move() {
-	}
-	
-	/**
-	 * Gets the sprite for a projectile objecty
-	 * @return projectile objects sprite
-	 */
-	public Sprite getSprite() {
-		return sprite;
 	}
 	
 	/**

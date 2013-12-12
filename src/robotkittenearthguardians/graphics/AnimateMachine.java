@@ -42,6 +42,20 @@ public class AnimateMachine extends Entity{
 		animateIndex();
 	}
 	
+	/**
+	 * Animates projectiles. Will add directions and sprite flipping later when projectiles
+	 * that need it are created.
+	 * @param screen screen object for rendering
+	 */
+	public void animateProjectile(Screen screen) {
+		screen.renderProjectile(x, y, sprite[loopSize * direction + animateIndex]);
+	}
+	
+	/**
+	 * Animates particles
+	 * @param screen object for rendering
+	 * @return true if particle is still animating, false if it is done.
+	 */
 	public boolean animateParticle(Screen screen) {
 		if(animateIndex()) {
 			screen.renderParticles(x, y, sprite[animateIndex]);

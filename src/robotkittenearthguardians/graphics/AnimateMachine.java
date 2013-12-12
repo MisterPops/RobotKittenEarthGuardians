@@ -8,6 +8,8 @@ public class AnimateMachine extends Entity{
 	private int animateIndex = 0;
 	//Holds the size of the animation loop
 	private int loopSize;
+	//Animation timer
+	private int frameLife;
 	
 	public AnimateMachine(Sprite[] sprite, int x, int y) {
 		this.sprite = sprite;
@@ -46,12 +48,19 @@ public class AnimateMachine extends Entity{
 	 * @return True if animation is still occurning, False if animation loop has restarted.
 	 */
 	private boolean animateIndex() {
-		if(animateIndex < loopSize - 1) {
-			animateIndex++;
-			return true;
+		if(frameLife == 5) {
+			if(animateIndex < loopSize - 1) {
+				animateIndex++;
+				frameLife = 0;
+				return true;
+			} else {
+				animateIndex = 0;
+				frameLife = 0;
+				return false;
+			}
 		} else {
-			animateIndex = 0;
-			return false;
+			frameLife++;
+			return true;
 		}
 	}
 }

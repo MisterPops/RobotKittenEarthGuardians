@@ -95,10 +95,12 @@ public class Sprite {
 	public static int getAnimationLoopSize(Sprite[] sprite) {
 		int loopSize = 0;
 		
-		for(int index = 0; index < sprite.length; index++) {
-			if(sprite[index].y == 0) {
-				loopSize++;
+		while(loopSize < sprite.length) {
+			if(sprite[loopSize].y != 0) {
+				return loopSize;
 			}
+			
+			loopSize++;
 		}
 		return loopSize;
 	}

@@ -188,6 +188,10 @@ public abstract class Entity {
 	public Vector2F getMovementVector() {
 		return movement;
 	}
+	
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
 
 	/*
 	 * <<<======== Entity Lists: MUTATORS & SETTERS ===========>>>

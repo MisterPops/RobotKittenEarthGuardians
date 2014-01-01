@@ -3,7 +3,6 @@ package robotkittenearthguardians.entity.mob.ai;
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
-import robotkittenearthguardians.entity.mob.WaterBalloon;
 
 public class WaterBalloonAi extends Ai{
 	
@@ -20,7 +19,7 @@ public class WaterBalloonAi extends Ai{
 	}
 	
 	public void onCollide(Entity mainEntity, Entity entity) {
-		if(entity instanceof WaterBalloon) {
+		if(!(entity instanceof Player)) {
 			unStack(mainEntity, entity);
 		} else if(entity instanceof Player) {
 			

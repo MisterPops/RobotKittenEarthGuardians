@@ -24,6 +24,7 @@ public abstract class Ai extends Mob{
 	public void update(Vector2F mobPosition) {
 		mobPos.setXVector(mobPosition.getXVector());
 		mobPos.setYVector(mobPosition.getYVector());
+		aiDirection();
 	}
 	
 	/**
@@ -121,5 +122,17 @@ public abstract class Ai extends Mob{
 	 */
 	public static int getPlayerY() {
 		return playerY;
+	}
+	
+	public int aiDirection() {
+		if(movement.getXVector() <= 0 && movement.getYVector() >= 0) {
+			return 1;
+		} else if(movement.getXVector() > 0 && movement.getYVector() > 0) {
+			return 7;
+		} else if(movement.getXVector() > 0 && movement.getYVector() < 0) {
+			return 8;
+		} else {
+			return 0;
+		}
 	}
 }

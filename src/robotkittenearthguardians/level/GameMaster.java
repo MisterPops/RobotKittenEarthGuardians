@@ -6,12 +6,13 @@ import java.util.Random;
 
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.WaterBalloon;
+import robotkittenearthguardians.entity.mob.WaterBottlePack;
 
 public class GameMaster {
 	
 	private static int level = 0;
 	private static long score = 0;
-	private static int levelRestPeriod = 10;
+	//private static int levelRestPeriod = 10;
 	private static String levelName;
 	
 	private static int deltaTimer = 0;
@@ -44,6 +45,10 @@ public class GameMaster {
 			switch (monsterIndex) {
 			case 0: @SuppressWarnings("unused")
 			WaterBalloon waterballoon = new WaterBalloon(500 + random.nextInt(10), 400 + random.nextInt(10));
+			break;
+			
+			case 1: @SuppressWarnings("unused")
+			WaterBottlePack waterBottlePack = new WaterBottlePack(500 + random.nextInt(10), 400 + random.nextInt(10));
 			break;
 			}
 			numOfMonsters--;
@@ -83,7 +88,7 @@ public class GameMaster {
 		switch(level) {
 		case 1: 
 			GameMaster.levelName = "Level 1";
-			currentLevel.add(new LevelBuilder(0, 5, 5)); currentLevel.add(new LevelBuilder(0, 5, 5));
+			currentLevel.add(new LevelBuilder(1, 5, 5)); currentLevel.add(new LevelBuilder(0, 5, 5));
 			currentLevel.add(new LevelBuilder(0, 5, -2));
 			break;
 		case 2:

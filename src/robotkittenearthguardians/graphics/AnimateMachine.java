@@ -40,6 +40,7 @@ public class AnimateMachine extends Entity{
 		}
 		
 		animateIndex();
+		
 	}
 	
 	/**

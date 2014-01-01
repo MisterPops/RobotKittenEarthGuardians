@@ -131,7 +131,7 @@ public class Screen {
 			for(int x = 0; x < sprite.getSizeX(); x++) {
 				double xAbs = x + xPos;
 				int xs = x;
-				if(flip) xs = 31 - x;
+				if(flip) xs = (sprite.getSizeX() - 1) - x;
 				if(xAbs < -sprite.getSizeX() || xAbs >= width || yAbs < 0 || yAbs >= height) break;
 				if(xAbs < 0) xAbs = 0;
 				int col = sprite.getSpritePixel(xs + y * sprite.getSizeX());

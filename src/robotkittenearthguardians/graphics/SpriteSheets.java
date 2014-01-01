@@ -15,7 +15,7 @@ public class SpriteSheets {
 	//<-------------------Actors------------------->>
 	public static SpriteSheets player = new SpriteSheets("/actors/player1_1.png", 160, 160);
 	public static SpriteSheets waterBalloon = new SpriteSheets("/actors/waterballoon_enemy.png", 256, 32);
-	public static SpriteSheets waterBottlePack = new SpriteSheets("/actors/waterbottle_pack.png", 255, 99);
+	public static SpriteSheets waterBottlePack = new SpriteSheets("/actors/waterbottle_pack.png", 225, 96);
 	public static SpriteSheets waterBottleSingle = new SpriteSheets("/actors/waterbottle_single.png", 72, 64);
 	public static SpriteSheets waterGunMech = new SpriteSheets("/actors/watergun_mech.png", 204, 112);
 	//<<------------Projectiles/Particles---------->>

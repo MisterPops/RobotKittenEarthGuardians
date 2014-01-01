@@ -21,7 +21,7 @@ public class Sprite {
 		new Sprite(32, 32, 0, 4, SpriteSheets.player), new Sprite(32, 32, 1, 4, SpriteSheets.player),
 		new Sprite(32, 32, 2, 4, SpriteSheets.player), new Sprite(32, 32, 3, 4, SpriteSheets.player)};
 	
-	//Enemies
+	//<------Enemies------->
 	//Basic Enemy: WaterBalloon enemy.
 	public static Sprite[] waterBalloon = {new Sprite(32, 32, 0, 0, SpriteSheets.waterBalloon),
 		new Sprite(32, 32, 1, 0, SpriteSheets.waterBalloon), new Sprite(32, 32, 2, 0, SpriteSheets.waterBalloon),
@@ -34,6 +34,7 @@ public class Sprite {
 		new Sprite(75, 48, 1, 0, SpriteSheets.waterBottlePack), new Sprite(75, 48, 2, 0, SpriteSheets.waterBottlePack), 
 		new Sprite(75, 48, 0, 1, SpriteSheets.waterBottlePack), new Sprite(75, 48, 1, 1, SpriteSheets.waterBottlePack), 
 		new Sprite(75, 48, 2, 1, SpriteSheets.waterBottlePack)};
+
 	//Water Bottle Single
 	public static Sprite[] waterBottleSingle = {new Sprite(24, 32, 0, 0, SpriteSheets.waterBottleSingle), 
 		new Sprite(24, 32, 1, 0, SpriteSheets.waterBottleSingle), new Sprite(24, 32, 2, 0, SpriteSheets.waterBottleSingle), 
@@ -41,13 +42,13 @@ public class Sprite {
 		new Sprite(24, 32, 2, 1, SpriteSheets.waterBottleSingle)};
 	
 	//Strong Enemy: Watergun Mech
-	public static Sprite[] waterGunMech = {new Sprite(52, 56, 0, 0, SpriteSheets.waterGunMech), 
-		new Sprite(52, 56, 1, 0, SpriteSheets.waterGunMech), new Sprite(52, 56, 2, 0, SpriteSheets.waterGunMech), 
-		new Sprite(52, 56, 3, 0, SpriteSheets.waterGunMech), new Sprite(52, 56, 0, 1, SpriteSheets.waterGunMech), 
-		new Sprite(52, 56, 1, 1, SpriteSheets.waterGunMech), new Sprite(52, 56, 2, 1, SpriteSheets.waterGunMech), 
-		new Sprite(52, 56, 3, 1, SpriteSheets.waterGunMech)};
+	public static Sprite[] waterGunMech = {new Sprite(51, 56, 0, 0, SpriteSheets.waterGunMech), 
+		new Sprite(51, 56, 1, 0, SpriteSheets.waterGunMech), new Sprite(51, 56, 2, 0, SpriteSheets.waterGunMech), 
+		new Sprite(51, 56, 3, 0, SpriteSheets.waterGunMech), new Sprite(51, 56, 0, 1, SpriteSheets.waterGunMech), 
+		new Sprite(51, 56, 1, 1, SpriteSheets.waterGunMech), new Sprite(51, 56, 2, 1, SpriteSheets.waterGunMech), 
+		new Sprite(51, 56, 3, 1, SpriteSheets.waterGunMech)};
 	
-	//Projectiles
+	//<----Projectiles/Particles----->
 	//mainBullet
 	public static Sprite[] mainBullet = {new Sprite(16, 16, 0 , 0, SpriteSheets.mainBullet)};
 	//mainBullet impact

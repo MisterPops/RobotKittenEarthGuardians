@@ -12,11 +12,17 @@ public class SpriteSheets {
 	private final int Y_SIZE;
 	private int[] pixels;
 	
+	//<-------------------Actors------------------->>
 	public static SpriteSheets player = new SpriteSheets("/actors/player1_1.png", 160, 160);
-	public static SpriteSheets mainStage = new SpriteSheets("/bg/stage_test.png", 1600, 913);
+	public static SpriteSheets waterBalloon = new SpriteSheets("/actors/waterballoon_enemy.png", 256, 32);
+	public static SpriteSheets waterBottlePack = new SpriteSheets("/actors/waterbottle_pack.png", 255, 99);
+	public static SpriteSheets waterBottleSingle = new SpriteSheets("/actors/waterbottle_single.png", 72, 64);
+	public static SpriteSheets waterGunMech = new SpriteSheets("/actors/watergun_mech.png", 204, 112);
+	//<<------------Projectiles/Particles---------->>
 	public static SpriteSheets mainBullet = new SpriteSheets("/projectiles/bullet.png", 16, 16);
 	public static SpriteSheets bulletImpact = new SpriteSheets("/projectiles/bullet_impact.png", 128, 16);
-	public static SpriteSheets waterBalloon = new SpriteSheets("/actors/waterballoon_enemy.png", 256, 32);
+	//<<------------------Stage--------------------->>
+	public static SpriteSheets mainStage = new SpriteSheets("/bg/stage_test.png", 1600, 913);
 	public static SpriteSheets mainBg = new SpriteSheets("/bg/bg.png", 1600, 963);
 	public static SpriteSheets clouds = new SpriteSheets("/bg/clouds.png", 1600, 963);
 	

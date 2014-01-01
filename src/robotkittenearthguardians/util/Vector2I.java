@@ -43,6 +43,11 @@ public class Vector2I {
 		this.y = vector.getYVector();
 	}
 	
+	public void setVector(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
 	/**
 	 * Adds to the vector using variables from another
 	 * vector.

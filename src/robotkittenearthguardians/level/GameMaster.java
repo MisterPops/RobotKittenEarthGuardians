@@ -7,6 +7,7 @@ import java.util.Random;
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.WaterBalloon;
 import robotkittenearthguardians.entity.mob.WaterBottlePack;
+import robotkittenearthguardians.entity.mob.WaterGunMech;
 
 public class GameMaster {
 	
@@ -50,6 +51,9 @@ public class GameMaster {
 			case 1: @SuppressWarnings("unused")
 			WaterBottlePack waterBottlePack = new WaterBottlePack(500 + random.nextInt(10), 400 + random.nextInt(10));
 			break;
+			
+			case 2: @SuppressWarnings("unused")
+			WaterGunMech waterGunMech = new WaterGunMech(500 + random.nextInt(10), 400 + random.nextInt(10));
 			}
 			numOfMonsters--;
 		} else if(levelTimer > 0) {
@@ -93,11 +97,11 @@ public class GameMaster {
 			break;
 		case 2:
 			GameMaster.levelName = "Level 2";
-			currentLevel.add(new LevelBuilder(0, 200, -2));
+			currentLevel.add(new LevelBuilder(2, 2, -2));
 			break;
 		case 3:
 			GameMaster.levelName = "Level 3";
-			currentLevel.add(new LevelBuilder(0, 5, -2));
+			currentLevel.add(new LevelBuilder(0, 200, -2));
 		}
 	}
 }

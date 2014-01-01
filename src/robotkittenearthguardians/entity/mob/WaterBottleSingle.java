@@ -15,7 +15,7 @@ public class WaterBottleSingle extends Mob{
 	WaterBalloonAi ai;
 
 	public WaterBottleSingle(int x, int y) {
-		health = 30.0f;
+		health = 20.0f;
 		points = 5;
 		damage = 0.1f;
 		sprite = Sprite.waterBottleSingle;

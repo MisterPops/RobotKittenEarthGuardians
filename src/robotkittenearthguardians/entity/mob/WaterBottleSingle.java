@@ -8,17 +8,17 @@ import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.GameMaster;
 
-public class WaterBottlePack extends Mob{
+public class WaterBottleSingle extends Mob{
 
 	private double speed = 3.2;
 	private int sightRange = 250;
 	WaterBalloonAi ai;
 
-	public WaterBottlePack(int x, int y) {
-		health = 60.0f;
-		points = 10;
+	public WaterBottleSingle(int x, int y) {
+		health = 30.0f;
+		points = 5;
 		damage = 0.1f;
-		sprite = Sprite.waterBottlePack;
+		sprite = Sprite.waterBottleSingle;
 		this.x = x;
 		this.y = y;
 		somePosition.setXVector(x);
@@ -68,10 +68,6 @@ public class WaterBottlePack extends Mob{
 		//If health is 0 remove mob.
 		if(health <= 0) {
 			GameMaster.addScore(points);
-			for(int count = 0; count < 7; count++) {
-				@SuppressWarnings("unused")
-				WaterBottleSingle waterBottleSingle = new WaterBottleSingle(x, y);
-			}
 			remove();
 		}
 	}

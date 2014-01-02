@@ -10,7 +10,7 @@ public class Sprite {
 	private SpriteSheets sheet;
 	
 	//Player (!moving) sprites.
-	public static Sprite[] player = {new Sprite(32, 32, 0, 0, SpriteSheets.player), new Sprite(32, 32, 1, 0, SpriteSheets.player),
+	public static Sprite[] player = spriteArray(32, 32, SpriteSheets.player);/*{new Sprite(32, 32, 0, 0, SpriteSheets.player), new Sprite(32, 32, 1, 0, SpriteSheets.player),
 		new Sprite(32, 32, 2, 0, SpriteSheets.player), new Sprite(32, 32, 3, 0, SpriteSheets.player),
 		new Sprite(32, 32, 0, 1, SpriteSheets.player), new Sprite(32, 32, 1, 1, SpriteSheets.player),
 		new Sprite(32, 32, 2, 1, SpriteSheets.player), new Sprite(32, 32, 3, 1, SpriteSheets.player),
@@ -19,44 +19,40 @@ public class Sprite {
 		new Sprite(32, 32, 0, 3, SpriteSheets.player), new Sprite(32, 32, 1, 3, SpriteSheets.player),
 		new Sprite(32, 32, 2, 3, SpriteSheets.player), new Sprite(32, 32, 3, 3, SpriteSheets.player),
 		new Sprite(32, 32, 0, 4, SpriteSheets.player), new Sprite(32, 32, 1, 4, SpriteSheets.player),
-		new Sprite(32, 32, 2, 4, SpriteSheets.player), new Sprite(32, 32, 3, 4, SpriteSheets.player)};
+		new Sprite(32, 32, 2, 4, SpriteSheets.player), new Sprite(32, 32, 3, 4, SpriteSheets.player)};*/
 	
 	//<------Enemies------->
 	//Basic Enemy: WaterBalloon enemy.
-	public static Sprite[] waterBalloon = {new Sprite(32, 32, 0, 0, SpriteSheets.waterBalloon),
+	public static Sprite[] waterBalloon = spriteArray(32, 32, SpriteSheets.waterBalloon);/*{new Sprite(32, 32, 0, 0, SpriteSheets.waterBalloon),
 		new Sprite(32, 32, 1, 0, SpriteSheets.waterBalloon), new Sprite(32, 32, 2, 0, SpriteSheets.waterBalloon),
 		new Sprite(32, 32, 3, 0, SpriteSheets.waterBalloon), new Sprite(32, 32, 4, 0, SpriteSheets.waterBalloon),
 		new Sprite(32, 32, 5, 0, SpriteSheets.waterBalloon), new Sprite(32, 32, 6, 0, SpriteSheets.waterBalloon),
-		new Sprite(32, 32, 7, 0, SpriteSheets.waterBalloon)};
+		new Sprite(32, 32, 7, 0, SpriteSheets.waterBalloon)};*/
 	
 	//Pack Enemy: Water Bottle Pack
-	public static Sprite[] waterBottlePack = {new Sprite(75, 48, 0, 0, SpriteSheets.waterBottlePack), 
-		new Sprite(75, 48, 1, 0, SpriteSheets.waterBottlePack), new Sprite(75, 48, 2, 0, SpriteSheets.waterBottlePack), 
-		new Sprite(75, 48, 0, 1, SpriteSheets.waterBottlePack), new Sprite(75, 48, 1, 1, SpriteSheets.waterBottlePack), 
-		new Sprite(75, 48, 2, 1, SpriteSheets.waterBottlePack)};
-
+	public static Sprite[] waterBottlePack = spriteArray(75, 48, SpriteSheets.waterBottlePack);
 	//Water Bottle Single
-	public static Sprite[] waterBottleSingle = {new Sprite(24, 32, 0, 0, SpriteSheets.waterBottleSingle), 
+	public static Sprite[] waterBottleSingle = spriteArray(24, 32, SpriteSheets.waterBottleSingle);/*{new Sprite(24, 32, 0, 0, SpriteSheets.waterBottleSingle), 
 		new Sprite(24, 32, 1, 0, SpriteSheets.waterBottleSingle), new Sprite(24, 32, 2, 0, SpriteSheets.waterBottleSingle), 
 		new Sprite(24, 32, 0, 1, SpriteSheets.waterBottleSingle), new Sprite(24, 32, 1, 1, SpriteSheets.waterBottleSingle), 
-		new Sprite(24, 32, 2, 1, SpriteSheets.waterBottleSingle)};
+		new Sprite(24, 32, 2, 1, SpriteSheets.waterBottleSingle)};*/
 	
 	//Strong Enemy: Watergun Mech
-	public static Sprite[] waterGunMech = {new Sprite(51, 56, 0, 0, SpriteSheets.waterGunMech), 
+	public static Sprite[] waterGunMech = spriteArray(51, 56, SpriteSheets.waterGunMech); /*({new Sprite(51, 56, 0, 0, SpriteSheets.waterGunMech), 
 		new Sprite(51, 56, 1, 0, SpriteSheets.waterGunMech), new Sprite(51, 56, 2, 0, SpriteSheets.waterGunMech), 
 		new Sprite(51, 56, 3, 0, SpriteSheets.waterGunMech), new Sprite(51, 56, 0, 1, SpriteSheets.waterGunMech), 
 		new Sprite(51, 56, 1, 1, SpriteSheets.waterGunMech), new Sprite(51, 56, 2, 1, SpriteSheets.waterGunMech), 
-		new Sprite(51, 56, 3, 1, SpriteSheets.waterGunMech)};
+		new Sprite(51, 56, 3, 1, SpriteSheets.waterGunMech)};*/
 	
 	//<----Projectiles/Particles----->
 	//mainBullet
 	public static Sprite[] mainBullet = {new Sprite(16, 16, 0 , 0, SpriteSheets.mainBullet)};
 	//mainBullet impact
-	public static Sprite[] bulletImpact = {new Sprite(16, 16, 0 , 0, SpriteSheets.bulletImpact),
+	public static Sprite[] bulletImpact = spriteArray(16, 16, SpriteSheets.bulletImpact); /*{new Sprite(16, 16, 0 , 0, SpriteSheets.bulletImpact),
 		new Sprite(16, 16, 1 , 0, SpriteSheets.bulletImpact), new Sprite(16, 16, 2 , 0, SpriteSheets.bulletImpact),
 		new Sprite(16, 16, 3 , 0, SpriteSheets.bulletImpact), new Sprite(16, 16, 4 , 0, SpriteSheets.bulletImpact),
 		new Sprite(16, 16, 5 , 0, SpriteSheets.bulletImpact), new Sprite(16, 16, 6 , 0, SpriteSheets.bulletImpact),
-		new Sprite(16, 16, 7 , 0, SpriteSheets.bulletImpact)};
+		new Sprite(16, 16, 7 , 0, SpriteSheets.bulletImpact)};*/
 	
 	/**
 	 * Constructore used to set a specific sprite.
@@ -72,6 +68,20 @@ public class Sprite {
 		this.y = y * spriteSize.getYVector();
 		this.sheet = sheet;
 		load();
+	}
+	
+	public static Sprite[] spriteArray(int sizeX, int sizeY, SpriteSheets sheet) {
+		int spriteXnum = sheet.getXSheetSize() / sizeX;
+		int spriteYnum = sheet.getYSheetSize() / sizeY;
+		Sprite[] array = new Sprite[spriteXnum * spriteYnum];
+		
+		for(int indexY = 0; indexY < spriteYnum; indexY++) {
+			for(int indexX = 0; indexX < spriteXnum; indexX++) {
+				array[indexX + indexY * spriteXnum] = new Sprite(sizeX, sizeY, indexX, indexY, sheet);
+			}
+		}
+		
+		return array;
 	}
 	
 	/**
@@ -112,6 +122,8 @@ public class Sprite {
 	}
 	
 	public static int getAnimationLoopSize(Sprite[] sprite) {
+		return sprite[0].sheet.getXSheetSize() / sprite[0].getSizeX();
+		/*
 		int loopSize = 0;
 		
 		while(loopSize < sprite.length) {
@@ -121,6 +133,6 @@ public class Sprite {
 			
 			loopSize++;
 		}
-		return loopSize;
+		return loopSize;*/
 	}
 }

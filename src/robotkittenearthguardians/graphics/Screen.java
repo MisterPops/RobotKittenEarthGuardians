@@ -155,7 +155,7 @@ public class Screen {
 			double yAbs = y + yPos;
 			for(int x = 0; x < p.getSizeX(); x++) {
 				double xAbs = x + xPos;
-				if(xAbs < - 1 || xAbs > width || yAbs < 0 || yAbs > height - 1) break;
+				if(xAbs < 0 || xAbs > width - 1 || yAbs < 0 || yAbs > height - 1) break;
 				int col = p.getSpritePixel(x + y * p.getSizeX());
 				if(!(col == 0xffff00ff)) {
 					pixels[(int) xAbs + (int) yAbs * width] = col;
@@ -177,7 +177,7 @@ public class Screen {
 			int yAbs = y + yPos;
 			for(int x = 0; x < p.getSizeX(); x++) {
 				int xAbs = x + xPos;
-				if(xAbs < -1 || xAbs > width || yAbs < 0 || yAbs > height) break;
+				if(xAbs < 0 || xAbs > width - 1 || yAbs < 0 || yAbs > height - 1) break;
 				int col = p.getSpritePixel(x + y * p.getSizeX());
 				if(!(col == 0xffff00ff)) {
 					pixels[xAbs + yAbs * width] = col;

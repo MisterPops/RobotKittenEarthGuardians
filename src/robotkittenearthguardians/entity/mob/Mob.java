@@ -2,6 +2,8 @@ package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.HealthBar;
+import robotkittenearthguardians.entity.particles.Explosion;
+import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.Sprite;
@@ -113,6 +115,11 @@ public abstract class Mob extends Entity {
 	
 	public Sprite[] getSprite() {
 		return sprite;
+	}
+	
+	public void mainExplode() {
+		Particle mainExplosion = new Explosion((int)x , (int)y);
+		particles.add(mainExplosion);
 	}
 	
 	/**

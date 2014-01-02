@@ -68,6 +68,9 @@ public class WaterBottlePack extends Mob{
 		//If health is 0 remove mob.
 		if(health <= 0) {
 			GameMaster.addScore(points);
+			
+			mainExplode();
+			
 			for(int count = 0; count < 7; count++) {
 				@SuppressWarnings("unused")
 				WaterBottleSingle waterBottleSingle = new WaterBottleSingle(x, y);

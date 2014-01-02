@@ -67,6 +67,7 @@ public class WaterBalloon extends Mob{
 		//If health is 0 remove mob.
 		if(health <= 0) {
 			GameMaster.addScore(points);
+			mainExplode();
 			remove();
 		}
 	}

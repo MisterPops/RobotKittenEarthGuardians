@@ -177,7 +177,7 @@ public class Screen {
 			int yAbs = y + yPos;
 			for(int x = 0; x < p.getSizeX(); x++) {
 				int xAbs = x + xPos;
-				if(xAbs < -5 || xAbs > width || yAbs < 0 || yAbs > height) break;
+				if(xAbs < -1 || xAbs > width || yAbs < 0 || yAbs > height) break;
 				int col = p.getSpritePixel(x + y * p.getSizeX());
 				if(!(col == 0xffff00ff)) {
 					pixels[xAbs + yAbs * width] = col;

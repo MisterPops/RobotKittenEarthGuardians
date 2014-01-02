@@ -54,6 +54,8 @@ public class Sprite {
 		new Sprite(16, 16, 5 , 0, SpriteSheets.bulletImpact), new Sprite(16, 16, 6 , 0, SpriteSheets.bulletImpact),
 		new Sprite(16, 16, 7 , 0, SpriteSheets.bulletImpact)};*/
 	
+	public static Sprite[] mainExplosion = spriteArray(64, 64, SpriteSheets.mainExplosion);
+	
 	/**
 	 * Constructore used to set a specific sprite.
 	 * @param size This will be the size of the sprite. i.e. 16, 32, 64

@@ -19,6 +19,7 @@ public class WaterBottlePack extends Mob{
 		points = 10;
 		damage = 0.1f;
 		sprite = Sprite.waterBottlePack;
+		deathParticle = Sprite.mainExplosion;
 		this.x = x;
 		this.y = y;
 		somePosition.setXVector(x);
@@ -69,7 +70,7 @@ public class WaterBottlePack extends Mob{
 		if(health <= 0) {
 			GameMaster.addScore(points);
 			
-			mainExplode();
+			mainExplode(deathParticle);
 			
 			for(int count = 0; count < 7; count++) {
 				@SuppressWarnings("unused")

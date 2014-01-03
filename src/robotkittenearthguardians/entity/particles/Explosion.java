@@ -4,20 +4,20 @@ import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 
-public class MainBulletParticle extends Particle{
-	
-	public MainBulletParticle(int x, int y) {
+public class Explosion extends Particle{
+
+	public Explosion(int x, int y) {
 		super(x, y);
-		sprite = Sprite.bulletImpact;
+		sprite = Sprite.mainExplosion;
 		animation = new AnimateMachine(sprite, x, y);
 	}
 	
-	public MainBulletParticle(Sprite[] sprite, int x, int y) {
+	public Explosion(Sprite[] sprite, int x, int y) {
 		super(sprite, x, y);
 		this.sprite = sprite;
 		animation = new AnimateMachine(sprite, x, y);
 	}
-
+	
 	public void update() {
 	}
 	

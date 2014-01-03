@@ -19,6 +19,7 @@ public class WaterGunMech extends Mob{
 		points = 15;
 		damage = 0.1f;
 		sprite = Sprite.waterGunMech;
+		deathParticle = Sprite.mainExplosion;
 		this.x = x;
 		this.y = y;
 		somePosition.setXVector(x);
@@ -68,6 +69,7 @@ public class WaterGunMech extends Mob{
 		//If health is 0 remove mob.
 		if(health <= 0) {
 			GameMaster.addScore(points);
+			mainExplode(deathParticle);
 			remove();
 		}
 	}

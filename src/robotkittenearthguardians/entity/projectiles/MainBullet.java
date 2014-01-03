@@ -21,6 +21,7 @@ public class MainBullet extends Projectiles{
 		range = (int) Mouse.mouseDistance() + random.nextInt(50);
 		speed = 15;
 		sprite = Sprite.mainBullet;
+		deathParticle = Sprite.bulletImpact;
 		vectorX = speed * Math.cos(angle);
 		vectorY = speed * Math.sin(angle);
 		size.setXVector(5);
@@ -89,7 +90,7 @@ public class MainBullet extends Projectiles{
 	}
 	
 	private void die() {
-		Particle mainShotParticle = new MainBulletParticle((int)x , (int)y);
+		Particle mainShotParticle = new MainBulletParticle(deathParticle, (int)x , (int)y);
 		particles.add(mainShotParticle);
 		remove();
 	}

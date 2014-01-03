@@ -43,6 +43,8 @@ public abstract class Entity {
 	protected int direction = 0;
 	//object in charge of animation.
 	protected AnimateMachine animation;
+	//Particle that appears when the entity dies/ends
+	protected Sprite[] deathParticle;
 	
 	protected final Random random = new Random();
 	

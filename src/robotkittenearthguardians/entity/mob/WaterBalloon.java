@@ -19,6 +19,7 @@ public class WaterBalloon extends Mob{
 		points = 5;
 		damage = 0.1f;
 		sprite = Sprite.waterBalloon;
+		deathParticle = Sprite.mainExplosion;
 		this.x = x;
 		this.y = y;
 		somePosition.setXVector(x);
@@ -67,7 +68,7 @@ public class WaterBalloon extends Mob{
 		//If health is 0 remove mob.
 		if(health <= 0) {
 			GameMaster.addScore(points);
-			mainExplode();
+			mainExplode(deathParticle);
 			remove();
 		}
 	}

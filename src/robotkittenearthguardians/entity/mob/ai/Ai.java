@@ -3,6 +3,7 @@ package robotkittenearthguardians.entity.mob.ai;
 
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
+import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.util.Vector2F;
 
 /**
@@ -20,6 +21,7 @@ public abstract class Ai extends Mob{
 	double randomCoordY = 500 / 2;
 	protected double randomDistance = 0;
 	protected int timer = 0;
+	protected boolean collided = false;
 	protected Mob mob;
 	
 	public Ai(Mob mob) {
@@ -52,6 +54,11 @@ public abstract class Ai extends Mob{
 		return movement;
 	}
 	
+	/**
+	 * Used for random wandering around the arena.
+	 * @param speed speed the mob will travel.
+	 * @return Vector2F of x and y movement for Ai.
+	 */
 	public Vector2F wander(double speed) {
 		//Make a point to wander too
 		double stageDiameterX = 1520, stageDiameterY = 822;
@@ -83,16 +90,33 @@ public abstract class Ai extends Mob{
 		double dx = (entity.getXCoord() - mainEntity.getXCoord());
 		double dy = (entity.getYCoord() - mainEntity.getYCoord());
 		double angle = Math.atan2(dy, dx);
-		double scale = 1.0f - Math.sqrt(dx * dx + dy * dy) / radius + 1.5;
+		double scale = 1.3f - Math.sqrt(dx * dx + dy * dy) / radius + 1.0;
 		mainEntity.move(-(int) (Math.cos(angle) * scale * 2.3), -(int) (Math.sin(angle) * scale * 2.3));
 		
 		entity.move((int) (Math.cos(angle) * scale * 2.3), (int) (Math.sin(angle) * scale * 2.3));
 	}
 	
+	/**
+	 * Method to prompt mob to fire weapon.
+	 */
 	public void fire() {
 		double dx = playerX - mobPos.getXVector(), dy = playerY - mobPos.getYVector();
 		double angle = Math.atan2(dy, dx);
 		mob.shoot((int) mobPos.getXVector(), (int) mobPos.getYVector(), angle, false);
+	}
+	
+	/**
+	 * Actions taken when mobs collide.
+	 * @param mainEntity The main mob.
+	 * @param entity The mob that the main mob is colliding with.
+	 */
+	public void onCollide(Entity mainEntity, Entity entity) {
+		if(!(entity instanceof Player)) {
+			unStack(mainEntity, entity);
+			collided = true;
+		} else if(entity instanceof Player) {
+			
+		}
 	}
 	
 	/**
@@ -117,9 +141,6 @@ public abstract class Ai extends Mob{
 	 */
 	public boolean seePlayer(int sightRange) {
 		return getDistance(mobPos) < sightRange;
-	}
-	
-	public void onCollide(Entity entity) {
 	}
 	
 	public Vector2F getMovementVector() {
@@ -159,6 +180,10 @@ public abstract class Ai extends Mob{
 		return playerY;
 	}
 	
+	/**
+	 * Direction the Ai is moving in. This direction method is for isometric mobs.
+	 * @return returns an int depending on Ai direction.
+	 */
 	public int aiDirection() {
 		if(movement.getXVector() <= 0 && movement.getYVector() >= 0) {
 			return 1;

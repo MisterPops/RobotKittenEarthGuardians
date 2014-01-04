@@ -115,13 +115,11 @@ public class Player extends Mob {
 	 */
 	protected void updateShooting() {
 		double dir = Mouse.mouseRadAngle();
-		double mouseX = Mouse.getMouseX();
-		double mouseY = Mouse.getMouseY();
 		
 		if(deltaShootTime < shootSpeed) deltaShootTime++;
 		
 		if(Mouse.getMouseB() == 1 && deltaShootTime % shootSpeed == 0) {
-			shoot(x, y, dir, mouseX, mouseY);
+			shoot(x, y, dir, true);
 			deltaShootTime = 0;
 		}
 	}

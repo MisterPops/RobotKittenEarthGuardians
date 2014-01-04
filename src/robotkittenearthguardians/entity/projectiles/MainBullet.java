@@ -15,7 +15,7 @@ public class MainBullet extends Projectiles{
 	
 	public static final int FIRE_RATE = 18;
 	
-	public MainBullet(int x, int y, double dir, double mouseX, double mouseY) {
+	public MainBullet(int x, int y, double dir) {
 		super(x, y, dir);
 		damage = 10;
 		range = (int) Mouse.mouseDistance() + random.nextInt(50);

@@ -1,6 +1,7 @@
 package robotkittenearthguardians.entity.projectiles;
 
 import robotkittenearthguardians.entity.Entity;
+import robotkittenearthguardians.entity.mob.Mob;
 
 public abstract class Projectiles extends Entity{
 	
@@ -10,6 +11,7 @@ public abstract class Projectiles extends Entity{
 	protected double vectorX, vectorY;
 	protected int range;
 	protected int speed;
+	protected Mob owner;
 	
 	
 	public Projectiles(int x, int y, double dir) {

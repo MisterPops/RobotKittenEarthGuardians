@@ -32,7 +32,7 @@ public class WaterBottleSingle extends Mob{
 		healthBar = new HealthBar(health);
 		animation = new AnimateMachine(sprite, x, y);
 		//Initialize mob's Ai
-		ai = new WaterBalloonAi();
+		ai = new WaterBalloonAi(this);
 	}
 	
 	public void update() {

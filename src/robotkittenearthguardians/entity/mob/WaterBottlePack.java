@@ -2,7 +2,7 @@ package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
-import robotkittenearthguardians.entity.mob.ai.WaterBalloonAi;
+import robotkittenearthguardians.entity.mob.ai.WaterBottlePackAi;
 import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
@@ -12,7 +12,7 @@ public class WaterBottlePack extends Mob{
 
 	private double speed = 2;
 	private int sightRange = 500;
-	WaterBalloonAi ai;
+	WaterBottlePackAi ai;
 
 	public WaterBottlePack(int x, int y) {
 		health = 80.0f;
@@ -24,15 +24,15 @@ public class WaterBottlePack extends Mob{
 		this.y = y;
 		somePosition.setXVector(x);
 		somePosition.setYVector(y);
-		size.setXVector(14);
-		size.setYVector(14);
+		size.setXVector(19);
+		size.setYVector(17);
 		mobs.add(this);
 		//Creates bound box for WaterBalloon
 		boundBox = new AABB(somePosition, size);
 		healthBar = new HealthBar(health);
 		animation = new AnimateMachine(sprite, x, y);
 		//Initialize mob's Ai
-		ai = new WaterBalloonAi();
+		ai = new WaterBottlePackAi(this);
 	}
 	
 	public void update() {

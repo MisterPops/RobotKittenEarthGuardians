@@ -19,6 +19,12 @@ public abstract class Ai extends Mob{
 	double randomCoordX = 1000 / 2;
 	double randomCoordY = 500 / 2;
 	protected double randomDistance = 0;
+	protected int timer = 0;
+	protected Mob mob;
+	
+	public Ai(Mob mob) {
+		this.mob = mob;
+	}
 	
 	/**
 	 * Updates mob's position to the mobPos vector in the Ai class
@@ -77,10 +83,16 @@ public abstract class Ai extends Mob{
 		double dx = (entity.getXCoord() - mainEntity.getXCoord());
 		double dy = (entity.getYCoord() - mainEntity.getYCoord());
 		double angle = Math.atan2(dy, dx);
-		double scale = 1.0f - Math.sqrt(dx * dx + dy * dy) / radius + 1.2;
-		mainEntity.move(-(int) (Math.cos(angle) * scale * 2), -(int) (Math.sin(angle) * scale * 2));
+		double scale = 1.0f - Math.sqrt(dx * dx + dy * dy) / radius + 1.5;
+		mainEntity.move(-(int) (Math.cos(angle) * scale * 2.3), -(int) (Math.sin(angle) * scale * 2.3));
 		
-		entity.move((int) (Math.cos(angle) * scale * 2), (int) (Math.sin(angle) * scale * 2));
+		entity.move((int) (Math.cos(angle) * scale * 2.3), (int) (Math.sin(angle) * scale * 2.3));
+	}
+	
+	public void fire() {
+		double dx = playerX - mobPos.getXVector(), dy = playerY - mobPos.getYVector();
+		double angle = Math.atan2(dy, dx);
+		mob.shoot((int) mobPos.getXVector(), (int) mobPos.getYVector(), angle, false);
 	}
 	
 	/**

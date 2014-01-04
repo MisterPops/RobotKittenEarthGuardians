@@ -12,9 +12,9 @@ import robotkittenearthguardians.input.Mouse;
 
 public class Player extends Mob {
 	
-	private float force = 1.0f;
+	private float force = 0.7f;
 	private float mass = 10.0f;
-	private int maxVel = 3;
+	private float maxVel = 3f;
 	private int shootSpeed;
 	private int deltaShootTime = 0;
 	

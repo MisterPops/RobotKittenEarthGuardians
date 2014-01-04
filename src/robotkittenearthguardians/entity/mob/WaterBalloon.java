@@ -10,12 +10,12 @@ import robotkittenearthguardians.level.GameMaster;
 
 public class WaterBalloon extends Mob{
 
-	private double speed = 3.2;
+	private double speed = 2.3;
 	private int sightRange = 9001;
 	WaterBalloonAi ai;
 
 	public WaterBalloon(int x, int y) {
-		health = 30.0f;
+		health = 60.0f;
 		points = 5;
 		damage = 0.1f;
 		sprite = Sprite.waterBalloon;

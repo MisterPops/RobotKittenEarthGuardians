@@ -16,6 +16,9 @@ public abstract class Ai extends Mob{
 	protected static int playerY;
 	protected Vector2F movement = new Vector2F();
 	protected Vector2F mobPos = new Vector2F();
+	double randomCoordX = 1000 / 2;
+	double randomCoordY = 500 / 2;
+	protected double randomDistance = 0;
 	
 	/**
 	 * Updates mob's position to the mobPos vector in the Ai class
@@ -40,6 +43,26 @@ public abstract class Ai extends Mob{
 		double multiplier = speed / distance;
 		movement.setXVector((float) (dx * multiplier));
 		movement.setYVector((float) (dy * multiplier));
+		return movement;
+	}
+	
+	public Vector2F wander(double speed) {
+		//Make a point to wander too
+		double stageDiameterX = 1520, stageDiameterY = 822;
+		double stageCenterX = stageDiameterX / 2 + 50, stageCenterY = stageDiameterY / 2 + 25;
+		
+		if(randomDistance < 150) {
+			randomCoordX = random.nextInt((int) (stageDiameterX - 45)) + 45;
+			randomCoordY = random.nextInt((int) ((stageCenterY / stageCenterX) * 
+					(Math.sqrt(stageDiameterX * randomCoordX - (randomCoordX * randomCoordX)) + stageCenterX) - 25)) + 25;
+		}
+		
+		//get Distance between the points
+		double randomDx = randomCoordX - mobPos.getXVector(), randomDy = randomCoordY - mobPos.getYVector();
+		randomDistance = Math.sqrt(randomDx * randomDx + randomDy * randomDy);
+		double multiplier = speed / randomDistance;
+		movement.setXVector((float) (randomDx * multiplier));
+		movement.setYVector((float) (randomDy * multiplier));
 		return movement;
 	}
 	

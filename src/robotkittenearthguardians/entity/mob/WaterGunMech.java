@@ -10,7 +10,7 @@ import robotkittenearthguardians.level.GameMaster;
 
 public class WaterGunMech extends Mob{
 
-	private double speed = 3.2;
+	private double speed = 2.3;
 	private int sightRange = 500;
 	WaterBalloonAi ai;
 

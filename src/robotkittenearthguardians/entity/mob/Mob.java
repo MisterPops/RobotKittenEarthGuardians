@@ -118,12 +118,12 @@ public abstract class Mob extends Entity {
 	}
 	
 	public void mainExplode() {
-		Particle mainExplosion = new Explosion((int)x , (int)y);
+		Particle mainExplosion = new Explosion(x , y);
 		particles.add(mainExplosion);
 	}
 	
 	public void mainExplode(Sprite[] particle) {
-		Particle mainExplosion = new Explosion(particle, (int)x , (int)y);
+		Particle mainExplosion = new Explosion(particle, x , y);
 		particles.add(mainExplosion);
 	}
 	

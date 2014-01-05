@@ -1,7 +1,6 @@
 package robotkittenearthguardians.entity.projectiles;
 
 import robotkittenearthguardians.entity.Entity;
-import robotkittenearthguardians.entity.mob.Mob;
 
 public abstract class Projectiles extends Entity{
 	
@@ -11,7 +10,6 @@ public abstract class Projectiles extends Entity{
 	protected double vectorX, vectorY;
 	protected int range;
 	protected int speed;
-	protected Mob owner;
 	
 	
 	public Projectiles(int x, int y, double dir) {
@@ -22,6 +20,13 @@ public abstract class Projectiles extends Entity{
 		angle = dir;
 	}
 	
+	public Projectiles(int x, int y) {
+		xOrgin = x + 20;
+		yOrgin = y + 14;
+		this.x = xOrgin;
+		this.y = yOrgin;
+	}
+	
 	public void update() {
 	}
 	
@@ -29,6 +34,17 @@ public abstract class Projectiles extends Entity{
 	}
 	
 	protected void move() {
+	}
+	
+	/**
+	 * Moves the coordinate of the projectile on the X/Y plane
+	 * @param xa Left and right on plane
+	 * @param ya Up and down on plane
+	 */
+	public void move(int xa, int ya) {
+		//-1, 0, or 1
+		x += xa;
+		y += ya;
 	}
 	
 	/**

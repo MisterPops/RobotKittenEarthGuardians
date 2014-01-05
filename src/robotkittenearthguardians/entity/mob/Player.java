@@ -119,7 +119,7 @@ public class Player extends Mob {
 		if(deltaShootTime < shootSpeed) deltaShootTime++;
 		
 		if(Mouse.getMouseB() == 1 && deltaShootTime % shootSpeed == 0) {
-			shoot(x, y, dir, true);
+			shoot(x, y, dir, 1);
 			deltaShootTime = 0;
 		}
 	}

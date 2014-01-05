@@ -49,7 +49,16 @@ public class AnimateMachine extends Entity{
 	 * @param screen screen object for rendering
 	 */
 	public void animateProjectile(Screen screen) {
-		screen.renderProjectile(x, y, sprite[loopSize * direction + animateIndex]);
+		//up, up-left, left, down-left, down
+		if(direction < 5) {
+			screen.renderProjectile(x, y, sprite[loopSize * direction + animateIndex]);
+		//down-right, right, up right
+		} else {
+			//8 - direction because (direction 5 needs to be 3, 6 => 2, and 7 => 1) flipped.
+			screen.renderProjectile(x, y, sprite[loopSize * (8 - direction) + animateIndex]);
+		}
+		
+		animateIndex();
 	}
 	
 	/**

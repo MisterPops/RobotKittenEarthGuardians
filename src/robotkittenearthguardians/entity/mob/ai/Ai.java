@@ -4,6 +4,7 @@ package robotkittenearthguardians.entity.mob.ai;
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
+import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.util.Vector2F;
 
 /**
@@ -15,6 +16,8 @@ public abstract class Ai extends Mob{
 	//Player's x and y position
 	protected static int playerX;
 	protected static int playerY;
+	//Used for projectiles to target mobs
+	protected Mob target;
 	protected Vector2F movement = new Vector2F();
 	protected Vector2F mobPos = new Vector2F();
 	double randomCoordX = 1000 / 2;
@@ -23,9 +26,15 @@ public abstract class Ai extends Mob{
 	protected int timer = 0;
 	protected boolean collided = false;
 	protected Mob mob;
+	protected Projectiles projectile;
 	
 	public Ai(Mob mob) {
 		this.mob = mob;
+	}
+	
+	public Ai(Projectiles projectile, Mob target) {
+		this.projectile = projectile;
+		this.target = target;
 	}
 	
 	/**
@@ -47,6 +56,20 @@ public abstract class Ai extends Mob{
 	 */
 	public Vector2F simpleAi(double speed) {
 		double dx = playerX - mobPos.getXVector(), dy = playerY - mobPos.getYVector();
+		double distance = Math.sqrt(dx * dx + dy * dy);
+		double multiplier = speed / distance;
+		movement.setXVector((float) (dx * multiplier));
+		movement.setYVector((float) (dy * multiplier));
+		return movement;
+	}
+	
+	/**
+	 * Similar to simple Ai but hunts a specified target that is not the player.
+	 * @param speed Entitie's speed
+	 * @return movement Vector2Float
+	 */
+	public Vector2F hunt(double speed) {
+		double dx = target.getXCoord() - mobPos.getXVector(), dy = target.getYCoord() - mobPos.getYVector();
 		double distance = Math.sqrt(dx * dx + dy * dy);
 		double multiplier = speed / distance;
 		movement.setXVector((float) (dx * multiplier));
@@ -102,7 +125,7 @@ public abstract class Ai extends Mob{
 	public void fire() {
 		double dx = playerX - mobPos.getXVector(), dy = playerY - mobPos.getYVector();
 		double angle = Math.atan2(dy, dx);
-		mob.shoot((int) mobPos.getXVector(), (int) mobPos.getYVector(), angle, false);
+		mob.shoot((int) mobPos.getXVector(), (int) mobPos.getYVector(), angle, -1);
 	}
 	
 	/**

@@ -5,6 +5,7 @@ import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.particles.Explosion;
 import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
+import robotkittenearthguardians.entity.projectiles.Missle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.entity.projectiles.WaterBottleBullet;
 import robotkittenearthguardians.graphics.Sprite;
@@ -52,10 +53,13 @@ public abstract class Mob extends Entity {
 	 * @param mouseX x pos where mouse is pointed
 	 * @param mouseY y pos where mouse is pointed
 	 */
-	public void shoot(int x, int y, double dir, boolean isPlayer) {
-		if(isPlayer) {
+	public void shoot(int x, int y, double dir, int projectile) {
+		if(projectile == 0) {
 			Projectiles mainShot = new MainBullet(x, y, dir);
 			projectiles.add(mainShot);
+		} else if(projectile == 1) {
+			Projectiles missle = new Missle(x, y);
+			projectiles.add(missle);
 		} else {
 			Projectiles mainShot = new WaterBottleBullet(x, y, dir);
 			projectiles.add(mainShot);

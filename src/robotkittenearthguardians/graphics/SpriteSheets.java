@@ -22,6 +22,7 @@ public class SpriteSheets {
 	public static SpriteSheets mainBullet = new SpriteSheets("/projectiles/bullet.png", 16, 16);
 	public static SpriteSheets bulletImpact = new SpriteSheets("/projectiles/bullet_impact.png", 128, 16);
 	public static SpriteSheets missle = new SpriteSheets("/projectiles/missle.png", 64, 160);
+	public static SpriteSheets smokeTrail = new SpriteSheets("/projectiles/missle_smoke_trail.png", 416, 32);
 	public static SpriteSheets mainExplosion = new SpriteSheets("/actors/main_explosion.png", 1088, 64);
 	//<<------------------Stage--------------------->>
 	public static SpriteSheets mainStage = new SpriteSheets("/bg/stage_test.png", 1600, 913);

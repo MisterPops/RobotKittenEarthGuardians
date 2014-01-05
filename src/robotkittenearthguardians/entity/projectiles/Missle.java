@@ -5,6 +5,8 @@ import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.mob.ai.MissleAi;
+import robotkittenearthguardians.entity.particles.Particle;
+import robotkittenearthguardians.entity.particles.SmokeTrail;
 import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
@@ -12,6 +14,7 @@ import robotkittenearthguardians.graphics.Sprite;
 public class Missle extends Projectiles{
 	
 	private MissleAi ai;
+	private int timer = 0;
 	private Mob target;
 
 	public Missle(int x, int y) {
@@ -41,6 +44,7 @@ public class Missle extends Projectiles{
 		ai.ai(speed, this);
 		direction = ai.aiDirection(false);
 		
+		smokeTrail();
 		animation.update((int) x, (int) y, direction);
 		
 		for(int index = 0; index < mobs.size(); index++) {
@@ -57,6 +61,18 @@ public class Missle extends Projectiles{
 	
 	public void render(Screen screen) {
 		animation.animateProjectile(screen);
+	}
+	
+	public void smokeTrail() {
+		if(timer % 6 == 0) {
+			int delayedX = this.x, delayedY = this.y;
+			if(timer % 4 == 0) {
+				Particle smokeTrail = new SmokeTrail(delayedX , delayedY);
+				particles.add(smokeTrail);
+				timer = 0;
+			}
+		}
+		timer++;
 	}
 	
 	/**

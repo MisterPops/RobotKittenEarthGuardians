@@ -132,11 +132,6 @@ public abstract class Mob extends Entity {
 		particles.add(mainExplosion);
 	}
 	
-	public void mainExplode(Sprite[] particle) {
-		Particle mainExplosion = new Explosion(particle, x , y);
-		particles.add(mainExplosion);
-	}
-	
 	/**
 	 * Controls mob's shooting and when the mob can shoot.
 	 */

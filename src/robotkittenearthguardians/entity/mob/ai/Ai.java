@@ -20,10 +20,11 @@ public abstract class Ai extends Mob{
 	protected Mob target;
 	//Distance X/Y from host to target
 	private double dx, dy;
+	private double distance;
 	protected Vector2F movement = new Vector2F();
 	protected Vector2F mobPos = new Vector2F();
-	double randomCoordX = 1000 / 2;
-	double randomCoordY = 500 / 2;
+	private double randomCoordX = 1000 / 2;
+	private double randomCoordY = 500 / 2;
 	protected double randomDistance = 0;
 	protected int timer = 0;
 	protected boolean collided = false;
@@ -57,7 +58,7 @@ public abstract class Ai extends Mob{
 	 */
 	public Vector2F simpleAi(double speed) {
 		dx = playerX - mobPos.getXVector(); dy = playerY - mobPos.getYVector();
-		double distance = Math.sqrt(dx * dx + dy * dy);
+		distance = Math.sqrt(dx * dx + dy * dy);
 		double multiplier = speed / distance;
 		movement.setXVector((float) (dx * multiplier));
 		movement.setYVector((float) (dy * multiplier));
@@ -71,7 +72,7 @@ public abstract class Ai extends Mob{
 	 */
 	public Vector2F hunt(double speed) {
 		dx = target.getXCoord() - mobPos.getXVector(); dy = target.getYCoord() - mobPos.getYVector();
-		double distance = Math.sqrt(dx * dx + dy * dy);
+		distance = Math.sqrt(dx * dx + dy * dy);
 		double multiplier = speed / distance;
 		movement.setXVector((float) (dx * multiplier));
 		movement.setYVector((float) (dy * multiplier));
@@ -202,6 +203,14 @@ public abstract class Ai extends Mob{
 	 */
 	public static int getPlayerY() {
 		return playerY;
+	}
+	
+	/**
+	 * Returns the distance from the host to the target.
+	 * @return Distance from host to traget.
+	 */
+	public double getDistance() {
+		return distance;
 	}
 	
 	/**

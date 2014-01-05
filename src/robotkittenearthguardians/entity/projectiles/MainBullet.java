@@ -2,8 +2,6 @@ package robotkittenearthguardians.entity.projectiles;
 
 import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.mob.Player;
-import robotkittenearthguardians.entity.particles.MainBulletParticle;
-import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
@@ -87,12 +85,6 @@ public class MainBullet extends Projectiles{
 		double distance;
 		distance = Math.abs(Math.sqrt((xOrgin - x) * (xOrgin - x) + (yOrgin - y) * (yOrgin - y))); 
 		return distance;
-	}
-	
-	private void die() {
-		Particle mainShotParticle = new MainBulletParticle(deathParticle, (int)x , (int)y);
-		particles.add(mainShotParticle);
-		remove();
 	}
 
 	/**

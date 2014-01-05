@@ -1,12 +1,13 @@
 package robotkittenearthguardians.entity.projectiles;
 
 import robotkittenearthguardians.entity.Entity;
+import robotkittenearthguardians.entity.particles.MainBulletParticle;
+import robotkittenearthguardians.entity.particles.Particle;
 
 public abstract class Projectiles extends Entity{
 	
 	protected double angle;
-	protected double xOrgin, yOrgin;
-	protected double x, y;
+	protected int xOrgin, yOrgin;
 	protected double vectorX, vectorY;
 	protected int range;
 	protected int speed;
@@ -45,6 +46,12 @@ public abstract class Projectiles extends Entity{
 		//-1, 0, or 1
 		x += xa;
 		y += ya;
+	}
+	
+	protected void die() {
+		Particle mainShotParticle = new MainBulletParticle(deathParticle, (int)x , (int)y);
+		particles.add(mainShotParticle);
+		remove();
 	}
 	
 	/**

@@ -17,9 +17,13 @@ public class Missle extends Projectiles{
 	public Missle(int x, int y) {
 		super(x, y);
 		damage = 10;
-		speed = 3;
+		speed = 6;
 		sprite = Sprite.missle;
 		deathParticle = Sprite.mainExplosion;
+		this.x = x;
+		this.y = y;
+		somePosition.setXVector(x);
+		somePosition.setYVector(y);
 		size.setXVector(5);
 		size.setYVector(5);
 		boundBox = new AABB(somePosition, size);
@@ -38,6 +42,17 @@ public class Missle extends Projectiles{
 		direction = ai.aiDirection(false);
 		
 		animation.update((int) x, (int) y, direction);
+		
+		for(int index = 0; index < mobs.size(); index++) {
+			if(hit(mobs.get(index)) && !(mobs.get(index) instanceof Player)) {
+				mobs.get(index).hurt(damage);
+				x += vectorX;
+				y += vectorY;
+				die();
+			} else if(ai.getDistance() < 3) {
+				remove();
+			}
+		}
 	}
 	
 	public void render(Screen screen) {

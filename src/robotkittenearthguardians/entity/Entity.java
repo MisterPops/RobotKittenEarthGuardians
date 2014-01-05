@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import robotkittenearthguardians.entity.mob.Mob;
+import robotkittenearthguardians.entity.particles.Explosion;
 import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.graphics.AnimateMachine;
@@ -138,6 +139,11 @@ public abstract class Entity {
 				particles.remove(i);
 			}
 		}
+	}
+	
+	public void mainExplode(Sprite[] particle) {
+		Particle mainExplosion = new Explosion(particle, x , y);
+		particles.add(mainExplosion);
 	}
 
 	/**

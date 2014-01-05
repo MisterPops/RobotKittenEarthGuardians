@@ -10,12 +10,12 @@ import robotkittenearthguardians.level.GameMaster;
 
 public class WaterBottlePack extends Mob{
 
-	private double speed = 2;
 	private int sightRange = 500;
 	WaterBottlePackAi ai;
 
 	public WaterBottlePack(int x, int y) {
 		health = 80.0f;
+		speed = 2;
 		points = 10;
 		damage = 0.1f;
 		sprite = Sprite.waterBottlePack;

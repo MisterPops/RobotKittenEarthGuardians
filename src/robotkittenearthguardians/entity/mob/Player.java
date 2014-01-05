@@ -14,7 +14,6 @@ public class Player extends Mob {
 	
 	private float force = 0.7f;
 	private float mass = 10.0f;
-	private float maxVel = 3f;
 	private int shootSpeed;
 	private int deltaShootTime = 0;
 	
@@ -28,6 +27,7 @@ public class Player extends Mob {
 	 */
 	public Player(int x, int y, Keyboard input) {
 		health = 100.0f;
+		speed = 3f;
 		this.x = x;
 		this.y = y;
 		sprite = Sprite.player;
@@ -55,25 +55,25 @@ public class Player extends Mob {
 		//Moving
 		int xa = 0, ya = 0;
 		if(input.up) {
-			if (fVel < maxVel) fVel += (force/mass);
+			if (fVel < speed) fVel += (force/mass);
 		} else if(fVel >= 0) {
 			fVel -= (force/mass);
 		}
 		ya -= fVel;
 		if(input.down) {
-			if (bVel < maxVel) bVel += (force/mass);
+			if (bVel < speed) bVel += (force/mass);
 		} else if(bVel >= 0) {
 			bVel -= (force/mass);
 		}
 		ya += bVel;
 		if(input.left) {
-			if (lVel < maxVel) lVel += (force/mass);
+			if (lVel < speed) lVel += (force/mass);
 		} else if(lVel >= 0) {
 			lVel -= (force/mass);
 		}
 		xa -= lVel;
 		if(input.right) {
-			if (rVel < maxVel) rVel += (force/mass);
+			if (rVel < speed) rVel += (force/mass);
 		} else if(rVel >= 0) {
 			rVel -= (force/mass);
 		}
@@ -119,7 +119,7 @@ public class Player extends Mob {
 		if(deltaShootTime < shootSpeed) deltaShootTime++;
 		
 		if(Mouse.getMouseB() == 1 && deltaShootTime % shootSpeed == 0) {
-			shoot(x, y, dir, 0);
+			shoot(x, y, dir, 1);
 			deltaShootTime = 0;
 		}
 	}

@@ -10,12 +10,12 @@ import robotkittenearthguardians.level.GameMaster;
 
 public class WaterGunMech extends Mob{
 
-	private double speed = 2.3;
 	private int sightRange = 500;
 	WaterBalloonAi ai;
 
 	public WaterGunMech(int x, int y) {
 		health = 150.0f;
+		speed = 2.3;
 		points = 15;
 		damage = 0.1f;
 		sprite = Sprite.waterGunMech;

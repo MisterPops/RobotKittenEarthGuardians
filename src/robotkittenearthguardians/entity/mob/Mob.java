@@ -18,6 +18,8 @@ public abstract class Mob extends Entity {
 	protected float falseFall;
 	//Mobs's front, right, left, and back velocity.
 	protected float fVel = 0f, bVel = 0f, rVel = 0f, lVel = 0f;
+	//Mobs speed
+	protected double speed;
 	//If the mob is moving
 	protected boolean moving = false;
 	//If the mob sees the player.
@@ -26,13 +28,14 @@ public abstract class Mob extends Entity {
 	protected boolean damaged = false;
 	//Mob's healthbar object
 	protected HealthBar healthBar;
+	protected double blowbackX = 0, blowbackY = 0;
 	
 	/**
 	 * Moves the coordinate of the mob on the X/Y plane
 	 * @param xa Left and right on plane
 	 * @param ya Up and down on plane
 	 */
-	public void move(int xa, int ya) {
+	public void move(double xa, double ya) {
 		//-1, 0, or 1
 		x += xa;
 		y += ya;
@@ -103,7 +106,16 @@ public abstract class Mob extends Entity {
 	 * @param projectile the projectile that will be transfering it's force
 	 */
 	public void bounceBack(Projectiles projectile) {
-		move((int) projectile.getVectorX(), (int) projectile.getVectorY());
+		move(projectile.getVectorX(), projectile.getVectorY());
+	}
+	
+	public void bounceBack(double dx, double dy) {
+		blowbackX += dx; blowbackY += dy;
+		double distance = Math.sqrt(blowbackX * blowbackX + blowbackY * blowbackY);
+		double multiplier = speed / distance;
+		double movementX = blowbackX * multiplier, movementY = blowbackY * multiplier;
+		blowbackX -= movementX; blowbackY -= movementY;
+		move(movementX, movementY);
 	}
 	
 	/**

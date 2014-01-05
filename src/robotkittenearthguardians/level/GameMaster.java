@@ -130,8 +130,8 @@ public class GameMaster {
 		switch(level) {
 		case 1: 
 			GameMaster.levelName = "Level 1";
-			currentLevel.add(new LevelBuilder(1, 5, 5)); currentLevel.add(new LevelBuilder(0, 5, 5));
-			currentLevel.add(new LevelBuilder(0, 5, -2));
+			currentLevel.add(new LevelBuilder(1, 1, -2)); /*currentLevel.add(new LevelBuilder(0, 5, 5));
+			currentLevel.add(new LevelBuilder(0, 5, -2));*/
 			break;
 		case 2:
 			GameMaster.levelName = "Level 2";

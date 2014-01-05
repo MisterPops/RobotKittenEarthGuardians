@@ -5,7 +5,6 @@ import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
-import robotkittenearthguardians.input.Mouse;
 import robotkittenearthguardians.util.Vector2F;
 
 /**
@@ -222,8 +221,7 @@ public abstract class Ai extends Mob{
 				return 0;
 			}
 		} else {
-			//For full 360 direction.
-			//remember Y is flipped on the grid. Big error on my part.		
+			//For full 360 direction.		
 			double degree = Math.atan2(dy, dx) * (180/Math.PI);
 			
 			if(degree < -70 && degree >  -130) {

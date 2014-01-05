@@ -148,15 +148,17 @@ public class Screen {
 	 * @param yPos Projectile y-coord
 	 * @param p the projectile to be rendered
 	 */
-	public void renderProjectile(double xPos, double yPos, Sprite p) {
+	public void renderProjectile(double xPos, double yPos, Sprite p, boolean flip) {
 		xPos -= cameraXCoord;
 		yPos -= cameraYCoord;
 		for(int y = 0; y < p.getSizeY(); y++) {
 			double yAbs = y + yPos;
 			for(int x = 0; x < p.getSizeX(); x++) {
 				double xAbs = x + xPos;
+				int xs = x;
+				if(flip) xs = (p.getSizeX() - 1) - x;
 				if(xAbs < 0 || xAbs > width - 1 || yAbs < 0 || yAbs > height - 1) break;
-				int col = p.getSpritePixel(x + y * p.getSizeX());
+				int col = p.getSpritePixel(xs + y * p.getSizeX());
 				if(!(col == 0xffff00ff)) {
 					pixels[(int) xAbs + (int) yAbs * width] = col;
 				}

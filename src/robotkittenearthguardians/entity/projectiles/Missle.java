@@ -17,7 +17,7 @@ public class Missle extends Projectiles{
 	public Missle(int x, int y) {
 		super(x, y);
 		damage = 10;
-		speed = 8;
+		speed = 3;
 		sprite = Sprite.missle;
 		deathParticle = Sprite.mainExplosion;
 		size.setXVector(5);
@@ -35,6 +35,7 @@ public class Missle extends Projectiles{
 		
 		ai.update(somePosition);
 		ai.ai(speed, this);
+		direction = ai.aiDirection(false);
 		
 		animation.update((int) x, (int) y, direction);
 	}

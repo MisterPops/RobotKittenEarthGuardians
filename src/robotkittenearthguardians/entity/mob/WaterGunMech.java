@@ -49,7 +49,7 @@ public class WaterGunMech extends Mob{
 		
 		//Mobs movement patterns
 		ai.ai(speed, this);
-		direction = ai.aiDirection();
+		direction = ai.aiDirection(true);
 		
 		//If collides with other mobs
 		for(int index = 0; index < mobs.size(); index++) {

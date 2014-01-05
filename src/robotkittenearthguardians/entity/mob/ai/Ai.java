@@ -5,6 +5,7 @@ import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
+import robotkittenearthguardians.input.Mouse;
 import robotkittenearthguardians.util.Vector2F;
 
 /**
@@ -18,6 +19,8 @@ public abstract class Ai extends Mob{
 	protected static int playerY;
 	//Used for projectiles to target mobs
 	protected Mob target;
+	//Distance X/Y from host to target
+	private double dx, dy;
 	protected Vector2F movement = new Vector2F();
 	protected Vector2F mobPos = new Vector2F();
 	double randomCoordX = 1000 / 2;
@@ -44,7 +47,6 @@ public abstract class Ai extends Mob{
 	public void update(Vector2F mobPosition) {
 		mobPos.setXVector(mobPosition.getXVector());
 		mobPos.setYVector(mobPosition.getYVector());
-		aiDirection();
 	}
 	
 	/**
@@ -55,7 +57,7 @@ public abstract class Ai extends Mob{
 	 * @return movement Vector2Float
 	 */
 	public Vector2F simpleAi(double speed) {
-		double dx = playerX - mobPos.getXVector(), dy = playerY - mobPos.getYVector();
+		dx = playerX - mobPos.getXVector(); dy = playerY - mobPos.getYVector();
 		double distance = Math.sqrt(dx * dx + dy * dy);
 		double multiplier = speed / distance;
 		movement.setXVector((float) (dx * multiplier));
@@ -69,7 +71,7 @@ public abstract class Ai extends Mob{
 	 * @return movement Vector2Float
 	 */
 	public Vector2F hunt(double speed) {
-		double dx = target.getXCoord() - mobPos.getXVector(), dy = target.getYCoord() - mobPos.getYVector();
+		dx = target.getXCoord() - mobPos.getXVector(); dy = target.getYCoord() - mobPos.getYVector();
 		double distance = Math.sqrt(dx * dx + dy * dy);
 		double multiplier = speed / distance;
 		movement.setXVector((float) (dx * multiplier));
@@ -207,15 +209,42 @@ public abstract class Ai extends Mob{
 	 * Direction the Ai is moving in. This direction method is for isometric mobs.
 	 * @return returns an int depending on Ai direction.
 	 */
-	public int aiDirection() {
-		if(movement.getXVector() <= 0 && movement.getYVector() >= 0) {
-			return 1;
-		} else if(movement.getXVector() > 0 && movement.getYVector() > 0) {
-			return 7;
-		} else if(movement.getXVector() > 0 && movement.getYVector() < 0) {
-			return 8;
+	public int aiDirection(boolean isometric) {
+		if(isometric) {
+			//For isometric direction.
+			if(movement.getXVector() <= 0 && movement.getYVector() >= 0) {
+				return 1;
+			} else if(movement.getXVector() > 0 && movement.getYVector() > 0) {
+				return 7;
+			} else if(movement.getXVector() > 0 && movement.getYVector() < 0) {
+				return 8;
+			} else {
+				return 0;
+			}
 		} else {
-			return 0;
+			//For full 360 direction.
+			//remember Y is flipped on the grid. Big error on my part.		
+			double degree = Math.atan2(dy, dx) * (180/Math.PI);
+			
+			if(degree < -70 && degree >  -130) {
+				return 0;
+			} else if(degree <= -130 && degree >=  -160) {
+				return 1;
+			} else if(degree < -160 || degree >  160) {
+				return 2;
+			} else if(degree <= 160 && degree >= 110 ) {
+				return 3;
+			} else if(degree < 110 && degree >  50) {
+				return 4;
+			} else if(degree < 20 && degree >  -20) {
+				return 6;
+			} else if(degree <= -20 && degree >= -70) {
+				return 7;
+			} else if(degree <= 70 && degree >= 20) {
+				return 5;
+			} else {
+				return 4;
+			}
 		}
 	}
 }

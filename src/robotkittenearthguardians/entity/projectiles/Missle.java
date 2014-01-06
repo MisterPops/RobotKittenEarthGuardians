@@ -19,7 +19,7 @@ public class Missle extends Projectiles{
 
 	public Missle(int x, int y) {
 		super(x, y);
-		damage = 10;
+		damage = 25;
 		speed = 6;
 		sprite = Sprite.missle;
 		deathParticle = Sprite.mainExplosion;
@@ -86,12 +86,13 @@ public class Missle extends Projectiles{
 	 */
 	private Mob findTarget() {
 		Mob target = Entity.mobs.get(0);
-		double shortestDist = Math.sqrt((9001 * 9001 - x * x) + (9001 * 9001 - y * y));
+		double shortestDist = 900000001;
 		
 		for(int index = 0; index < Entity.mobs.size(); index++) {
 			if(!(Entity.mobs.get(index) instanceof Player)) {
 				int testXCoord = Entity.mobs.get(index).getXCoord(), testYCoord = Entity.mobs.get(index).getXCoord();
-				double testDist = Math.sqrt(Math.abs((testXCoord * testXCoord - x * x) + (testYCoord * testYCoord - y * y)));
+				double dx = testXCoord - x, dy = testYCoord - y;
+				double testDist = Math.sqrt(dx * dx + dy * dy);
 				if(testDist < shortestDist) {
 					shortestDist = testDist;
 					target = Entity.mobs.get(index);
@@ -105,15 +106,15 @@ public class Missle extends Projectiles{
 	 * Damages and blowbacks targets within a certain radius of the missle detonation site.
 	 */
 	public void blowBack() {
-		final int BLOW_RADIUS = 200;
-		for(int index2 = 0; index2 < mobs.size(); index2++) {
+		final int BLOW_RADIUS = 50;
+		for(int index = 0; index < mobs.size(); index++) {
 			//Distance from mob to detonation point
-			int mobCoordX = mobs.get(index2).getXCoord(), mobCoordY = mobs.get(index2).getYCoord();
-			double distance = Math.sqrt(Math.abs((mobCoordX * mobCoordX - x * x) + (mobCoordY * mobCoordY - y * y)));
-			if(distance < BLOW_RADIUS && !(mobs.get(index2) instanceof Player)) {
-				int dx = mobs.get(index2).getXCoord() - x, dy = mobs.get(index2).getYCoord() - y;
-				mobs.get(index2).bounceBack(dx, dy);
-				mobs.get(index2).hurt(damage);
+			int mobCoordX = mobs.get(index).getXCoord(), mobCoordY = mobs.get(index).getYCoord();
+			double distance = Math.sqrt(((mobCoordX - x) * (mobCoordX - x)) + ((mobCoordY - y) * (mobCoordY - y)));
+			if(distance <= BLOW_RADIUS && !(mobs.get(index) instanceof Player)) {
+				//int dx = mobs.get(index).getXCoord() - x, dy = mobs.get(index).getYCoord() - y;
+				//mobs.get(index2).bounceBack(dx, dy);
+				mobs.get(index).hurt(damage);
 			}
 		}
 	}

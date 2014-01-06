@@ -11,7 +11,7 @@ public class ShotgunBullet extends Projectiles{
 
 	public ShotgunBullet(int x, int y, double dir) {
 		super(x, y, dir);
-		damage = 10;
+		damage = 15;
 		range = 300;
 		speed = 15;
 		sprite = Sprite.shotgunBullet;

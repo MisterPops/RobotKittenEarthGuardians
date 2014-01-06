@@ -20,6 +20,7 @@ public class SpriteSheets {
 	public static SpriteSheets waterGunMech = new SpriteSheets("/actors/watergun_mech.png", 204, 112);
 	//<<------------Projectiles/Particles---------->>
 	public static SpriteSheets mainBullet = new SpriteSheets("/projectiles/bullet.png", 16, 16);
+	public static SpriteSheets shotgunBullet = new SpriteSheets("/projectiles/shotgun_bullet.png", 192, 16);
 	public static SpriteSheets bulletImpact = new SpriteSheets("/projectiles/bullet_impact.png", 128, 16);
 	public static SpriteSheets missle = new SpriteSheets("/projectiles/missle.png", 64, 160);
 	public static SpriteSheets smokeTrail = new SpriteSheets("/projectiles/missle_smoke_trail.png", 416, 32);

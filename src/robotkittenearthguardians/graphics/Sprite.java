@@ -27,6 +27,8 @@ public class Sprite {
 	//<----Projectiles/Particles----->
 	//mainBullet
 	public static Sprite[] mainBullet = {new Sprite(16, 16, 0 , 0, SpriteSheets.mainBullet)};
+	//Shotgun Bullet
+	public static Sprite[] shotgunBullet = spriteArray(16, 16, SpriteSheets.shotgunBullet);
 	//Missle
 	public static Sprite[] missle = spriteArray(32, 32, SpriteSheets.missle);
 	//Smoke Trail

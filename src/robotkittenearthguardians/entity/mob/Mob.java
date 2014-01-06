@@ -2,11 +2,10 @@ package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.HealthBar;
-import robotkittenearthguardians.entity.particles.Explosion;
-import robotkittenearthguardians.entity.particles.Particle;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.Missle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
+import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
 import robotkittenearthguardians.entity.projectiles.WaterBottleBullet;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.Level;
@@ -63,6 +62,8 @@ public abstract class Mob extends Entity {
 		} else if(projectile == 1) {
 			Projectiles missle = new Missle(x, y);
 			projectiles.add(missle);
+		} else if(projectile == 2) {
+			shotgun(dir);
 		} else {
 			Projectiles mainShot = new WaterBottleBullet(x, y, dir);
 			projectiles.add(mainShot);
@@ -139,9 +140,17 @@ public abstract class Mob extends Entity {
 		return sprite;
 	}
 	
-	public void mainExplode() {
-		Particle mainExplosion = new Explosion(x , y);
-		particles.add(mainExplosion);
+	private void shotgun(double dir) {
+		Projectiles shotgunBullet = new ShotgunBullet(x, y, dir);
+		projectiles.add(shotgunBullet);
+		Projectiles shotgunBullet2 = new ShotgunBullet(x, y, dir + (15 * (Math.PI/180)));
+		projectiles.add(shotgunBullet2);
+		Projectiles shotgunBullet3 = new ShotgunBullet(x, y, dir - (15 * (Math.PI/180)));
+		projectiles.add(shotgunBullet3);
+		Projectiles shotgunBullet4 = new ShotgunBullet(x, y, dir + (5 * (Math.PI/180)));
+		projectiles.add(shotgunBullet4);
+		Projectiles shotgunBullet5 = new ShotgunBullet(x, y, dir - (5 * (Math.PI/180)));
+		projectiles.add(shotgunBullet5);
 	}
 	
 	/**

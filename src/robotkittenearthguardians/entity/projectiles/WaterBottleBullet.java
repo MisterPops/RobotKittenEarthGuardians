@@ -24,6 +24,7 @@ public static final int FIRE_RATE = 18;
 		size.setYVector(5);
 		boundBox = new AABB(somePosition, size);
 		animation = new AnimateMachine(sprite, x, y);
+		projectiles.add(this);
 	}
 	
 	/**

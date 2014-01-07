@@ -31,6 +31,7 @@ public class Sprite {
 	public static Sprite[] shotgunBullet = spriteArray(16, 16, SpriteSheets.shotgunBullet);
 	//Missle
 	public static Sprite[] missle = spriteArray(32, 32, SpriteSheets.missle);
+	public static Sprite[] missleAmmo = spriteArray(32, 32, SpriteSheets.missleAmmo);
 	//Smoke Trail
 	public static Sprite[] smokeTrail = spriteArray(32, 32, SpriteSheets.smokeTrail);
 	//mainBullet impact

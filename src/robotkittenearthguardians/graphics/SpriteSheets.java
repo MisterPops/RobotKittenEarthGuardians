@@ -17,7 +17,7 @@ public class SpriteSheets {
 	public static SpriteSheets waterBalloon = new SpriteSheets("/actors/waterballoon_enemy.png", 256, 32);
 	public static SpriteSheets waterBottlePack = new SpriteSheets("/actors/waterbottle_pack.png", 600, 96);
 	public static SpriteSheets waterBottleSingle = new SpriteSheets("/actors/waterbottle_single.png", 192, 64);
-	public static SpriteSheets waterGunMech = new SpriteSheets("/actors/watergun_mech.png", 204, 112);
+	public static SpriteSheets waterGunMech = new SpriteSheets("/actors/watergun_mech.png", 408, 112);
 	//<<------------Projectiles/Particles---------->>
 	public static SpriteSheets mainBullet = new SpriteSheets("/projectiles/bullet.png", 16, 16);
 	public static SpriteSheets shotgunBullet = new SpriteSheets("/projectiles/shotgun_bullet.png", 192, 16);
@@ -25,6 +25,7 @@ public class SpriteSheets {
 	public static SpriteSheets missle = new SpriteSheets("/projectiles/missle.png", 64, 160);
 	public static SpriteSheets smokeTrail = new SpriteSheets("/projectiles/missle_smoke_trail.png", 416, 32);
 	public static SpriteSheets mainExplosion = new SpriteSheets("/actors/main_explosion.png", 1088, 64);
+	public static SpriteSheets missleAmmo = new SpriteSheets("/projectiles/missleIcon.png", 256, 32);
 	//<<------------------Stage--------------------->>
 	public static SpriteSheets mainStage = new SpriteSheets("/bg/stage_test.png", 1600, 913);
 	public static SpriteSheets mainBg = new SpriteSheets("/bg/bg.png", 1600, 963);

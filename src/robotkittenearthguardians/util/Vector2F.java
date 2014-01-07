@@ -61,6 +61,14 @@ public class Vector2F {
 		this.y += y;
 	}
 	
+	public void subtractXVector(float x) {
+		this.x -= x;
+	}
+	
+	public void subtractYVector(float y) {
+		this.y -= y;
+	}
+	
 	/**
 	 * Sets the x param of this vector.
 	 * @param x the param to set x with

@@ -3,6 +3,7 @@ package robotkittenearthguardians.entity.mob;
 import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.Ai;
+import robotkittenearthguardians.entity.particles.MissleAmmo;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.Missle;
 import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
@@ -11,6 +12,7 @@ import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.input.Keyboard;
 import robotkittenearthguardians.input.Mouse;
+import robotkittenearthguardians.level.GameMaster;
 
 public class Player extends Mob {
 	
@@ -87,6 +89,18 @@ public class Player extends Mob {
 			move(xa, ya);
 		}
 		
+		for(int index = 0; index < particles.size(); index++) {
+			if(particles.get(index) instanceof MissleAmmo) {
+				if(hit(particles.get(index))) {
+					if(missleAmmo < 10) {
+						missleAmmo++;
+					}
+					GameMaster.addScore(particles.get(index).getPoints());
+					particles.remove(index);
+				}
+			}
+		}
+		
 		animation.update(x, y, direction);
 		stageUpdates();
 		
@@ -127,7 +141,7 @@ public class Player extends Mob {
 		if(Mouse.getMouseB() == 1 && mainShootDelta >= MainBullet.FIRE_RATE) {
 			shoot(x, y, dir, 0);
 			mainShootDelta = 0;
-		} else if(input.space && missleAmmo != 0 && missleDelta >= Missle.FIRE_RATE) { 
+		} else if(input.space && missleAmmo != 0 && missleDelta >= Missle.FIRE_RATE && mobs.size() > 1) { 
 			shoot(x, y, dir, 1);
 			missleAmmo--;
 			missleDelta = 0;

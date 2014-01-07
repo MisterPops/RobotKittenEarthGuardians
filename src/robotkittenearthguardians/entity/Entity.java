@@ -189,6 +189,10 @@ public abstract class Entity {
 		return CollisionLibrary.testAABBAABB(boundBox, mob.getAABB());
 	}
 	
+	public boolean hit(Particle p) {
+		return CollisionLibrary.testAABBAABB(boundBox, p.getAABB());
+	}
+	
 	public Vector2F getSizeVector() {
 		return size;
 	}
@@ -199,6 +203,10 @@ public abstract class Entity {
 	
 	public void setDirection(int direction) {
 		this.direction = direction;
+	}
+	
+	public int getPoints() {
+		return points;
 	}
 
 	/*

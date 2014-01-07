@@ -2,6 +2,7 @@ package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.HealthBar;
+import robotkittenearthguardians.entity.particles.MissleAmmo;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.Missle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
@@ -57,16 +58,16 @@ public abstract class Mob extends Entity {
 	 */
 	public void shoot(int x, int y, double dir, int projectile) {
 		if(projectile == 0) {
+			@SuppressWarnings("unused")
 			Projectiles mainShot = new MainBullet(x, y, dir);
-			projectiles.add(mainShot);
 		} else if(projectile == 1) {
+			@SuppressWarnings("unused")
 			Projectiles missle = new Missle(x, y);
-			projectiles.add(missle);
 		} else if(projectile == 2) {
 			shotgun(dir);
 		} else {
+			@SuppressWarnings("unused")
 			Projectiles mainShot = new WaterBottleBullet(x, y, dir);
-			projectiles.add(mainShot);
 		}
 	}
 	
@@ -141,16 +142,24 @@ public abstract class Mob extends Entity {
 	}
 	
 	private void shotgun(double dir) {
+		@SuppressWarnings("unused")
 		Projectiles shotgunBullet = new ShotgunBullet(x, y, dir);
-		projectiles.add(shotgunBullet);
+		@SuppressWarnings("unused")
 		Projectiles shotgunBullet2 = new ShotgunBullet(x, y, dir + (15 * (Math.PI/180)));
-		projectiles.add(shotgunBullet2);
+		@SuppressWarnings("unused")
 		Projectiles shotgunBullet3 = new ShotgunBullet(x, y, dir - (15 * (Math.PI/180)));
-		projectiles.add(shotgunBullet3);
+		@SuppressWarnings("unused")
 		Projectiles shotgunBullet4 = new ShotgunBullet(x, y, dir + (5 * (Math.PI/180)));
-		projectiles.add(shotgunBullet4);
+		@SuppressWarnings("unused")
 		Projectiles shotgunBullet5 = new ShotgunBullet(x, y, dir - (5 * (Math.PI/180)));
-		projectiles.add(shotgunBullet5);
+	}
+	
+	protected void dropMissleAmmo() {
+		int randomNum = random.nextInt(150);
+		if(randomNum >= 25 && randomNum <= 35) {
+			@SuppressWarnings("unused")
+			MissleAmmo missleAmmo = new MissleAmmo(x, y);
+		}
 	}
 	
 	/**

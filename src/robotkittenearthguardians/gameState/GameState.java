@@ -27,4 +27,8 @@ public class GameState {
 		
 	public void render(Screen screen, BufferStrategy bs) {
 	}
+	
+	public Player getPlayer() {
+		return player;
+	}
 }

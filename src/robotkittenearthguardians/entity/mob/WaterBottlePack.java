@@ -77,6 +77,7 @@ public class WaterBottlePack extends Mob{
 				@SuppressWarnings("unused")
 				WaterBottleSingle waterBottleSingle = new WaterBottleSingle(x, y);
 			}
+			dropMissleAmmo();
 			remove();
 		}
 	}

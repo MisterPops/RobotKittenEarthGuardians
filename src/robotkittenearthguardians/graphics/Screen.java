@@ -221,7 +221,7 @@ public class Screen {
 		//g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
 		//g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
 		g2.drawString(""+ GameMaster.getLevelName(), 30, 30);
-		g2.drawString("SCORE:" + GameMaster.getScore(), (MainGame.getScreenWidth() - 150) * 
+		g2.drawString("SCORE:" + GameMaster.getScore(), (MainGame.getScreenWidth() - 180) * 
 				MainGame.getScreenScale(), 30);
 		
 		//BattleGui

@@ -70,6 +70,7 @@ public class WaterGunMech extends Mob{
 		if(health <= 0) {
 			GameMaster.addScore(points);
 			mainExplode(deathParticle);
+			dropMissleAmmo();
 			remove();
 		}
 	}

@@ -35,6 +35,7 @@ public class Missle extends Projectiles{
 		target = findTarget();
 		ai = new MissleAi(this, target);
 		animation = new AnimateMachine(sprite, x, y);
+		projectiles.add(this);
 	}
 
 	public void update() {

@@ -26,6 +26,7 @@ public class MainBullet extends Projectiles{
 		size.setYVector(5);
 		boundBox = new AABB(somePosition, size);
 		animation = new AnimateMachine(sprite, x, y);
+		projectiles.add(this);
 	}
 	
 	/**

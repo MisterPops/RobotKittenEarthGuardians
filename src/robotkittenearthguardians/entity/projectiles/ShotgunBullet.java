@@ -24,6 +24,7 @@ public class ShotgunBullet extends Projectiles{
 		size.setYVector(7);
 		boundBox = new AABB(somePosition, size);
 		animation = new AnimateMachine(sprite, x, y);
+		projectiles.add(this);
 	}
 
 	/**

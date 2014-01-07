@@ -8,6 +8,8 @@ import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.Level;
 
 public class ShotgunBullet extends Projectiles{
+	
+	public static final int FIRE_RATE = 120;
 
 	public ShotgunBullet(int x, int y, double dir) {
 		super(x, y, dir);

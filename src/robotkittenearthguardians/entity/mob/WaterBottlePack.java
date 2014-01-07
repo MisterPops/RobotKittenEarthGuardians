@@ -53,7 +53,8 @@ public class WaterBottlePack extends Mob{
 		
 		//If collides with other mobs
 		for(int index = 0; index < mobs.size(); index++) {
-			if(hit(mobs.get(index)) && !mobs.get(index).equals(this)) {
+			if(hit(mobs.get(index)) && !mobs.get(index).equals(this)
+					&& !(mobs.get(index) instanceof WaterBottlePack)) {
 				ai.onCollide(this, mobs.get(index));
 				
 				if(mobs.get(index) instanceof Player) {

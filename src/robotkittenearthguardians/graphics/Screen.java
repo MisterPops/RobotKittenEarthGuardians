@@ -1,5 +1,6 @@
 package robotkittenearthguardians.graphics;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -10,6 +11,8 @@ import robotkittenearthguardians.MainGame;
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
+import robotkittenearthguardians.entity.projectiles.MainBullet;
+import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
 import robotkittenearthguardians.input.Mouse;
 import robotkittenearthguardians.level.GameMaster;
 
@@ -199,15 +202,18 @@ public class Screen {
 	public void gui(Player player) {
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("Verdana", 0, 20));
+		//g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
+		//g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 80);
+		//g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
+		//g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
+		//g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
+		//g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
 		g2.drawString(""+ GameMaster.getLevelName(), 30, 30);
-		g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
-		g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 80);
-		g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
-		g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
-		g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
-		g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
 		g2.drawString("Score: " + GameMaster.getScore(), (MainGame.getScreenWidth() - 150) * 
 				MainGame.getScreenScale(), 30);
+		
+		//BattleGui
+		drawAmmoBars();
 		
 		//Health Bar
 		drawHealthBars();
@@ -248,6 +254,26 @@ public class Screen {
 				}
 			}
 		}
+	}
+	
+	private void drawAmmoBars() {
+		g2.drawString("Main Gun", 140, 584);
+		g2.drawString("Shotgun", 140, 610);
+		g2.drawString("Missiles", 140, 636);
+		//Outlines
+		int outlineBarWidth = 14;
+		int outlineLength = 100;
+		BasicStroke s1 = new BasicStroke(2f);
+		g2.setStroke(s1);
+		g2.drawRect(30, 570, outlineLength, outlineBarWidth);
+		g2.drawRect(30, 596, outlineLength, outlineBarWidth);
+		g2.drawRect(30, 620, outlineLength, outlineBarWidth);
+		//Inner bars
+		int innerBarWidth = 8;
+		int innerLength = 93;
+		g2.fillRect(33, 573, innerLength * Player.mainShootDelta / MainBullet.FIRE_RATE, innerBarWidth);
+		g2.fillRect(33, 599, innerLength * Player.shotgunDelta / ShotgunBullet.FIRE_RATE, innerBarWidth);
+		g2.fillRect(33, 623, innerLength * Player.missleAmmo / 10, innerBarWidth);
 	}
 
 	/**

@@ -11,7 +11,7 @@ import robotkittenearthguardians.level.Level;
 
 public class MainBullet extends Projectiles{
 	
-	public static final int FIRE_RATE = 18;
+	public static final int FIRE_RATE = 8;
 	
 	public MainBullet(int x, int y, double dir) {
 		super(x, y, dir);

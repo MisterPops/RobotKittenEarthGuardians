@@ -4,6 +4,8 @@ import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.Ai;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
+import robotkittenearthguardians.entity.projectiles.Missle;
+import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
 import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
@@ -14,8 +16,11 @@ public class Player extends Mob {
 	
 	private float force = 0.7f;
 	private float mass = 10.0f;
-	private int shootSpeed;
-	private int deltaShootTime = 0;
+	//Don't care about private settings anymore just want to finish this project
+	public static int mainShootDelta = 0;
+	public static int shotgunDelta = 0;
+	public static int missleDelta = 0;
+	public static int missleAmmo = 10;
 	
 	private Keyboard input;
 	
@@ -37,7 +42,6 @@ public class Player extends Mob {
 		size.setYVector(14);
 		this.input = input;
 		sprite = Sprite.player;
-		shootSpeed = MainBullet.FIRE_RATE;
 		mobs.add(this);
 		boundBox = new AABB(somePosition, size);
 		healthBar = new HealthBar(health);
@@ -116,17 +120,20 @@ public class Player extends Mob {
 	protected void updateShooting() {
 		double dir = Mouse.mouseRadAngle();
 		
-		if(deltaShootTime < shootSpeed) deltaShootTime++;
+		if(mainShootDelta < MainBullet.FIRE_RATE) mainShootDelta++;
+		if(shotgunDelta < ShotgunBullet.FIRE_RATE) shotgunDelta++;
+		if(missleDelta < Missle.FIRE_RATE) missleDelta++;
 		
-		if(Mouse.getMouseB() == 1 && deltaShootTime % shootSpeed == 0) {
+		if(Mouse.getMouseB() == 1 && mainShootDelta >= MainBullet.FIRE_RATE) {
 			shoot(x, y, dir, 0);
-			deltaShootTime = 0;
-		} else if(input.space && deltaShootTime % shootSpeed == 0) { 
+			mainShootDelta = 0;
+		} else if(input.space && missleAmmo != 0 && missleDelta >= Missle.FIRE_RATE) { 
 			shoot(x, y, dir, 1);
-			deltaShootTime = 0;
-		} else if(Mouse.getMouseB() == 3 && deltaShootTime % shootSpeed == 0) {
+			missleAmmo--;
+			missleDelta = 0;
+		} else if(Mouse.getMouseB() == 3 && shotgunDelta >= ShotgunBullet.FIRE_RATE) {
 			shoot(x, y, dir, 2);
-			deltaShootTime = 0;
+			shotgunDelta = 0;
 		}
 	}
 	

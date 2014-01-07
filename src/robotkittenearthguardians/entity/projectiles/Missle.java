@@ -16,6 +16,8 @@ public class Missle extends Projectiles{
 	private MissleAi ai;
 	private int timer = 0;
 	private Mob target;
+	
+	public static final int FIRE_RATE = 20;
 
 	public Missle(int x, int y) {
 		super(x, y);

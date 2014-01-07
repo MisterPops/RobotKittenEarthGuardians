@@ -32,7 +32,7 @@ public class StartScreenState extends GameState {
 		screen.renderBackground(bg, true);
 		level.render(screen);
 		screen.drawImage();
-		screen.gui(player);
+		screen.gui(player, this);
 		screen.g2Dispose();
 		bs.show();
 	}

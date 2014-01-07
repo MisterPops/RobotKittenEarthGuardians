@@ -4,6 +4,7 @@ import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.WaterBottlePackAi;
 import robotkittenearthguardians.graphics.AnimateMachine;
+import robotkittenearthguardians.graphics.Camera;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.GameMaster;
@@ -78,6 +79,7 @@ public class WaterBottlePack extends Mob{
 				WaterBottleSingle waterBottleSingle = new WaterBottleSingle(x, y);
 			}
 			dropMissleAmmo();
+			Camera.shake();
 			remove();
 		}
 	}

@@ -17,6 +17,7 @@ import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
+import robotkittenearthguardians.gameState.GameState;
 import robotkittenearthguardians.level.GameMaster;
 
 public class Screen {
@@ -211,24 +212,26 @@ public class Screen {
 				MainGame.getScreenHeight() * MainGame.getScreenScale(), null);
 	}
 	
-	public void gui(Player player) {
+	public void gui(Player player, GameState gamestate) {
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("Ponderosa", 0, 18));
-		//g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
-		//g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 80);
-		//g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
-		//g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
-		//g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
-		//g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
-		g2.drawString(""+ GameMaster.getLevelName(), 30, 30);
-		g2.drawString("SCORE:" + GameMaster.getScore(), (MainGame.getScreenWidth() - 180) * 
-				MainGame.getScreenScale(), 30);
-		
-		//BattleGui
-		drawAmmoBars();
-		
-		//Health Bar
-		drawHealthBars();
+		//if(gamestate instanceof NewGameState) {
+			//g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
+			//g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 80);
+			//g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
+			//g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
+			//g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
+			//g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
+			g2.drawString(""+ GameMaster.getLevelName(), 30, 30);
+			g2.drawString("SCORE:" + GameMaster.getScore(), (MainGame.getScreenWidth() - 180) * 
+					MainGame.getScreenScale(), 30);
+
+			//BattleGui
+			drawAmmoBars();
+
+			//Health Bar
+			drawHealthBars();
+		//}
 	}
 	
 	/**

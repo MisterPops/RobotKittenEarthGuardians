@@ -3,9 +3,13 @@ package robotkittenearthguardians.graphics;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import robotkittenearthguardians.MainGame;
 import robotkittenearthguardians.entity.Entity;
@@ -13,7 +17,6 @@ import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
-import robotkittenearthguardians.input.Mouse;
 import robotkittenearthguardians.level.GameMaster;
 
 public class Screen {
@@ -30,6 +33,15 @@ public class Screen {
 		this.height = screenHeight;
 		this.image = image;
 		this.pixels = pixels;
+		
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		try {
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("res/font/Ponderosa.ttf")));
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -201,7 +213,7 @@ public class Screen {
 	
 	public void gui(Player player) {
 		g2.setColor(Color.WHITE);
-		g2.setFont(new Font("Verdana", 0, 20));
+		g2.setFont(new Font("Ponderosa", 0, 18));
 		//g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
 		//g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 80);
 		//g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
@@ -209,7 +221,7 @@ public class Screen {
 		//g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
 		//g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
 		g2.drawString(""+ GameMaster.getLevelName(), 30, 30);
-		g2.drawString("Score: " + GameMaster.getScore(), (MainGame.getScreenWidth() - 150) * 
+		g2.drawString("SCORE:" + GameMaster.getScore(), (MainGame.getScreenWidth() - 150) * 
 				MainGame.getScreenScale(), 30);
 		
 		//BattleGui
@@ -257,9 +269,9 @@ public class Screen {
 	}
 	
 	private void drawAmmoBars() {
-		g2.drawString("Main Gun", 140, 584);
-		g2.drawString("Shotgun", 140, 610);
-		g2.drawString("Missiles", 140, 636);
+		g2.drawString("BLASTER", 140, 583);
+		g2.drawString("SHOTGUN", 140, 609);
+		g2.drawString("MISSLES", 140, 635);
 		//Outlines
 		int outlineBarWidth = 14;
 		int outlineLength = 100;

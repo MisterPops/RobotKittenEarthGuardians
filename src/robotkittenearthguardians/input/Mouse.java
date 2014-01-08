@@ -12,6 +12,8 @@ public class Mouse implements MouseListener, MouseMotionListener{
 	private static double mouseX = -1;
 	private static double mouseY = -1;
 	private static int mouseB = -1;
+	public static boolean leftClick = false;
+	public static boolean rightClick = false;
 	private static double mouseRadAngle = 0;
 	private static double mouseDistance;
 	
@@ -65,7 +67,6 @@ public class Mouse implements MouseListener, MouseMotionListener{
 	public void mouseMoved(MouseEvent e) {
 		mouseX = e.getX();
 		mouseY = e.getY();
-		
 	}
 
 	@Override
@@ -83,13 +84,20 @@ public class Mouse implements MouseListener, MouseMotionListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		mouseB = e.getButton();
-		
+		if(e.getButton() == MouseEvent.BUTTON1) {
+			leftClick = true;
+		} else if(e.getButton() == MouseEvent.BUTTON3) {
+			rightClick = true;
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		mouseB = -1;
-		
+		if(e.getButton() == MouseEvent.BUTTON1) {
+			leftClick = false;
+		} else if(e.getButton() == MouseEvent.BUTTON3) {
+			rightClick = false;
+		}
 	}
-
 }

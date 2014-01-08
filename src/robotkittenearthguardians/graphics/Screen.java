@@ -279,8 +279,9 @@ public class Screen {
 			g2.setColor(Color.WHITE);
 			g2.setFont(new Font("Ponderosa", 0, 21));
 			
-			g2.drawString("Do your part to fend of the toxic H2O filled invaders!", 115, 540);
-			g2.drawString("Click your [mouse] to start!", 325, 570);
+			g2.drawString("Your planet is being invaded by H20 filled creatures,", 130, 540);
+			g2.drawString("a highly explosive substance on your planet!", 200, 570);
+			g2.drawString("Click your [mouse] to start!", 330, 600);
 		}
 	}
 	

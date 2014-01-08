@@ -96,6 +96,8 @@ public class Camera {
 	 * camera position at regular intervals till shake == 0.
 	 */
 	public static void shake() {
-		shake = 10;
+		if(shake % 2 != 0) {
+			shake = 9;
+		} else shake = 10;
 	}
 }

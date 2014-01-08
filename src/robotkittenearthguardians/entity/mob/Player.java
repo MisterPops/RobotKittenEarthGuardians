@@ -14,7 +14,7 @@ import robotkittenearthguardians.input.Keyboard;
 import robotkittenearthguardians.input.Mouse;
 import robotkittenearthguardians.level.GameMaster;
 
-public class Player extends Mob {
+public class Player extends Mob{
 	
 	private float force = 0.7f;
 	private float mass = 10.0f;
@@ -139,7 +139,7 @@ public class Player extends Mob {
 		if(shotgunDelta < ShotgunBullet.FIRE_RATE) shotgunDelta++;
 		if(missleDelta < Missle.FIRE_RATE) missleDelta++;
 		
-		if(Mouse.getMouseB() == 1 && mainShootDelta >= MainBullet.FIRE_RATE) {
+		if(Mouse.leftClick && mainShootDelta >= MainBullet.FIRE_RATE) {
 			shoot(x, y, dir, 0);
 			mainShootDelta = 0;
 		} else if(input.space && missleAmmo != 0 && missleDelta >= Missle.FIRE_RATE && mobs.size() > 1) { 

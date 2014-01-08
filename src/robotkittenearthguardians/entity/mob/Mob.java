@@ -141,6 +141,10 @@ public abstract class Mob extends Entity {
 		return sprite;
 	}
 	
+	/**
+	 * Shoots shotgun bullets at 0 degrees, 2 at (+-)15 degrees, and 2 at (+-) 5 degrees.
+	 * @param dir the direction that the bullets will be traveling.
+	 */
 	private void shotgun(double dir) {
 		@SuppressWarnings("unused")
 		Projectiles shotgunBullet = new ShotgunBullet(x, y, dir);
@@ -154,6 +158,9 @@ public abstract class Mob extends Entity {
 		Projectiles shotgunBullet5 = new ShotgunBullet(x, y, dir - (5 * (Math.PI/180)));
 	}
 	
+	/**
+	 * Drops missile ammo randomly.
+	 */
 	protected void dropMissleAmmo() {
 		int randomNum = random.nextInt(150);
 		if(randomNum >= 25 && randomNum <= 35) {

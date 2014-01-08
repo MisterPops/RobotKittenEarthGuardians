@@ -18,7 +18,8 @@ public class Player extends Mob {
 	
 	private float force = 0.7f;
 	private float mass = 10.0f;
-	//Don't care about private settings anymore just want to finish this project
+	//Should be private. Used to calculate when
+	//Specific bullets should be shot and bullet's ammo.
 	public static int mainShootDelta = 0;
 	public static int shotgunDelta = 0;
 	public static int missleDelta = 0;

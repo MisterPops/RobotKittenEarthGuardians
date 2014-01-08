@@ -18,6 +18,8 @@ import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
 import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
 import robotkittenearthguardians.gameState.GameState;
+import robotkittenearthguardians.gameState.NewGameState;
+import robotkittenearthguardians.gameState.StartScreenState;
 import robotkittenearthguardians.level.GameMaster;
 
 public class Screen {
@@ -27,8 +29,19 @@ public class Screen {
 	private BufferedImage image;
 	private Graphics2D g2;
 	private int cameraXCoord, cameraYCoord;
+	//Used for clouds to translate across the sky.
 	private float cloudFloat = 0;
+	//Used for fade in and fade out of colors.
+	private float alpha = 0;
 	
+	/**
+	 * Screen constructor. Sets the screen width, height, and sets up the pixel array.
+	 * Also downloads the custom font for the game.
+	 * @param screenWidth the width of the game screen.
+	 * @param screenHeight the height of the game screen.
+	 * @param pixels int array to represent pixels of the monitor.
+	 * @param image the BufferedImage
+	 */
 	public Screen(int screenWidth, int screenHeight, int[] pixels, BufferedImage image) {
 		this.width = screenWidth;
 		this.height = screenHeight;
@@ -73,6 +86,12 @@ public class Screen {
 		this.cameraYCoord = yOffset;
 	}
 	
+	/**
+	 * Renders the background of the game.
+	 * If clouds is true, it will call renderClouds();
+	 * @param sprite the background to be rendered.
+	 * @param clouds True, will render clouds. False, no clouds.
+	 */
 	public void renderBackground(SpriteSheets sprite, boolean clouds) {
 		int pixelIndex;
 		for(int y = 0; y < height; y++) {
@@ -91,6 +110,27 @@ public class Screen {
 		}
 	}
 	
+	/**
+	 * Renders title on the StartScreen.
+	 */
+	public void renderTitle() {
+		SpriteSheets sprite = SpriteSheets.titleFont;
+		int pixelIndex;
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				pixelIndex = x + y * sprite.getXSheetSize();
+				if(x > 0 && y > 0 && x < sprite.getXSheetSize() && y < sprite.getYSheetSize()) {
+					if(sprite.getSpriteSheetsPixels(pixelIndex) != 0xffff00ff) {
+						pixels[x + y * width] = sprite.getSpriteSheetsPixels(pixelIndex);
+					}
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Renders and moves the clouds throughout the sky.
+	 */
 	public void renderClouds(){
 		cloudFloat -= .3;
 		if(cloudFloat < -1 * SpriteSheets.clouds.getXSheetSize()) {
@@ -212,12 +252,16 @@ public class Screen {
 				MainGame.getScreenHeight() * MainGame.getScreenScale(), null);
 	}
 	
-	public void gui(Player player, GameState gamestate) {
+	/**
+	 * Displays the gui screen according to the current gameState.
+	 * @param gamestate the current game state being used.
+	 */
+	public void gui(GameState gamestate) {
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("Ponderosa", 0, 18));
-		//if(gamestate instanceof NewGameState) {
+		if(gamestate instanceof NewGameState) {
 			//g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
-			//g2.drawString("Player Coords: X: " + player.getXCoord() + ", Y: " + player.getYCoord(), 30, 80);
+			//g2.drawString("Player Coords: X: " + Camera.getPlayerXCoord() + ", Y: " + Camera.getPlayerYCoord(), 30, 80);
 			//g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
 			//g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
 			//g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
@@ -231,7 +275,13 @@ public class Screen {
 
 			//Health Bar
 			drawHealthBars();
-		//}
+		} else if(gamestate instanceof StartScreenState) {
+			g2.setColor(Color.WHITE);
+			g2.setFont(new Font("Ponderosa", 0, 21));
+			
+			g2.drawString("Do your part to fend of the toxic H2O filled invaders!", 115, 540);
+			g2.drawString("Click your [mouse] to start!", 325, 570);
+		}
 	}
 	
 	/**
@@ -271,6 +321,9 @@ public class Screen {
 		}
 	}
 	
+	/**
+	 * Draws player's ammo gui bars.
+	 */
 	private void drawAmmoBars() {
 		g2.drawString("BLASTER", 140, 583);
 		g2.drawString("SHOTGUN", 140, 609);
@@ -289,6 +342,20 @@ public class Screen {
 		g2.fillRect(33, 573, innerLength * Player.mainShootDelta / MainBullet.FIRE_RATE, innerBarWidth);
 		g2.fillRect(33, 599, innerLength * Player.shotgunDelta / ShotgunBullet.FIRE_RATE, innerBarWidth);
 		g2.fillRect(33, 623, innerLength * Player.missleAmmo / 10, innerBarWidth);
+	}
+	
+	/**
+	 * Slowly fades in a black rectangle the size of the screen.
+	 * When the rectangle is fully black it will return true.
+	 * @return False when rectangle is transparent, False when Opaque
+	 */
+	public boolean fadeOut() {
+		g2.setColor(new Color(0, 0, 0, alpha)); 
+		g2.fillRect(0, 0, width, height);
+		alpha += 0.02f;
+		if(alpha >= 1) {
+			return true;
+		} else return false;
 	}
 
 	/**

@@ -30,6 +30,8 @@ public class SpriteSheets {
 	public static SpriteSheets mainStage = new SpriteSheets("/bg/stage_test.png", 1600, 913);
 	public static SpriteSheets mainBg = new SpriteSheets("/bg/bg.png", 1600, 963);
 	public static SpriteSheets clouds = new SpriteSheets("/bg/clouds.png", 1600, 963);
+	//<<------------------Font--------------------->>
+	public static SpriteSheets titleFont = new SpriteSheets("/font/main_title.png", 1152, 648);
 	
 	public SpriteSheets(String path, int xSize, int ySize) {
 		this.path = path;

@@ -35,7 +35,7 @@ public class MainGame extends Canvas implements Runnable{
 	private Screen screen;
 	private Keyboard key;
 	private Mouse mouse;
-	GameState currentState;
+	public static GameState currentState;
 	
 	//Each pixel of the screen is put into the int[] pixels. They are transfered to BufferedImage image
 	//To be drawn to the screen.

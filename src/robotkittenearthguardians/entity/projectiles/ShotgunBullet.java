@@ -1,5 +1,6 @@
 package robotkittenearthguardians.entity.projectiles;
 
+import robotkittenearthguardians.audio.AudioPlayer;
 import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.graphics.AnimateMachine;
@@ -25,6 +26,9 @@ public class ShotgunBullet extends Projectiles{
 		boundBox = new AABB(somePosition, size);
 		animation = new AnimateMachine(sprite, x, y);
 		projectiles.add(this);
+		shootSound = new AudioPlayer("/audio/shotgun.wav");
+		shootSound.volume(-17f);
+		shootSound.play();
 	}
 
 	/**
@@ -43,6 +47,7 @@ public class ShotgunBullet extends Projectiles{
 				mobs.get(index).bounceBack(this);
 				x += vectorX;
 				y += vectorY;
+				bulletHit.play(); //Probably add this sound to a bullet hit particle instead of here
 				die();
 			}
 		}

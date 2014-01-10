@@ -29,6 +29,7 @@ public class MainBullet extends Projectiles{
 		animation = new AnimateMachine(sprite, x, y);
 		projectiles.add(this);
 		shootSound = new AudioPlayer("/audio/mainBlaster.wav");
+		shootSound.volume(-7f);
 		shootSound.play();
 	}
 	
@@ -48,6 +49,7 @@ public class MainBullet extends Projectiles{
 				mobs.get(index).bounceBack(this);
 				x += vectorX;
 				y += vectorY;
+				bulletHit.play(); //Probably add this sound to a bullet hit particle instead of here
 				die();
 			}
 		}

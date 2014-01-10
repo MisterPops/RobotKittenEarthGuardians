@@ -30,7 +30,7 @@ public class AudioPlayer {
 			clip.open(dais);
 			FloatControl gainControl = 
 					(FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
+			gainControl.setValue(-5f);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -51,5 +51,11 @@ public class AudioPlayer {
 	public void close() {
 		stop();
 		clip.close();
+	}
+	
+	public void volume(float vol) {
+		FloatControl gainControl = 
+				(FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+		gainControl.setValue(vol);
 	}
 }

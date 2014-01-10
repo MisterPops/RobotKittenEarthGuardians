@@ -1,5 +1,6 @@
 package robotkittenearthguardians.entity.mob;
 
+import robotkittenearthguardians.audio.AudioPlayer;
 import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.Ai;
@@ -97,6 +98,9 @@ public class Player extends Mob{
 						missleAmmo++;
 					}
 					GameMaster.addScore(particles.get(index).getPoints());
+					AudioPlayer missileAmmo = new AudioPlayer("/audio/missileAmmo.wav");
+					missileAmmo.volume(-9f);
+					missileAmmo.play();
 					particles.remove(index);
 				}
 			}

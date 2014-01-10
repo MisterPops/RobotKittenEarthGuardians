@@ -36,6 +36,7 @@ public class Missle extends Projectiles{
 		ai = new MissleAi(this, target);
 		animation = new AnimateMachine(sprite, x, y);
 		projectiles.add(this);
+		missileLaunch();
 	}
 
 	public void update() {
@@ -57,7 +58,7 @@ public class Missle extends Projectiles{
 				x += vectorX;
 				y += vectorY;
 				blowBack();
-				die();
+				dieMissle();
 			} else if(ai.getDistance() < 3) {
 				remove();
 			}

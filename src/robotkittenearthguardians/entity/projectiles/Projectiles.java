@@ -2,6 +2,7 @@ package robotkittenearthguardians.entity.projectiles;
 
 import robotkittenearthguardians.audio.AudioPlayer;
 import robotkittenearthguardians.entity.Entity;
+import robotkittenearthguardians.entity.particles.Explosion;
 import robotkittenearthguardians.entity.particles.MainBulletParticle;
 import robotkittenearthguardians.entity.particles.Particle;
 
@@ -14,6 +15,8 @@ public abstract class Projectiles extends Entity{
 	protected int speed;
 	protected AudioPlayer shootSound, 
 		bulletHit = new AudioPlayer("/audio/bulletHit.wav");
+	protected static AudioPlayer missileLaunch =
+			new AudioPlayer("/audio/missileLaunch.wav");
 	
 	
 	public Projectiles(int x, int y, double dir) {
@@ -55,6 +58,17 @@ public abstract class Projectiles extends Entity{
 		Particle mainShotParticle = new MainBulletParticle(deathParticle, (int)x , (int)y);
 		particles.add(mainShotParticle);
 		remove();
+	}
+	
+	protected void dieMissle() {
+		Particle mainExplosion = new Explosion(deathParticle, (int)x , (int)y);
+		particles.add(mainExplosion);
+		remove();
+	}
+	
+	protected static void missileLaunch() {
+		missileLaunch.volume(-10f);
+		missileLaunch.play();
 	}
 	
 	/**

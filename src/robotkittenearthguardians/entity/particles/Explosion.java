@@ -10,12 +10,14 @@ public class Explosion extends Particle{
 		super(x, y);
 		sprite = Sprite.mainExplosion;
 		animation = new AnimateMachine(sprite, x, y);
+		playExplosion();
 	}
 	
 	public Explosion(Sprite[] sprite, int x, int y) {
 		super(sprite, x, y);
 		this.sprite = sprite;
 		animation = new AnimateMachine(sprite, x, y);
+		playExplosion();
 	}
 	
 	public void update() {

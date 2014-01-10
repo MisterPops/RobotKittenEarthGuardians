@@ -27,7 +27,7 @@ public class ShotgunBullet extends Projectiles{
 		animation = new AnimateMachine(sprite, x, y);
 		projectiles.add(this);
 		shootSound = new AudioPlayer("/audio/shotgun.wav");
-		shootSound.volume(-17f);
+		shootSound.volume(-15f);
 		shootSound.play();
 	}
 

@@ -1,5 +1,6 @@
 package robotkittenearthguardians.entity.projectiles;
 
+import robotkittenearthguardians.audio.AudioPlayer;
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.particles.MainBulletParticle;
 import robotkittenearthguardians.entity.particles.Particle;
@@ -11,6 +12,7 @@ public abstract class Projectiles extends Entity{
 	protected double vectorX, vectorY;
 	protected int range;
 	protected int speed;
+	protected AudioPlayer shootSound;
 	
 	
 	public Projectiles(int x, int y, double dir) {

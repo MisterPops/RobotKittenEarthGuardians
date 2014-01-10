@@ -1,5 +1,6 @@
 package robotkittenearthguardians.entity.projectiles;
 
+import robotkittenearthguardians.audio.AudioPlayer;
 import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.graphics.AnimateMachine;
@@ -27,6 +28,8 @@ public class MainBullet extends Projectiles{
 		boundBox = new AABB(somePosition, size);
 		animation = new AnimateMachine(sprite, x, y);
 		projectiles.add(this);
+		shootSound = new AudioPlayer("/audio/mainBlaster.wav");
+		shootSound.play();
 	}
 	
 	/**

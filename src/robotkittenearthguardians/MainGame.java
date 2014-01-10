@@ -100,6 +100,7 @@ public class MainGame extends Canvas implements Runnable{
 	 * the update render loop and joins the thread to end it.
 	 */
 	public synchronized void stop() {
+		System.exit(0);
 		running = false;
 		try {
 			thread.join();
@@ -151,6 +152,9 @@ public class MainGame extends Canvas implements Runnable{
 	public void update() {
 		key.update();
 		currentState.update();
+		if(key.escape) {
+			stop();
+		}
 	}
 	
 	/**

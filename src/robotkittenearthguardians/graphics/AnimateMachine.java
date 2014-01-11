@@ -23,6 +23,13 @@ public class AnimateMachine extends Entity{
 		this.y = y;
 		this.direction = direction;
 	}
+	
+	public void update(int x, int y, int direction, Sprite[] spriteUpdate) {
+		this.x = x;
+		this.y = y;
+		this.direction = direction;
+		this.sprite = spriteUpdate;
+	}
 
 	/**
 	 * Animates mobs according to their direction.

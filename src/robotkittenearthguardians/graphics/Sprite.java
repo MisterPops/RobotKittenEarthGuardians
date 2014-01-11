@@ -21,6 +21,34 @@ public class Sprite {
 	public static Sprite[] waterBottleSingle = spriteArray(24, 32, SpriteSheets.waterBottleSingle);
 	//Strong Enemy: Watergun Mech
 	public static Sprite[] waterGunMech = spriteArray(51, 56, SpriteSheets.waterGunMech);
+	//Exploding Single Waterbottle
+	public static Sprite[] explodingBottleGreen = {new Sprite(24, 32, 0, 0, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 1, 0, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 2, 0, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 3, 0, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 4, 0, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 5, 0, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 6, 0, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 7, 0, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 0, 1, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 1, 1, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 2, 1, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 3, 1, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 4, 1, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 5, 1, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 6, 1, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 7, 1, SpriteSheets.explodingWaterBottle)};
+	public static Sprite[] explodingBottleYellow =  {new Sprite(24, 32, 0, 2, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 1, 2, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 2, 2, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 3, 2, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 4, 2, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 5, 2, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 6, 2, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 7, 2, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 0, 3, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 1, 3, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 2, 3, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 3, 3, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 4, 3, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 5, 3, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 6, 3, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 7, 3, SpriteSheets.explodingWaterBottle)};
+	public static Sprite[] explodingBottleRed = {new Sprite(24, 32, 0, 4, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 1, 4, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 2, 4, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 3, 4, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 4, 4, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 5, 4, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 6, 4, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 7, 4, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 0, 5, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 1, 5, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 2, 5, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 3, 5, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 4, 5, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 5, 5, SpriteSheets.explodingWaterBottle), new Sprite(24, 32, 6, 5, SpriteSheets.explodingWaterBottle),
+		new Sprite(24, 32, 7, 5, SpriteSheets.explodingWaterBottle)};
 	
 	//<----Projectiles/Particles----->
 	//Enemy bullet

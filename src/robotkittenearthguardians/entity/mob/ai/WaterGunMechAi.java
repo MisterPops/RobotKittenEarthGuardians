@@ -13,9 +13,12 @@ public class WaterGunMechAi extends Ai{
 		movement.setVector(wander(speed));
 		mob.move((int) movement.getXVector(), (int) movement.getYVector()); 
 		
-		int randomizer = random.nextInt(6);
+		int randomizer = random.nextInt(6);	
 		if(timer > 300 && randomizer != 5) {
 			fire(3);
+			if(randomizer != 3 && randomizer != 1) {
+				dropExplodingBottle();
+			}
 			timer = 0;
 		}
 		timer++;

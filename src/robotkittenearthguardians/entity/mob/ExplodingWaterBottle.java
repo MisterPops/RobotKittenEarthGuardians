@@ -98,7 +98,7 @@ public class ExplodingWaterBottle extends Mob{
 	}
 	
 	private void explode() {
-		final float EXPLOSIVE_DMG = 10;
+		final float EXPLOSIVE_DMG = 25;
 		final float DMG_RADIUS = 60;
 		GameMaster.addScore(points);
 		mainExplode(deathParticle);
@@ -111,7 +111,6 @@ public class ExplodingWaterBottle extends Mob{
 			}
 		}
 		
-		dropMissleAmmo();
 		Camera.shake();
 		remove();
 	}

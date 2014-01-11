@@ -2,6 +2,7 @@
 package robotkittenearthguardians.entity.mob.ai;
 
 import robotkittenearthguardians.entity.Entity;
+import robotkittenearthguardians.entity.mob.ExplodingWaterBottle;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
@@ -124,10 +125,15 @@ public abstract class Ai extends Mob{
 	/**
 	 * Method to prompt mob to fire weapon.
 	 */
-	public void fire(int projectile) {
+	protected void fire(int projectile) {
 		double dx = playerX - mobPos.getXVector(), dy = playerY - mobPos.getYVector();
 		double angle = Math.atan2(dy, dx);
 		mob.shoot((int) mobPos.getXVector(), (int) mobPos.getYVector(), angle, projectile);
+	}
+	
+	protected void dropExplodingBottle() {
+		@SuppressWarnings("unused")
+		ExplodingWaterBottle explodingWaterBottle = new ExplodingWaterBottle((int) mobPos.getXVector(), (int) mobPos.getYVector());
 	}
 	
 	/**

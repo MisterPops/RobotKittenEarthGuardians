@@ -46,7 +46,7 @@ public class Missle extends Projectiles{
 		
 		ai.update(somePosition);
 		ai.ai(speed, this);
-		direction = ai.aiDirection(false);
+		direction = ai.aiDirection(false, false);
 		
 		smokeTrail();
 		animation.update((int) x, (int) y, direction);

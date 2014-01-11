@@ -16,7 +16,7 @@ public static final int FIRE_RATE = 18;
 		damage = 7;
 		range = random.nextInt(30) + 500;
 		speed = 3;
-		sprite = Sprite.mainBullet;
+		sprite = Sprite.enemyBullet;
 		deathParticle = Sprite.bulletImpact;
 		vectorX = speed * Math.cos(angle);
 		vectorY = speed * Math.sin(angle);
@@ -43,6 +43,7 @@ public static final int FIRE_RATE = 18;
 				mobs.get(index).bounceBack(this);
 				x += vectorX;
 				y += vectorY;
+				bulletHit.play();
 				die();
 			}
 		}

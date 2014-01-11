@@ -8,6 +8,7 @@ import robotkittenearthguardians.entity.projectiles.Missle;
 import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
 import robotkittenearthguardians.entity.projectiles.WaterBottleBullet;
+import robotkittenearthguardians.entity.projectiles.WaterGunMechBullet;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.level.Level;
 
@@ -65,6 +66,9 @@ public abstract class Mob extends Entity {
 			Projectiles missle = new Missle(x, y);
 		} else if(projectile == 2) {
 			shotgun(dir);
+		} else if(projectile == 3) {
+			@SuppressWarnings("unused")
+			Projectiles watergunMechBullet = new WaterGunMechBullet(x, y, dir);
 		} else {
 			@SuppressWarnings("unused")
 			Projectiles mainShot = new WaterBottleBullet(x, y, dir);

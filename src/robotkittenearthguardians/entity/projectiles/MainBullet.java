@@ -49,7 +49,7 @@ public class MainBullet extends Projectiles{
 				mobs.get(index).bounceBack(this);
 				x += vectorX;
 				y += vectorY;
-				bulletHit.play(); //Probably add this sound to a bullet hit particle instead of here
+				bulletHit.play();
 				die();
 			}
 		}

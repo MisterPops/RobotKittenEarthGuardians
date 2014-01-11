@@ -50,7 +50,7 @@ public class WaterBottlePack extends Mob{
 		
 		//Mobs movement patterns
 		ai.ai(speed, this);
-		direction = ai.aiDirection(true);
+		direction = ai.aiDirection(true, false);
 		
 		//If collides with other mobs
 		for(int index = 0; index < mobs.size(); index++) {

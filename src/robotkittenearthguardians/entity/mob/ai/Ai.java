@@ -96,11 +96,11 @@ public abstract class Ai extends Mob{
 		}
 		
 		//get Distance between the points
-		double randomDx = randomCoordX - mobPos.getXVector(), randomDy = randomCoordY - mobPos.getYVector();
-		randomDistance = Math.sqrt(randomDx * randomDx + randomDy * randomDy);
+		dx = randomCoordX - mobPos.getXVector(); dy = randomCoordY - mobPos.getYVector();
+		randomDistance = Math.sqrt(dx * dx + dy * dy);
 		double multiplier = speed / randomDistance;
-		movement.setXVector((float) (randomDx * multiplier));
-		movement.setYVector((float) (randomDy * multiplier));
+		movement.setXVector((float) (dx * multiplier));
+		movement.setYVector((float) (dy * multiplier));
 		return movement;
 	}
 	
@@ -124,10 +124,10 @@ public abstract class Ai extends Mob{
 	/**
 	 * Method to prompt mob to fire weapon.
 	 */
-	public void fire() {
+	public void fire(int projectile) {
 		double dx = playerX - mobPos.getXVector(), dy = playerY - mobPos.getYVector();
 		double angle = Math.atan2(dy, dx);
-		mob.shoot((int) mobPos.getXVector(), (int) mobPos.getYVector(), angle, -1);
+		mob.shoot((int) mobPos.getXVector(), (int) mobPos.getYVector(), angle, projectile);
 	}
 	
 	/**
@@ -217,22 +217,28 @@ public abstract class Ai extends Mob{
 	 * Direction the Ai is moving in. This direction method is for isometric mobs.
 	 * @return returns an int depending on Ai direction.
 	 */
-	public int aiDirection(boolean isometric) {
+	public int aiDirection(boolean isometric, boolean facingPlayer) {
+		double degree;
+		if(facingPlayer) {
+			double diX = playerX - mobPos.getXVector(), diY = playerY - mobPos.getYVector();
+			degree = Math.atan2(diY, diX) * (180/Math.PI);
+		} else {
+			degree = Math.atan2(dy, dx) * (180/Math.PI);
+		}
+		
 		if(isometric) {
 			//For isometric direction.
-			if(movement.getXVector() <= 0 && movement.getYVector() >= 0) {
+			if(degree <= 180 && degree > 90) {
 				return 1;
-			} else if(movement.getXVector() > 0 && movement.getYVector() > 0) {
+			} else if(degree <= 90 && degree > 0) {
 				return 7;
-			} else if(movement.getXVector() > 0 && movement.getYVector() < 0) {
+			} else if(degree <= 0 && degree > -90) {
 				return 8;
 			} else {
 				return 0;
 			}
 		} else {
-			//For full 360 direction.		
-			double degree = Math.atan2(dy, dx) * (180/Math.PI);
-			
+			//For full 360 direction.	
 			if(degree < -70 && degree >  -130) {
 				return 0;
 			} else if(degree <= -130 && degree >=  -160) {

@@ -15,16 +15,18 @@ public class Sprite {
 	//<------Enemies------->
 	//Basic Enemy: WaterBalloon enemy.
 	public static Sprite[] waterBalloon = spriteArray(32, 32, SpriteSheets.waterBalloon);
-	
 	//Pack Enemy: Water Bottle Pack
 	public static Sprite[] waterBottlePack = spriteArray(75, 48, SpriteSheets.waterBottlePack);
 	//Water Bottle Single
 	public static Sprite[] waterBottleSingle = spriteArray(24, 32, SpriteSheets.waterBottleSingle);
-	
 	//Strong Enemy: Watergun Mech
 	public static Sprite[] waterGunMech = spriteArray(51, 56, SpriteSheets.waterGunMech);
 	
 	//<----Projectiles/Particles----->
+	//Enemy bullet
+	public static Sprite[] enemyBullet = {new Sprite(16, 16, 0, 0, SpriteSheets.enemyBullet)};
+	//WaterGun Mech Bullet
+	public static Sprite[] watergunMechBullet = spriteArray(16, 16, SpriteSheets.watergunMechBullet);
 	//mainBullet
 	public static Sprite[] mainBullet = {new Sprite(16, 16, 0 , 0, SpriteSheets.mainBullet)};
 	//Shotgun Bullet

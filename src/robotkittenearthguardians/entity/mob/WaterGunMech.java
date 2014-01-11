@@ -2,7 +2,7 @@ package robotkittenearthguardians.entity.mob;
 
 import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
-import robotkittenearthguardians.entity.mob.ai.WaterBalloonAi;
+import robotkittenearthguardians.entity.mob.ai.WaterGunMechAi;
 import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Camera;
 import robotkittenearthguardians.graphics.Screen;
@@ -12,7 +12,7 @@ import robotkittenearthguardians.level.GameMaster;
 public class WaterGunMech extends Mob{
 
 	private int sightRange = 500;
-	WaterBalloonAi ai;
+	WaterGunMechAi ai;
 
 	public WaterGunMech(int x, int y) {
 		health = 150.0f;
@@ -33,7 +33,7 @@ public class WaterGunMech extends Mob{
 		healthBar = new HealthBar(health);
 		animation = new AnimateMachine(sprite, x, y);
 		//Initialize mob's Ai
-		ai = new WaterBalloonAi(this);
+		ai = new WaterGunMechAi(this);
 	}
 	
 	public void update() {
@@ -50,7 +50,7 @@ public class WaterGunMech extends Mob{
 		
 		//Mobs movement patterns
 		ai.ai(speed, this);
-		direction = ai.aiDirection(true);
+		direction = ai.aiDirection(true, true);
 		
 		//If collides with other mobs
 		for(int index = 0; index < mobs.size(); index++) {

@@ -19,8 +19,10 @@ public class SpriteSheets {
 	public static SpriteSheets waterBottleSingle = new SpriteSheets("/actors/waterbottle_single.png", 192, 64);
 	public static SpriteSheets waterGunMech = new SpriteSheets("/actors/watergun_mech.png", 408, 112);
 	//<<------------Projectiles/Particles---------->>
+	public static SpriteSheets enemyBullet = new SpriteSheets("/projectiles/enemyBullet.png", 16, 16);
 	public static SpriteSheets mainBullet = new SpriteSheets("/projectiles/bullet.png", 16, 16);
 	public static SpriteSheets shotgunBullet = new SpriteSheets("/projectiles/shotgun_bullet.png", 192, 16);
+	public static SpriteSheets watergunMechBullet = new SpriteSheets("/projectiles/mechBullet.png", 160, 16);
 	public static SpriteSheets bulletImpact = new SpriteSheets("/projectiles/bullet_impact.png", 128, 16);
 	public static SpriteSheets missle = new SpriteSheets("/projectiles/missle.png", 64, 160);
 	public static SpriteSheets smokeTrail = new SpriteSheets("/projectiles/missle_smoke_trail.png", 416, 32);

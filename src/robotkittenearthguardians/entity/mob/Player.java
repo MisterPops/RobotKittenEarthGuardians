@@ -1,6 +1,6 @@
 package robotkittenearthguardians.entity.mob;
 
-import robotkittenearthguardians.audio.AudioPlayer;
+import robotkittenearthguardians.audio.AudioLibrary;
 import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.Ai;
@@ -122,9 +122,7 @@ public class Player extends Mob{
 						missleAmmo++;
 					}
 					GameMaster.addScore(particles.get(index).getPoints());
-					AudioPlayer missileAmmo = new AudioPlayer("/audio/missileAmmo.wav");
-					missileAmmo.volume(-9f);
-					missileAmmo.play();
+					AudioLibrary.missileAmmo.play();
 					particles.remove(index);
 				}
 			}
@@ -187,7 +185,14 @@ public class Player extends Mob{
 	}
 	
 	private void weaponLock() {
-		shotgunUnlock = GameMaster.getLevelName() > 2 ? true : false;
+		if(GameMaster.getLevelName() > 2 && !shotgunUnlock) {
+			shotgunUnlock = true;
+			AudioLibrary.powerup.play();
+		}
+		if(GameMaster.getLevelName() > 3 && !missileUnlock) {
+			missileUnlock = true;
+			AudioLibrary.powerup.play();
+		}
 		missileUnlock = GameMaster.getLevelName() > 3 ? true : false;
 	}
 }

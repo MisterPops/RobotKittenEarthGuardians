@@ -16,6 +16,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import robotkittenearthguardians.input.Mouse;
+import robotkittenearthguardians.audio.AudioLibrary;
 import robotkittenearthguardians.gameState.GameState;
 import robotkittenearthguardians.gameState.StartScreenState;
 import robotkittenearthguardians.graphics.Screen;
@@ -151,6 +152,7 @@ public class MainGame extends Canvas implements Runnable{
 	 */
 	public void update() {
 		key.update();
+		AudioLibrary.update();
 		currentState.update();
 		if(key.escape) {
 			stop();

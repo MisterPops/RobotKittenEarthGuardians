@@ -1,5 +1,6 @@
 package robotkittenearthguardians.entity.projectiles;
 
+import robotkittenearthguardians.audio.AudioLibrary;
 import robotkittenearthguardians.audio.AudioPlayer;
 import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.particles.Explosion;
@@ -13,10 +14,9 @@ public abstract class Projectiles extends Entity{
 	protected double vectorX, vectorY;
 	protected int range;
 	protected int speed;
-	protected AudioPlayer shootSound, 
-		bulletHit = new AudioPlayer("/audio/bulletHit.wav");
-	protected static AudioPlayer missileLaunch =
-			new AudioPlayer("/audio/missileLaunch.wav");
+	protected AudioPlayer shootSound = new AudioPlayer("/audio/mainBlaster.wav"), 
+		bulletHit = new AudioPlayer("/audio/bulletHit.wav"), 
+		shotgunSound = new AudioPlayer("/audio/shotgun.wav");
 	
 	
 	public Projectiles(int x, int y, double dir) {
@@ -83,8 +83,7 @@ public abstract class Projectiles extends Entity{
 	}
 	
 	protected static void missileLaunch() {
-		missileLaunch.volume(-10f);
-		missileLaunch.play();
+		AudioLibrary.missileLaunch.play();
 	}
 	
 	/**

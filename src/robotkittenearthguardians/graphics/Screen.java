@@ -20,7 +20,6 @@ import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
 import robotkittenearthguardians.gameState.GameState;
 import robotkittenearthguardians.gameState.NewGameState;
 import robotkittenearthguardians.gameState.StartScreenState;
-import robotkittenearthguardians.input.Mouse;
 import robotkittenearthguardians.level.GameMaster;
 
 public class Screen {
@@ -261,14 +260,14 @@ public class Screen {
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("Ponderosa", 0, 18));
 		if(gamestate instanceof NewGameState) {
-			g2.drawString("" + Mouse.mouseRadToDeg(), 30, 55);
+			//g2.drawString("" + Mouse.mouseRadToDeg(), 30, 55);
 			//g2.drawString("Mouse Coords: X: " + Mouse.getMouseX() + ", Y: " + Mouse.getMouseY(), 30, 55);
 			//g2.drawString("Player Coords: X: " + Camera.getPlayerXCoord() + ", Y: " + Camera.getPlayerYCoord(), 30, 80);
 			//g2.drawString("Mouse Button: " + Mouse.getMouseB(), 30, 105);
 			//g2.drawString("Projectile ArrayList: " + Entity.getProjectilesSize(), 30, 130);
 			//g2.drawString("Particle ArrayList: " + Entity.getParticleSize(), 30, 155);
 			//g2.drawString("Mob ArrayList: " + Entity.getMobSize(), 30, 180);
-			g2.drawString(""+ GameMaster.getLevelName(), 30, 30);
+			g2.drawString("LEVEL:"+ GameMaster.getLevelName(), 30, 30);
 			g2.drawString("SCORE:" + GameMaster.getScore(), (MainGame.getScreenWidth() - 180) * 
 					MainGame.getScreenScale(), 30);
 
@@ -330,21 +329,30 @@ public class Screen {
 	private void drawAmmoBars() {
 		g2.drawString("BLASTER", 140, 583);
 		g2.drawString("SHOTGUN", 140, 609);
-		g2.drawString("MISSLES", 140, 635);
-		//Outlines
-		int outlineBarWidth = 14;
-		int outlineLength = 100;
+		g2.drawString("MISSILES", 140, 635);
+		
+		int outlineBarWidth = 14, outlineLength = 100;
+		int innerBarWidth = 8, innerLength = 93;
 		BasicStroke s1 = new BasicStroke(2f);
 		g2.setStroke(s1);
+		
+		//MainBlaster
 		g2.drawRect(30, 570, outlineLength, outlineBarWidth);
-		g2.drawRect(30, 596, outlineLength, outlineBarWidth);
-		g2.drawRect(30, 620, outlineLength, outlineBarWidth);
-		//Inner bars
-		int innerBarWidth = 8;
-		int innerLength = 93;
 		g2.fillRect(33, 573, innerLength * Player.mainShootDelta / MainBullet.FIRE_RATE, innerBarWidth);
-		g2.fillRect(33, 599, innerLength * Player.shotgunDelta / ShotgunBullet.FIRE_RATE, innerBarWidth);
-		g2.fillRect(33, 623, innerLength * Player.missleAmmo / 10, innerBarWidth);
+		//Shotgun
+		if(Player.shotgunUnlock) {
+			g2.drawRect(30, 596, outlineLength, outlineBarWidth);
+			g2.fillRect(33, 599, innerLength * Player.shotgunDelta / ShotgunBullet.FIRE_RATE, innerBarWidth);
+		} else {
+			g2.drawString("LOCKED:", 30, 609);
+		}
+		//Missile
+		if(Player.missileUnlock) {
+			g2.drawRect(30, 620, outlineLength, outlineBarWidth);
+			g2.fillRect(33, 623, innerLength * Player.missleAmmo / 10, innerBarWidth);
+		} else {
+			g2.drawString("LOCKED:", 30, 635);
+		}
 	}
 	
 	/**

@@ -14,7 +14,7 @@ public class ExplodingWaterBottle extends Mob{
 	WaterBalloonAi ai;
 
 	public ExplodingWaterBottle(int x, int y) {
-		health = 30.0f;
+		health = 50.0f;
 		speed = 3.7;
 		points = 3;
 		damage = 0.1f;

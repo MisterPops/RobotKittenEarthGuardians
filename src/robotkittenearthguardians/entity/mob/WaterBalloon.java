@@ -16,9 +16,9 @@ public class WaterBalloon extends Mob{
 
 	public WaterBalloon(int x, int y) {
 		health = 60.0f;
-		speed = 2.3;
+		speed = 3.0;
 		points = 5;
-		damage = 0.1f;
+		damage = 0.2f;
 		sprite = Sprite.waterBalloon;
 		deathParticle = Sprite.mainExplosion;
 		this.x = x;

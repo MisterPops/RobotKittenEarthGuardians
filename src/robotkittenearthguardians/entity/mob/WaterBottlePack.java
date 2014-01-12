@@ -18,7 +18,7 @@ public class WaterBottlePack extends Mob{
 		health = 80.0f;
 		speed = 2;
 		points = 10;
-		damage = 0.1f;
+		damage = 0.5f;
 		sprite = Sprite.waterBottlePack;
 		deathParticle = Sprite.mainExplosion;
 		this.x = x;

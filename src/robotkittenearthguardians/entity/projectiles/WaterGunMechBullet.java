@@ -30,7 +30,6 @@ public class WaterGunMechBullet extends Projectiles{
 	 * and moving the live MainBullets along their path.
 	 */
 	public void update() {
-		move();
 		somePosition.setXVector((float) this.x);
 		somePosition.setYVector((float) this.y);
 		boundBox.update(somePosition);
@@ -45,6 +44,7 @@ public class WaterGunMechBullet extends Projectiles{
 			}
 		}
 		
+		move();
 		animation.update((int) x, (int) y, direction);
 	}
 	
@@ -68,9 +68,7 @@ public class WaterGunMechBullet extends Projectiles{
 		if(Distance() > range && Level.isOnStage(somePosition)) {
 			dieMechBullet();
 		} else if(!(Level.isOnStage(somePosition))) {
-			if(Distance() > range + 300) {
-				remove();
-			}
+			dieMechBullet();
 		}
 	}
 

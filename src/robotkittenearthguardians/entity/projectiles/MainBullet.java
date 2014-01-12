@@ -16,7 +16,7 @@ public class MainBullet extends Projectiles{
 	
 	public MainBullet(int x, int y, double dir) {
 		super(x, y, dir);
-		damage = 10;
+		damage = 5;
 		range = (int) Mouse.mouseDistance() + random.nextInt(50);
 		speed = 15;
 		sprite = Sprite.mainBullet;

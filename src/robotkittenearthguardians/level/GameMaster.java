@@ -15,7 +15,6 @@ public class GameMaster {
 	private static int level = 0;
 	private static long score = 0;
 	//private static int levelRestPeriod = 10;
-	private static String levelName;
 	
 	private static int deltaTimer = 0;
 	private static int levelTimer = -2;
@@ -86,8 +85,8 @@ public class GameMaster {
 		return score;
 	}
 	
-	public static String getLevelName() {
-		return levelName;
+	public static int getLevelName() {
+		return level;
 	}
 	
 	private static void setSpawnLocation() {
@@ -129,17 +128,23 @@ public class GameMaster {
 	public static void levels(int level) {
 		switch(level) {
 		case 1: 
-			GameMaster.levelName = "LEVEL 1";
-			currentLevel.add(new LevelBuilder(2, 1, 5)); currentLevel.add(new LevelBuilder(0, 5, 5));
-			currentLevel.add(new LevelBuilder(0, 5, -2));
+			currentLevel.add(new LevelBuilder(0, 5, 5)); currentLevel.add(new LevelBuilder(0, 5, 5));
+			currentLevel.add(new LevelBuilder(0, 10, -2));
 			break;
 		case 2:
-			GameMaster.levelName = "LEVEL 2";
-			currentLevel.add(new LevelBuilder(2, 2, -2));
+			currentLevel.add(new LevelBuilder(0, 10, 2)); currentLevel.add(new LevelBuilder(1, 1, 5));
+			currentLevel.add(new LevelBuilder(0, 10, -2));
 			break;
 		case 3:
-			GameMaster.levelName = "LEVEL 3";
-			currentLevel.add(new LevelBuilder(0, 200, -2));
+			currentLevel.add(new LevelBuilder(1, 2, 2)); currentLevel.add(new LevelBuilder(1, 2, 2));
+			currentLevel.add(new LevelBuilder(0, 5, 5)); currentLevel.add(new LevelBuilder(1, 2, 2));
+			currentLevel.add(new LevelBuilder(0, 10, 2)); currentLevel.add(new LevelBuilder(1, 2, -2));
+			break;
+		case 4:
+			currentLevel.add(new LevelBuilder(1, 2, 2)); currentLevel.add(new LevelBuilder(1, 2, 2));
+			currentLevel.add(new LevelBuilder(0, 5, 10)); currentLevel.add(new LevelBuilder(2, 1, 2));
+			currentLevel.add(new LevelBuilder(0, 10, 2)); currentLevel.add(new LevelBuilder(1, 2, -2));
+			break;
 		}
 	}
 }

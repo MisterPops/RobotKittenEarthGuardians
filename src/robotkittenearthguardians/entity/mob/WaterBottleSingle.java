@@ -18,7 +18,7 @@ public class WaterBottleSingle extends Mob{
 		health = 30.0f;
 		speed = 3.7;
 		points = 3;
-		damage = 0.1f;
+		damage = 0.2f;
 		sprite = Sprite.waterBottleSingle;
 		deathParticle = Sprite.mainExplosion;
 		this.x = x;

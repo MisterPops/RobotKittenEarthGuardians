@@ -17,11 +17,11 @@ public class Missle extends Projectiles{
 	private int timer = 0;
 	private Mob target;
 	
-	public static final int FIRE_RATE = 20;
+	public static final int FIRE_RATE = 45;
 
 	public Missle(int x, int y) {
 		super(x, y);
-		damage = 25;
+		damage = 30;
 		speed = 6;
 		sprite = Sprite.missle;
 		deathParticle = Sprite.mainExplosion;
@@ -110,7 +110,7 @@ public class Missle extends Projectiles{
 	 * Damages and blowbacks targets within a certain radius of the missle detonation site.
 	 */
 	public void blowBack() {
-		final int BLOW_RADIUS = 50;
+		final int BLOW_RADIUS = 65;
 		for(int index = 0; index < mobs.size(); index++) {
 			//Distance from mob to detonation point
 			int mobCoordX = mobs.get(index).getXCoord(), mobCoordY = mobs.get(index).getYCoord();

@@ -13,9 +13,9 @@ public static final int FIRE_RATE = 18;
 	
 	public WaterBottleBullet(int x, int y, double dir) {
 		super(x, y, dir);
-		damage = 7;
-		range = random.nextInt(30) + 500;
-		speed = 3;
+		damage = 10;
+		range = random.nextInt(30) + 1000;
+		speed = 5;
 		sprite = Sprite.enemyBullet;
 		deathParticle = Sprite.bulletImpact;
 		vectorX = speed * Math.cos(angle);

@@ -166,8 +166,8 @@ public abstract class Mob extends Entity {
 	 * Drops missile ammo randomly.
 	 */
 	protected void dropMissleAmmo() {
-		int randomNum = random.nextInt(150);
-		if(randomNum >= 25 && randomNum <= 35) {
+		int randomNum = random.nextInt(200);
+		if(randomNum > 25 && randomNum < 35) {
 			@SuppressWarnings("unused")
 			MissleAmmo missleAmmo = new MissleAmmo(x, y);
 		}

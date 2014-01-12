@@ -15,10 +15,10 @@ public class WaterGunMech extends Mob{
 	WaterGunMechAi ai;
 
 	public WaterGunMech(int x, int y) {
-		health = 150.0f;
+		health = 200.0f;
 		speed = 2.3;
 		points = 15;
-		damage = 0.1f;
+		damage = 0.5f;
 		sprite = Sprite.waterGunMech;
 		deathParticle = Sprite.mainExplosion;
 		this.x = x;

@@ -17,14 +17,16 @@ import robotkittenearthguardians.level.GameMaster;
 
 public class Player extends Mob{
 	
+	final float REHEAL_RATE = 0.01f;
+	
 	private float force = 0.7f;
 	private float mass = 10.0f;
 	//Should be private. Used to calculate when
 	//Specific bullets should be shot and bullet's ammo.
-	public static int mainShootDelta = 0;
-	public static int shotgunDelta = 0;
-	public static int missleDelta = 0;
-	public static int missleAmmo = 10;
+	public static boolean shotgunUnlock = false, missileUnlock = false;
+	public static int mainShootDelta = MainBullet.FIRE_RATE, 
+			shotgunDelta = ShotgunBullet.FIRE_RATE, missleDelta = Missle.FIRE_RATE,
+			missleAmmo = 10;
 	
 	private Keyboard input;
 	
@@ -91,6 +93,28 @@ public class Player extends Mob{
 			move(xa, ya);
 		}
 		
+		missileAmmoPickup();
+		
+		animation.update(x, y, direction);
+		stageUpdates();
+		weaponLock();
+		
+		//If health is 0 remove player
+		if(health < 0f) {
+			remove();
+		}
+		
+		//health bar tasks
+		health += health < 100 && !damaged ? REHEAL_RATE : 0;
+		healthBar.update(health);
+		damaged = false;
+		
+		//Sends player coords for AI to use
+		Ai.setPlayerX(this.x);
+		Ai.setPlayerY(this.y);
+	}
+
+	private void missileAmmoPickup() {
 		for(int index = 0; index < particles.size(); index++) {
 			if(particles.get(index) instanceof MissleAmmo) {
 				if(hit(particles.get(index))) {
@@ -105,23 +129,6 @@ public class Player extends Mob{
 				}
 			}
 		}
-		
-		animation.update(x, y, direction);
-		stageUpdates();
-		
-		//If health is 0 remove player
-		if(health < 0f) {
-			remove();
-		}
-		
-		//health bar tasks
-		health += health < 100 && !damaged ? 0.1 : 0;
-		healthBar.update(health);
-		damaged = false;
-		
-		//Sends player coords for AI to use
-		Ai.setPlayerX(this.x);
-		Ai.setPlayerY(this.y);
 	}
 
 	/**
@@ -146,11 +153,11 @@ public class Player extends Mob{
 		if(Mouse.leftClick && mainShootDelta >= MainBullet.FIRE_RATE) {
 			shoot(x, y, dir, 0);
 			mainShootDelta = 0;
-		} else if(input.space && missleAmmo != 0 && missleDelta >= Missle.FIRE_RATE && mobs.size() > 1) { 
+		} else if(input.space && missleAmmo != 0 && missleDelta >= Missle.FIRE_RATE && mobs.size() > 1 && missileUnlock) { 
 			shoot(x, y, dir, 1);
 			missleAmmo--;
 			missleDelta = 0;
-		} else if(Mouse.getMouseB() == 3 && shotgunDelta >= ShotgunBullet.FIRE_RATE) {
+		} else if(Mouse.getMouseB() == 3 && shotgunDelta >= ShotgunBullet.FIRE_RATE && shotgunUnlock) {
 			shoot(x, y, dir, 2);
 			shotgunDelta = 0;
 		}
@@ -177,5 +184,10 @@ public class Player extends Mob{
 		} else if(Mouse.mouseRadToDeg() <= 70 && Mouse.mouseRadToDeg() >= 20) {
 			direction = 5;
 		}
+	}
+	
+	private void weaponLock() {
+		shotgunUnlock = GameMaster.getLevelName() > 2 ? true : false;
+		missileUnlock = GameMaster.getLevelName() > 3 ? true : false;
 	}
 }

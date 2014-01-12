@@ -193,6 +193,5 @@ public class Player extends Mob{
 			missileUnlock = true;
 			AudioLibrary.powerup.play();
 		}
-		missileUnlock = GameMaster.getLevelName() > 3 ? true : false;
 	}
 }

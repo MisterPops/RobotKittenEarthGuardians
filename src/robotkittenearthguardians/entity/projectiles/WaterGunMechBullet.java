@@ -9,6 +9,9 @@ import robotkittenearthguardians.level.Level;
 
 public class WaterGunMechBullet extends Projectiles{
 
+	private int scatter = 0;
+	private boolean dead = false;
+	
 	public WaterGunMechBullet(int x, int y, double dir) {
 		super(x, y, dir);
 		damage = 7;
@@ -34,17 +37,17 @@ public class WaterGunMechBullet extends Projectiles{
 		somePosition.setYVector((float) this.y);
 		boundBox.update(somePosition);
 		
-		for(int index = 0; index < mobs.size(); index++) {
-			if(hit(mobs.get(index)) && mobs.get(index) instanceof Player) {
-				mobs.get(index).hurt(damage);
-				mobs.get(index).bounceBack(this);
-				x += vectorX;
-				y += vectorY;
-				dieMechBullet();
+		if(!dead) {
+			for(int index = 0; index < mobs.size(); index++) {
+				if(hit(mobs.get(index)) && mobs.get(index) instanceof Player) {
+					mobs.get(index).hurt(damage);
+					mobs.get(index).bounceBack(this);
+					dead = dieMechBullet();
+				}
 			}
-		}
+			move();
+		} else dieMechBullet();
 		
-		move();
 		animation.update((int) x, (int) y, direction);
 	}
 	
@@ -53,7 +56,7 @@ public class WaterGunMechBullet extends Projectiles{
 	 * and its sprite to the screen
 	 */
 	public void render(Screen screen) {
-		animation.animateProjectile(screen);
+		if(!dead) animation.animateProjectile(screen);
 	}
 	
 	/**
@@ -66,9 +69,9 @@ public class WaterGunMechBullet extends Projectiles{
 		y += vectorY;
 		
 		if(Distance() > range && Level.isOnStage(somePosition)) {
-			dieMechBullet();
+			dead = dieMechBullet();
 		} else if(!(Level.isOnStage(somePosition))) {
-			dieMechBullet();
+			dead = dieMechBullet();
 		}
 	}
 
@@ -87,5 +90,23 @@ public class WaterGunMechBullet extends Projectiles{
 	 */
 	public int getSpeed() {
 		return speed;
+	}
+	
+	protected boolean dieMechBullet() {
+		if(scatter != 180) {
+			@SuppressWarnings("unused")
+			Projectiles mechScatterBullet1 = new WaterBottleBullet(x, y, scatter * (Math.PI/180) * 10);
+			
+			//double inverse = -1 * (scatter * (Math.PI/180));
+			//if(inverse != 0) {
+				//@SuppressWarnings("unused")
+				//Projectiles mechScatterBullet2 = new WaterBottleBullet(x, y, inverse * 10);
+			//}
+			scatter += 15;
+			return true;
+		} else {
+			remove();
+			return true;
+		}
 	}
 }

@@ -25,8 +25,8 @@ public class Player extends Mob{
 	//Specific bullets should be shot and bullet's ammo.
 	public static boolean shotgunUnlock = false, missileUnlock = false;
 	public static int mainShootDelta = MainBullet.FIRE_RATE, 
-			shotgunDelta = ShotgunBullet.FIRE_RATE, missleDelta = Missle.FIRE_RATE,
-			missleAmmo = 10;
+			shotgunDelta = 0, missleDelta = 0,
+			missleAmmo = 10, maxMissileAmmo = 10;
 	
 	private Keyboard input;
 	
@@ -118,7 +118,7 @@ public class Player extends Mob{
 		for(int index = 0; index < particles.size(); index++) {
 			if(particles.get(index) instanceof MissleAmmo) {
 				if(hit(particles.get(index))) {
-					if(missleAmmo < 10) {
+					if(missleAmmo < maxMissileAmmo) {
 						missleAmmo++;
 					}
 					GameMaster.addScore(particles.get(index).getPoints());
@@ -145,8 +145,8 @@ public class Player extends Mob{
 		double dir = Mouse.mouseRadAngle();
 		
 		if(mainShootDelta < MainBullet.FIRE_RATE) mainShootDelta++;
-		if(shotgunDelta < ShotgunBullet.FIRE_RATE) shotgunDelta++;
-		if(missleDelta < Missle.FIRE_RATE) missleDelta++;
+		if(shotgunDelta < ShotgunBullet.FIRE_RATE && shotgunUnlock) shotgunDelta++;
+		if(missleDelta < Missle.FIRE_RATE && missileUnlock) missleDelta++;
 		
 		if(Mouse.leftClick && mainShootDelta >= MainBullet.FIRE_RATE) {
 			shoot(x, y, dir, 0);

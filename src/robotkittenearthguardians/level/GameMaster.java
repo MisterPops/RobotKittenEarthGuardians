@@ -128,7 +128,7 @@ public class GameMaster {
 	public static void levels(int level) {
 		switch(level) {
 		case 1: 
-			currentLevel.add(new LevelBuilder(0, 5, 5)); currentLevel.add(new LevelBuilder(0, 5, 5));
+			currentLevel.add(new LevelBuilder(2, 1, 5)); currentLevel.add(new LevelBuilder(0, 5, 5));
 			currentLevel.add(new LevelBuilder(0, 10, -2));
 			break;
 		case 2:

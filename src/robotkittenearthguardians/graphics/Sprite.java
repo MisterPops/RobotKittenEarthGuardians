@@ -10,7 +10,7 @@ public class Sprite {
 	private SpriteSheets sheet;
 	
 	//Player (!moving) sprites.
-	public static Sprite[] player = spriteArray(32, 32, SpriteSheets.player);
+	public static Sprite[] player = spriteArray(48, 48, SpriteSheets.player);
 	
 	//<------Enemies------->
 	//Basic Enemy: WaterBalloon enemy.

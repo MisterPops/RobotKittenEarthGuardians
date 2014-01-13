@@ -16,6 +16,7 @@ import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.mob.Mob;
 import robotkittenearthguardians.entity.mob.Player;
 import robotkittenearthguardians.entity.projectiles.MainBullet;
+import robotkittenearthguardians.entity.projectiles.Missle;
 import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
 import robotkittenearthguardians.gameState.GameState;
 import robotkittenearthguardians.gameState.NewGameState;
@@ -349,7 +350,7 @@ public class Screen {
 		//Missile
 		if(Player.missileUnlock) {
 			g2.drawRect(30, 620, outlineLength, outlineBarWidth);
-			g2.fillRect(33, 623, innerLength * Player.missleAmmo / 10, innerBarWidth);
+			g2.fillRect(33, 623, innerLength * Player.missleAmmo / Player.maxMissileAmmo * Player.missleDelta / Missle.FIRE_RATE, innerBarWidth);
 		} else {
 			g2.drawString("LOCKED:", 30, 635);
 		}

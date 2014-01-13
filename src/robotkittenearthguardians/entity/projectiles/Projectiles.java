@@ -66,22 +66,6 @@ public abstract class Projectiles extends Entity{
 		remove();
 	}
 	
-	protected void dieMechBullet() {
-		int scatter = 0;
-		while(scatter != 180) {
-			@SuppressWarnings("unused")
-			Projectiles mechScatterBullet1 = new WaterBottleBullet(x, y, scatter * (Math.PI/180) * 10);
-			
-			double inverse = -1 * (scatter * (Math.PI/180));
-			if(inverse != 0) {
-				@SuppressWarnings("unused")
-				Projectiles mechScatterBullet2 = new WaterBottleBullet(x, y, inverse * 10);
-			}
-			scatter += 10;
-		}
-		remove();
-	}
-	
 	protected static void missileLaunch() {
 		AudioLibrary.missileLaunch.play();
 	}

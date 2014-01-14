@@ -6,8 +6,6 @@ import robotkittenearthguardians.graphics.AnimateMachine;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
 import robotkittenearthguardians.input.Mouse;
-import robotkittenearthguardians.level.Level;
-
 
 public class MainBullet extends Projectiles{
 	
@@ -61,40 +59,5 @@ public class MainBullet extends Projectiles{
 	 */
 	public void render(Screen screen) {
 		animation.animateProjectile(screen);
-	}
-	
-	/**
-	 * Moves the MainBullet along the vector path.
-	 * Triggers remove boolean to true and death particle
-	 * when the bullet is more than it's given range.
-	 */
-	protected void move() {
-		x += vectorX;
-		y += vectorY;
-		
-		if(Distance() > range && Level.isOnStage(somePosition)) {
-			die();
-		} else if(!(Level.isOnStage(somePosition))) {
-			if(Distance() > range + 300) {
-				remove();
-			}
-		}
-	}
-	
-	/**
-	 * Returns the distance of the projectile from the origin to the point it is currently at.
-	 * @return double distance 
-	 */
-	private double Distance() {
-		double distance;
-		distance = Math.abs(Math.sqrt((xOrgin - x) * (xOrgin - x) + (yOrgin - y) * (yOrgin - y))); 
-		return distance;
-	}
-
-	/**
-	 * Returns the MainBullet's movement speed
-	 */
-	public int getSpeed() {
-		return speed;
 	}
 }

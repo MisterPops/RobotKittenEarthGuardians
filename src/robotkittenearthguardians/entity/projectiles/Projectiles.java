@@ -6,6 +6,7 @@ import robotkittenearthguardians.entity.Entity;
 import robotkittenearthguardians.entity.particles.Explosion;
 import robotkittenearthguardians.entity.particles.MainBulletParticle;
 import robotkittenearthguardians.entity.particles.Particle;
+import robotkittenearthguardians.level.Level;
 
 public abstract class Projectiles extends Entity{
 	
@@ -40,18 +41,32 @@ public abstract class Projectiles extends Entity{
 	public void render() {
 	}
 	
+	/**
+	 * Moves the bullet along the vector path.
+	 * Triggers remove boolean to true and death particle
+	 * when the bullet is more than it's given range.
+	 */
 	protected void move() {
+		x += vectorX;
+		y += vectorY;
+		
+		if(Distance() > range && Level.isOnStage(somePosition)) {
+			die();
+		} else if(!(Level.isOnStage(somePosition))) {
+			if(Distance() > range + 300) {
+				remove();
+			}
+		}
 	}
 	
 	/**
-	 * Moves the coordinate of the projectile on the X/Y plane
-	 * @param xa Left and right on plane
-	 * @param ya Up and down on plane
+	 * Returns the distance of the projectile from the origin to the point it is currently at.
+	 * @return double distance 
 	 */
-	public void move(int xa, int ya) {
-		//-1, 0, or 1
-		x += xa;
-		y += ya;
+	protected double Distance() {
+		double distance;
+		distance = Math.abs(Math.sqrt((xOrgin - x) * (xOrgin - x) + (yOrgin - y) * (yOrgin - y))); 
+		return distance;
 	}
 	
 	protected void die() {

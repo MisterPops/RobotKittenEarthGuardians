@@ -4,10 +4,8 @@ import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.WaterBalloonAi;
 import robotkittenearthguardians.graphics.AnimateMachine;
-import robotkittenearthguardians.graphics.Camera;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
-import robotkittenearthguardians.level.GameMaster;
 
 public class WaterBalloon extends Mob{
 
@@ -68,11 +66,7 @@ public class WaterBalloon extends Mob{
 		
 		//If health is 0 remove mob.
 		if(health <= 0) {
-			GameMaster.addScore(points);
-			mainExplode(deathParticle);
-			dropMissleAmmo();
-			Camera.shake();
-			remove();
+			mobDeath();
 		}
 	}
 	

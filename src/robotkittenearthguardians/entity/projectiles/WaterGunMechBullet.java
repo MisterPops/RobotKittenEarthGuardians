@@ -74,23 +74,6 @@ public class WaterGunMechBullet extends Projectiles{
 			dead = dieMechBullet();
 		}
 	}
-
-	/**
-	 * Returns the distance of the projectile from the origin to the point it is currently at.
-	 * @return double distance 
-	 */
-	private double Distance() {
-		double distance;
-		distance = Math.abs(Math.sqrt((xOrgin - x) * (xOrgin - x) + (yOrgin - y) * (yOrgin - y))); 
-		return distance;
-	}
-
-	/**
-	 * Returns the MainBullet's movement speed
-	 */
-	public int getSpeed() {
-		return speed;
-	}
 	
 	protected boolean dieMechBullet() {
 		if(scatter != 180) {

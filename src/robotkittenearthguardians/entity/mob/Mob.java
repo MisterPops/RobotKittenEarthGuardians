@@ -9,7 +9,9 @@ import robotkittenearthguardians.entity.projectiles.Projectiles;
 import robotkittenearthguardians.entity.projectiles.ShotgunBullet;
 import robotkittenearthguardians.entity.projectiles.WaterBottleBullet;
 import robotkittenearthguardians.entity.projectiles.WaterGunMechBullet;
+import robotkittenearthguardians.graphics.Camera;
 import robotkittenearthguardians.graphics.Sprite;
+import robotkittenearthguardians.level.GameMaster;
 import robotkittenearthguardians.level.Level;
 
 public abstract class Mob extends Entity {
@@ -43,6 +45,7 @@ public abstract class Mob extends Entity {
 	}
 	
 	public void update() {
+		
 	}
 	
 	public void render() {
@@ -76,6 +79,23 @@ public abstract class Mob extends Entity {
 	}
 	
 	/**
+	 * Shoots shotgun bullets at 0 degrees, 2 at (+-)15 degrees, and 2 at (+-) 5 degrees.
+	 * @param dir the direction that the bullets will be traveling.
+	 */
+	private void shotgun(double dir) {
+		@SuppressWarnings("unused")
+		Projectiles shotgunBullet = new ShotgunBullet(x, y, dir);
+		@SuppressWarnings("unused")
+		Projectiles shotgunBullet2 = new ShotgunBullet(x, y, dir + (15 * (Math.PI/180)));
+		@SuppressWarnings("unused")
+		Projectiles shotgunBullet3 = new ShotgunBullet(x, y, dir - (15 * (Math.PI/180)));
+		@SuppressWarnings("unused")
+		Projectiles shotgunBullet4 = new ShotgunBullet(x, y, dir + (5 * (Math.PI/180)));
+		@SuppressWarnings("unused")
+		Projectiles shotgunBullet5 = new ShotgunBullet(x, y, dir - (5 * (Math.PI/180)));
+	}
+	
+	/**
 	 * Checks if mob is on stage.
 	 */
 	public void stageUpdates() {
@@ -90,7 +110,7 @@ public abstract class Mob extends Entity {
 	}
 	
 	/**
-	 * Decereases mob's health and sets the mob in a fall like visual.
+	 * Decreases mob's health and sets the mob in a fall like visual.
 	 */
 	protected void falling() {
 		health -= 0.5f;
@@ -146,23 +166,6 @@ public abstract class Mob extends Entity {
 	}
 	
 	/**
-	 * Shoots shotgun bullets at 0 degrees, 2 at (+-)15 degrees, and 2 at (+-) 5 degrees.
-	 * @param dir the direction that the bullets will be traveling.
-	 */
-	private void shotgun(double dir) {
-		@SuppressWarnings("unused")
-		Projectiles shotgunBullet = new ShotgunBullet(x, y, dir);
-		@SuppressWarnings("unused")
-		Projectiles shotgunBullet2 = new ShotgunBullet(x, y, dir + (15 * (Math.PI/180)));
-		@SuppressWarnings("unused")
-		Projectiles shotgunBullet3 = new ShotgunBullet(x, y, dir - (15 * (Math.PI/180)));
-		@SuppressWarnings("unused")
-		Projectiles shotgunBullet4 = new ShotgunBullet(x, y, dir + (5 * (Math.PI/180)));
-		@SuppressWarnings("unused")
-		Projectiles shotgunBullet5 = new ShotgunBullet(x, y, dir - (5 * (Math.PI/180)));
-	}
-	
-	/**
 	 * Drops missile ammo randomly.
 	 */
 	protected void dropMissleAmmo() {
@@ -173,10 +176,17 @@ public abstract class Mob extends Entity {
 		}
 	}
 	
+	protected void mobDeath() {
+		GameMaster.addScore(points);
+		mainExplode(deathParticle);
+		dropMissleAmmo();
+		Camera.shake();
+		remove();
+	}
+	
 	/**
 	 * Controls mob's shooting and when the mob can shoot.
 	 */
 	protected void updateShooting() {
-		
 	}
 }

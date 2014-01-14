@@ -4,10 +4,8 @@ import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.WaterGunMechAi;
 import robotkittenearthguardians.graphics.AnimateMachine;
-import robotkittenearthguardians.graphics.Camera;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
-import robotkittenearthguardians.level.GameMaster;
 
 public class WaterGunMech extends Mob{
 
@@ -69,11 +67,7 @@ public class WaterGunMech extends Mob{
 		
 		//If health is 0 remove mob.
 		if(health <= 0) {
-			GameMaster.addScore(points);
-			mainExplode(deathParticle);
-			dropMissleAmmo();
-			Camera.shake();
-			remove();
+			mobDeath();
 		}
 	}
 	

@@ -4,10 +4,8 @@ import robotkittenearthguardians.entity.AABB;
 import robotkittenearthguardians.entity.HealthBar;
 import robotkittenearthguardians.entity.mob.ai.WaterBottlePackAi;
 import robotkittenearthguardians.graphics.AnimateMachine;
-import robotkittenearthguardians.graphics.Camera;
 import robotkittenearthguardians.graphics.Screen;
 import robotkittenearthguardians.graphics.Sprite;
-import robotkittenearthguardians.level.GameMaster;
 
 public class WaterBottlePack extends Mob{
 
@@ -70,17 +68,9 @@ public class WaterBottlePack extends Mob{
 		
 		//If health is 0 remove mob.
 		if(health <= 0) {
-			GameMaster.addScore(points);
+			dropWaterBottles();
+			mobDeath();
 			
-			mainExplode(deathParticle);
-			
-			for(int count = 0; count < 7; count++) {
-				@SuppressWarnings("unused")
-				WaterBottleSingle waterBottleSingle = new WaterBottleSingle(x, y);
-			}
-			dropMissleAmmo();
-			Camera.shake();
-			remove();
 		}
 	}
 	
@@ -90,5 +80,12 @@ public class WaterBottlePack extends Mob{
 	 */
 	public void render(Screen screen) {		
 		animation.animateMob(screen, falseFall);
+	}
+	
+	private void dropWaterBottles() {
+		for(int count = 0; count < 7; count++) {
+			@SuppressWarnings("unused")
+			WaterBottleSingle waterBottleSingle = new WaterBottleSingle(x, y);
+		}
 	}
 }
